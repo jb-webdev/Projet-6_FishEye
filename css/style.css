@@ -1,0 +1,72 @@
+@import url("photographer.css");
+:root {
+    --color-primary: #901c1c;
+    --color-secondary: #D3573C;
+    --black-primary: #525252;
+
+}
+body {
+    font-family: "DM Sans", sans-serif;
+    margin: 0;
+}
+
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+}
+
+h1 {
+    color: var(--color-primary);
+    margin-right: 100px;
+}
+
+.logo {
+    height: 50px;
+    margin-left: 100px;
+}
+/* wrapper main photographer*/
+.photographer_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 100px;
+}
+
+.photographer_section article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.photographer_section article h2 {
+    color: var(--color-secondary);
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+.photographer_section article img {
+    height: 200px;
+    width: 200px;
+    clip-path:ellipse(50% 50%);
+}
+.photographer_section article p {
+    margin-top: 0;
+    margin-bottom: 2px;
+}
+.photographer_section article :nth-last-child(3) {
+    color: var(--color-primary);
+    font-weight: bolder;
+}
+.photographer_section article :nth-last-child(2) {
+    color: black;
+    font-weight: bolder;
+}
+.photographer_section article :nth-last-child(1) {
+    color: var(--black-primary);
+}
