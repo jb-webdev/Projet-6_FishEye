@@ -8,8 +8,8 @@
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
+    padding-bottom: 90px;
 }
-
 
 header {
     display: flex;
@@ -43,8 +43,13 @@ h1 {
     align-items: center;
     flex-direction: column;
 }
+/* link photographer page-index*/
 
-.photographer_section article h2 {
+.wrapper-link-photographer {
+    text-decoration: none;
+    text-align: center;
+}
+.name-photographer {
     color: var(--color-secondary);
     font-size: 36px;
     margin-bottom: 5px;
@@ -59,14 +64,14 @@ h1 {
     margin-top: 0;
     margin-bottom: 2px;
 }
-.photographer_section article :nth-last-child(3) {
+.photographer-location {
     color: var(--color-primary);
     font-weight: bolder;
 }
-.photographer_section article :nth-last-child(2) {
+.photographer-profil {
     color: black;
     font-weight: bolder;
 }
-.photographer_section article :nth-last-child(1) {
+.photographer-price {
     color: var(--black-primary);
 }

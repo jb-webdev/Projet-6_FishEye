@@ -4,19 +4,38 @@ class PhotographerCard {
     }
 
     createPhotographerCard(){
+        // je crée une balise html "article"
         const article = document.createElement('article');
+        // je crée une balise html "a" pour le liensvers la page du photographe
+        const linkA = document.createElement('a');
+        linkA.setAttribute("href", "photographer.html");
+        linkA.setAttribute("class", "wrapper-link-photographer");
+
+        // je crée une balise html "img"
         const img = document.createElement('img');
         img.setAttribute("src", `${this._photographer.portrait}`);
         const h2 = document.createElement('h2');
         h2.innerHTML = this._photographer.name;
+        h2.setAttribute("class", "name-photographer");
+
+        // j'intègre la photo et le nom du photographe dans la balise "a"
+        linkA.appendChild(img);
+        linkA.appendChild(h2);
+
+        // jec crée mes balise paragraphe pour inserer les informations des photographes.
         const location  = document.createElement('p');
         location.innerHTML = `${this._photographer.city} ${this._photographer.country}`;
+        location.setAttribute("class", "photographer-location");
+
         const tagline = document.createElement ('p');
         tagline.innerHTML = this._photographer.tagline
+        tagline.setAttribute("class", "photographer-profil");
+
         const price = document.createElement('p')
         price.innerHTML = `${this._photographer.price} €/jours`;
-        article.appendChild(img);
-        article.appendChild(h2);
+        price.setAttribute("class", "photographer-price");
+        
+        article.appendChild(linkA);
         article.appendChild(location);
         article.appendChild(tagline);
         article.appendChild(price);
