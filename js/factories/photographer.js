@@ -14,6 +14,8 @@ class PhotographerCard {
         // je crée une balise html "img"
         const img = document.createElement('img');
         img.setAttribute("src", `${this._photographer.portrait}`);
+        img.setAttribute("alt", `${"photo de profil de " + this._photographer.name}`)
+        
         const h2 = document.createElement('h2');
         h2.innerHTML = this._photographer.name;
         h2.setAttribute("class", "name-photographer");
