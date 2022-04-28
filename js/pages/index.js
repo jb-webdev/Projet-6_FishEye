@@ -1,11 +1,13 @@
 class Index {
     constructor() {
         this.containerPhotographerCards = document.querySelector('.photographer_section')
+        this.loaderAccueil = document.getElementById('loader')
         this.photographerApi = new PhotographerApi('../../data/photographers.json')
     }
     async main() {
         const photographerData = await this.photographerApi.getDataPhotographer();
 
+        console.log(photographerData);
         photographerData
             .map(photographe => new Photographer(photographe))
             .forEach(photographe => {
@@ -13,11 +15,11 @@ class Index {
                 const Factories = new PhotographerCard(photographe)
                 this.containerPhotographerCards.appendChild(
                     Factories.createPhotographerCard()
-                )
+                    )
             });
     }
-}
+};
 
-const index = new Index() 
+const index = new Index()
 
 index.main()

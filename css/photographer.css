@@ -1,11 +1,51 @@
-#contact_modal {
-    display: none;
-}
 
+/* HEADER */
 .photograph-header {
-    background-color: #FAFAFA;
+    
+}
+.section-wrapper-header{
+    background-color: var(--color-white);
     height: 300px;
     margin: 0 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* BOX HEADER ONE */
+#one {
+    height: 300px;
+    display: flex;
+        
+        justify-content: center;
+        padding-left: 10%;
+    flex-direction: column;
+}
+#photographe-page-header_h2{
+    margin-top: 0;
+    color: var(--color-secondary);
+    font-size: 60px;
+    margin-bottom: 20px;
+
+}
+#photographe-page-header_location{
+    margin: 0;
+    margin-bottom: 10px;
+    color: var(--color-primary);
+    font-weight: bolder;
+    
+}
+#photographe-page-header_tagline{
+    margin: 0;
+}
+
+
+/* BOX HEADER TWO */
+#two {
+    height: 300px;
+    display: flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-align-items: center;
 }
 
 .contact_button {
@@ -16,11 +56,100 @@
     width: 170px;
     height: 70px;
     border: none;
-    background-color: #901C1C;
+    background-color: var(--color-primary);
     border-radius: 5px;
     cursor: pointer;
 }
 
+/* BOX HEADER THREE */
+
+#three {
+    height: 300px;
+    display: flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-align-items: center;
+}
+#header-page-photographer_image {
+    height: 200px;
+    width: 200px;
+    clip-path:ellipse(50% 50%);
+}
+
+/* cartes page photographe*/
+#wrapper-cards {
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 50px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.card {
+    margin: 10px;
+    background-color: transparent;
+    /*box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);*/
+    overflow: hidden;
+    width: 450px;
+    max-width: 500px;
+    flex-grow: 1;
+}
+
+@media only screen and (max-width: 1160px) {
+    #wrapper-cards {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .card {
+        max-width: 400px;
+    }
+}
+
+@media only screen and (max-width: 620px) {
+    #wrapper-cards {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+.card-img>img {
+    width: 100%;
+    height: 300px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+.card-description {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+}
+.card-descripiton_title {
+    color: var(--color-primary);
+    font-size: 0.9em;
+}
+.card-description_like {
+    color: var(--color-primary);
+}
+
+.fa-heart {
+    color: var(--color-primary);
+    margin-left: 5px;
+}
+
+
+
+
+
+
+
+
+
+/* CSS MODAL */
+#contact_modal {
+    display: none;
+}
 .modal {
     border-radius: 5px;
     background-color: #DB8876;

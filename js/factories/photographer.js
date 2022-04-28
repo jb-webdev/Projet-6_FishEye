@@ -6,15 +6,18 @@ class PhotographerCard {
     createPhotographerCard(){
         // je crée une balise html "article"
         const article = document.createElement('article');
+        article.setAttribute("role", `${"information du photographe " + this._photographer.name} }`)
         // je crée une balise html "a" pour le liensvers la page du photographe
         const linkA = document.createElement('a');
-        linkA.setAttribute("href", "photographer.html");
+        linkA.setAttribute("href", `photographer.html?id=${this._photographer.id}`);
         linkA.setAttribute("class", "wrapper-link-photographer");
+        linkA.setAttribute("title", `${"liens vers la page de " + this._photographer.name}`);
 
         // je crée une balise html "img"
         const img = document.createElement('img');
         img.setAttribute("src", `${this._photographer.portrait}`);
         img.setAttribute("alt", `${"photo de profil de " + this._photographer.name}`)
+        
         
         const h2 = document.createElement('h2');
         h2.innerHTML = this._photographer.name;

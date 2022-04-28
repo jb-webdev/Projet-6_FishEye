@@ -1,19 +1,5 @@
 @import url("photographer.css");
-:root {
-    
-    --color-primary: #901c1c;
-    --color-secondary: #D3573C;
-    --color-white : #FAFAFA;
-    --black-primary: #525252;
-    
-    /*BUTTON*/
-    --btn-static-color: #FAFAFA;
-    --btn-static-bg: #901c1c;
-    
-    --btn-static-color: #525252;
-    --btn-static-bg: #D3573C;
 
-}
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
@@ -58,6 +44,10 @@ h1 {
     text-decoration: none;
     text-align: center;
 }
+/*Focus cards photographer*/
+.wrapper-link-photographer:focus-visible{
+    outline: 4px solid var(--color-primary);
+}
 .name-photographer {
     color: var(--color-secondary);
     font-size: 36px;
@@ -74,7 +64,7 @@ h1 {
     margin-bottom: 2px;
 }
 .photographer-location {
-    color: var(--color-primary);
+    color: var(--color-secondary);
     font-weight: bolder;
 }
 .photographer-profil {
@@ -83,4 +73,33 @@ h1 {
 }
 .photographer-price {
     color: var(--black-primary);
+}
+
+@media only screen and (max-width: 1200px) {
+    .photographer_section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .photographer_section {
+        grid-template-columns: 1fr;
+    }
+    .logo {
+        margin-left: 20px;
+    }
+    h1 {
+        margin-right: 20px;
+    }
+}
+@media only screen and (max-width: 700px) {
+    
+    h1 {
+        font-size: 5.6vw;
+        margin-right: 10px;
+    }
+}
+@media only screen and (max-width: 560px) {
+    .logo {
+        height: 30px;
+    }
 }
