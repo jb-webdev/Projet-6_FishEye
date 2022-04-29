@@ -3,7 +3,7 @@ class PhotographerPage {
     constructor() {
 
         this.sectionHeader = document.querySelector('.photograph-header')
-        this.wrapperCardsContainer = document.querySelector('#wrapper-cards')
+        this.wrapperCardsContainer = document.querySelector('#section-cards')
         this.photographerApi = new PhotographerApi('../../data/photographers.json')
         this.mediaApi = new MediaApi('../../data/photographers.json')
     }
@@ -27,7 +27,6 @@ class PhotographerPage {
             return compteur
         }
         
-
         // ICIC JE PASSE UNE CONDITION POUR EVITER DE PASSER UN MAUVAIS IDENTIFIER DANS L'URL
         if (!iDifExist(photographerData, idRecup)) {
             const FactoriesError = new ErrorPage();
@@ -45,7 +44,7 @@ class PhotographerPage {
             this.sectionHeader.appendChild(
                 FactoriesPhotographer.createPhotographerCardPage()
             )
-
+            
             // TODO REGLER LE PROBLEME Du filtre des cartes
 
             mediaPhotographer

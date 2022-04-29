@@ -5,6 +5,7 @@ class Media {
         this._photographerId = medias.photographerId
         this._title = medias.title
         this._image = medias.image
+        this._video = medias.video
         this._likes = medias.likes
         this._date = medias.date
         this._price = medias.price
@@ -23,7 +24,25 @@ class Media {
         return this._title
     }
     get image (){
-        return `/assets/Photographers-img/${this._portrait}`
+        if (!this._image){
+            return 'null'
+        } else {
+            let namePhotographer = this._name;
+            let recupPrenom = namePhotographer.substring(0, namePhotographer.indexOf(" "));
+            let pathImage = recupPrenom.replace('-', ' ');
+            return `/assets/photographer-img/${pathImage}/${this._image}`
+        }
+        
+    }
+    get video (){
+        if (!this._video){
+            return 'null'
+        } else{
+            let namePhotographer = this._name;
+            let recupPrenom = namePhotographer.substring(0, namePhotographer.indexOf(" "));
+            let pathImage = recupPrenom.replace('-', ' ');
+            return `/assets/photographer-img/${pathImage}/${this._video}`;
+        }
     }
     get like (){
         return this._like

@@ -50,7 +50,6 @@
     margin: 0;
 }
 
-
 /* BOX HEADER TWO */
 #two {
     height: 300px;
@@ -80,7 +79,6 @@
 }
 
 /* BOX HEADER THREE */
-
 #three {
     height: 300px;
     display: -webkit-box;
@@ -101,13 +99,13 @@
     -webkit-clip-path: ellipse(50% 50%);
     clip-path: ellipse(50% 50%);
 }
+/*========================== SECTION CARDS ==========================*/
+/*===================================================================*/
 
-/* cartes page photographe*/
-#wrapper-cards {
+#section-cards{
     padding-left: 100px;
     padding-right: 100px;
-    padding-top: 50px;
-    margin: 0 auto;
+    padding-top: 50px;margin: 0 auto;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -116,6 +114,10 @@
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
+
+
+/* cartes page photographe*/
+
 
 .card {
     margin: 10px;
@@ -154,6 +156,10 @@
     -o-object-fit: cover;
     object-fit: cover;
 }
+.card-video {
+    width: 100%;
+    height: 300px;
+}
 
 .card-description {
     display: -webkit-box;
@@ -185,6 +191,9 @@
     color: var(--color-primary);
     margin-left: 5px;
 }
+
+/*========================== FIN DE LA SECTION CARDS ==========================*/
+/*=============================================================================*/
 /* CSS MODAL */
 #contact_modal {
     display: none;

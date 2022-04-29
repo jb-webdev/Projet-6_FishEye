@@ -4,12 +4,6 @@ class MediaCardPage {
     }
 
     createMediaCardPage() {
-        // tous d'abord je regle le probème de la gestion du chemin pour les images.
-        const namePhotographer = this._media._name;
-        const recupPrenom = namePhotographer.substring(0, namePhotographer.indexOf(" "));
-        const pathImage = recupPrenom.replace('-', ' ');
-        
-
         // 1 - Ensuite ICI JE CREER LA CARTE DU MEDIA
         const card = document.createElement('div');
         card.setAttribute("class", "card");
@@ -21,20 +15,43 @@ class MediaCardPage {
         // J'HYDRATE MON COMPO WRAPPERCARD
         card.appendChild(boxImage);
 
-        // 5 - ICI JE CREER MA BALISE IMAGE
-        const imgTag = document.createElement('img');
-        imgTag.setAttribute("src", `./assets/photographer-img/${pathImage}/${this._media._image}`);
-        imgTag.setAttribute("alt", `Le titre de l'image est ${this._media.title}`),
-        imgTag.setAttribute("title", `Le titre de l'image est ${this._media.title}`),
+        // ICI CREER UNE FONCTION QUI VERIFI SI LA VIDEO EXISTE
+        function ifVideoExist(el) {
+            let stateVideo = false;
+            if (el != "null") {
+                stateVideo = true;
+                return stateVideo
+            }
+            return stateVideo
 
-        // 6 - J'HYDRATE MON COMPOSANT boxImage
-        boxImage.appendChild(imgTag);
-        
-        
+        }
+        const essaiVideo = ifVideoExist(this._media.video);
+
+        // ICI JE CREER UNE CONDITION POUR AFFICHER SOIT UNE IMAGE SOIT UNE VIDEO
+        if (!essaiVideo) {
+            // 5 - ICI JE CREER MA BALISE IMAGE
+            const imgTag = document.createElement('img');
+            imgTag.setAttribute("src", `${this._media.image}`);
+            imgTag.setAttribute("alt", `Le titre de l'image est ${this._media.title}`),
+            imgTag.setAttribute("title", `Le titre de l'image est ${this._media.title}`),
+
+            // 6 - J'HYDRATE MON COMPOSANT boxImage
+            boxImage.appendChild(imgTag);
+        } else {
+            const videoTag = document.createElement("video");
+            videoTag.setAttribute("class", "card-video")
+            videoTag.setAttribute("controls", "controls")
+            videoTag.setAttribute("src", `${this._media.video}`)
+            videoTag.setAttribute("type", "video/mp4");
+
+            boxImage.appendChild(videoTag);
+        }
+
+
         // 7 - ICI JE CREE MON COMPOSANT DESCRIPTION
         const descriptionTag = document.createElement('div');
-        descriptionTag.setAttribute("class", "card-description" );
-        
+        descriptionTag.setAttribute("class", "card-description");
+
         // 8 - JE CREER MON COMPOSANT H2
         const h2Tag = document.createElement("h2");
         h2Tag.innerHTML = this._media.title;
@@ -51,8 +68,11 @@ class MediaCardPage {
 
         spanTag.appendChild(iconTag);
         descriptionTag.appendChild(spanTag);
-        
+
         card.appendChild(descriptionTag);
+
+
+
         return card;
     }
 }
