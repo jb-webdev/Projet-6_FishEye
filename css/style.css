@@ -80,6 +80,7 @@ h1 {
     width: 200px;
     -webkit-clip-path:ellipse(50% 50%);
             clip-path:ellipse(50% 50%);
+    object-fit: cover;
 }
 .photographer_section article p {
     margin-top: 0;
