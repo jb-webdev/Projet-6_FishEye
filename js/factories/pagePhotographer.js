@@ -53,7 +53,6 @@ class PhotographerCardPage {
         imgHeader.setAttribute('title', `${"photo de profil de " + this._photographer[0].name}`);
         imgHeader.setAttribute('src', `/assets/Photographers-ID-Photos/${this._photographer[0].portrait}`);
 
-
         // J'hydrate mon conteneur avec mon composant
         boxThree.appendChild(imgHeader);
         

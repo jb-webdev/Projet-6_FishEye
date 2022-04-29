@@ -7,7 +7,6 @@ class Index {
     async main() {
         const photographerData = await this.photographerApi.getDataPhotographer();
 
-        console.log(photographerData);
         photographerData
             .map(photographe => new Photographer(photographe))
             .forEach(photographe => {

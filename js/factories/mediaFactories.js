@@ -6,7 +6,6 @@ class MediaCardPage {
     createMediaCardPage() {
         // tous d'abord je regle le probème de la gestion du chemin pour les images.
         const namePhotographer = this._media._name;
-        console.log("resultat de replace " + namePhotographer.replace('-', ' '));
         const recupPrenom = namePhotographer.substring(0, namePhotographer.indexOf(" "));
         const pathImage = recupPrenom.replace('-', ' ');
         
