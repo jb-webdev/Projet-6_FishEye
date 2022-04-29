@@ -16,24 +16,20 @@
   </head>
 
   <body>
-    <header>
+    <header role="banner"> <!-- accessibilité - role -->
         <img src="assets/images/logo.png" class="logo" alt="Logo de Fisheye Home page"/>
-        <h1>Nos photographes</h1>
+        <h1 aria-lable="titre de la page d'accueil de fisheye">Nos photographes</h1> <!-- accessibilité - aria-label -->
     </header>
     
     <main id="main">
-        <div class="photographer_section"></div>
-        <div class="wrapper-cards"></div>
+        <div class="photographer_section" aria-label="section regroupant tous les photographes du site web"></div><!-- accessibilité - aria-label -->
     </main>
     <!-- Models -->
     <script src="/js/models/photographer.js"></script>
-
     <!-- Factories -->
     <script src="/js/factories/photographer.js"></script>
-
     <!-- Api -->
     <script src="/js/api/Api.js"></script>
-
     <!-- Entry point -->
     <script src="/js/pages/index.js"></script>
   </body>
