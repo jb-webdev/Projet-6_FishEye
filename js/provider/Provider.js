@@ -1,4 +1,4 @@
-class Api {
+class Provider {
     /**
      * 
      * @param {string} url 
@@ -19,7 +19,7 @@ class Api {
             .catch(err => console.log('une erreur c\'est produite', err))
     }
 }
-class PhotographerApi extends Api {
+class PhotographerProvider extends Provider {
     /**
      * 
      * @param {string} url 
@@ -32,7 +32,7 @@ class PhotographerApi extends Api {
         return await this.get()
     }
 }
-class MediaApi extends Api {
+class MediaProvider extends Provider {
     constructor(url) {
         super(url)
     }
@@ -40,4 +40,4 @@ class MediaApi extends Api {
         return await this.getMedia()
     }
 }
-export {PhotographerApi, MediaApi};
+export {PhotographerProvider, MediaProvider};
