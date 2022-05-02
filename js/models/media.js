@@ -1,4 +1,4 @@
-class Media {
+export class Media {
     constructor(medias, photogrpaher) {
         this._name = photogrpaher[0].name
         this._idMedia = medias.id

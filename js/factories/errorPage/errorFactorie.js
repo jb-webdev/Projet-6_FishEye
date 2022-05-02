@@ -1,4 +1,4 @@
-class ErrorPage {
+export class ErrorPage {
     constructor() {
         
     }
@@ -12,13 +12,11 @@ class ErrorPage {
         const modalError = document.createElement('div');
         modalError.setAttribute("class", "wrapper-error-modal");
 
-        const h1Error = document.createElement('h1');
-        h1Error.innerHTML = "sorry the page does not exist !";
-        const h2Error = document.createElement('h2');
-        h2Error.innerHTML = "you will be redirected in 3 seconds";
-        
-        modalError.appendChild(h1Error);
-        modalError.appendChild(h2Error);
+        const errorTemplate = `
+            <h1>sorry the page does not exist !</h1>
+            <h2>you will be redirected in 3 seconds</h2>
+        `
+        modalError.innerHTML = errorTemplate;
 
         setTimeout(redirectFunction, 3000);
         return modalError

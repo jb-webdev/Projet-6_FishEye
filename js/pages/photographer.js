@@ -1,7 +1,13 @@
-//Mettre le code JavaScript lié à la page photographer.html
+// import de tous les modules utile
+import {getPhotographerId, iDifExist} from '../utils/pagePhotographer.js';
+import {PhotographerApi, MediaApi} from '../api/Api.js';
+import {Media} from '../models/media.js';
+import {ErrorPage} from '../factories/errorPage/errorFactorie.js';
+import {PhotographerCardPage} from '../factories/pagePhotographer.js';
+import {MediaCardPage} from '../factories/mediaFactories.js';
+
 class PhotographerPage {
     constructor() {
-
         this.sectionHeader = document.querySelector('.photograph-header')
         this.wrapperCardsContainer = document.querySelector('#section-cards')
         this.photographerApi = new PhotographerApi('../../data/photographers.json')
@@ -12,21 +18,8 @@ class PhotographerPage {
         const photographerData = await this.photographerApi.getDataPhotographer();
         const mediaData = await this.mediaApi.getDataMedia();
         // Je recupere l'id du photographe dans mon url
-        function getPhotographerId() {
-            return new URL(location.href).searchParams.get("id");
-        }
         let idRecup = getPhotographerId();
-        // ICI JE CONTROLE SI L'ID EXISTE AVANT DE RÉALISÉ LES TRITEMENTS D'AFFICHAGE
-        function iDifExist(obj, id) {
-            let compteur = false;
-            for (let i = 0; i < obj.length; i++) {
-                if (obj[i].id == id) {
-                    compteur = true;
-                }
-            }
-            return compteur
-        }
-        
+
         // ICIC JE PASSE UNE CONDITION POUR EVITER DE PASSER UN MAUVAIS IDENTIFIER DANS L'URL
         if (!iDifExist(photographerData, idRecup)) {
             const FactoriesError = new ErrorPage();
@@ -56,7 +49,6 @@ class PhotographerPage {
                     )
                 });
         }
-
     }
 
 };

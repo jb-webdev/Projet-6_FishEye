@@ -1,3 +1,7 @@
+import {PhotographerApi} from '../api/Api.js';
+import {PhotographerCard} from '../factories/photographer.js';
+import {Photographer} from '../models/photographer.js';
+
 class Index {
     constructor() {
         this.containerPhotographerCards = document.querySelector('.photographer_section')

@@ -6,7 +6,6 @@ class Api {
     constructor(url) {
         this._url = url
     }
-
     async get() {
         return fetch(this._url)
             .then(res => res.json())
@@ -20,8 +19,6 @@ class Api {
             .catch(err => console.log('une erreur c\'est produite', err))
     }
 }
-
-
 class PhotographerApi extends Api {
     /**
      * 
@@ -35,7 +32,6 @@ class PhotographerApi extends Api {
         return await this.get()
     }
 }
-
 class MediaApi extends Api {
     constructor(url) {
         super(url)
@@ -44,3 +40,4 @@ class MediaApi extends Api {
         return await this.getMedia()
     }
 }
+export {PhotographerApi, MediaApi};
