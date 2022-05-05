@@ -26,8 +26,44 @@
   </header>
 
   <main id="main">
+    <!-- SECTION HEADER -->
     <section class="photograph-header"></section>
+    <!-- SECTION FILTER -->
+    <section id="section-filter-card" role="filter">
+      <p>Filtrer par : </p>
+      <form id="filter-dropdown" action="#index.html" method="get">
+        <input id="dropDown-selectValue" type="text"  value="value select" disabled="disabled">
+        <div id="dropdown-content">
+          <label for="popularite"></label>
+          <input class="dropdown-content-input" 
+            type="text" 
+            id="popularite" 
+            name="user_name" 
+            value="Popularité" 
+            disabled="disabled"
+          >
+          <label for="date"></label>
+          <input class="dropdown-content-input" 
+            type="text" 
+            id="date" 
+            name="user_name" 
+            value="Date" 
+            disabled="disabled"
+          >
+          <label for="title"></label>
+          <input class="dropdown-content-input" 
+            type="text" 
+            id="title" 
+            name="user_name" 
+            value="Title" 
+            disabled="disabled"
+          >
+        </div>
+      </form>
+    </section>
+    <!-- SECTION CARD -->
     <section id="section-cards"></section>
+    <!-- SECTION MODAL -->
     <section id="contact_modal">
     <!-- 
       <div class="modal">

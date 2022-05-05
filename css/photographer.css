@@ -191,6 +191,7 @@
 /*========================== FIN DE LA SECTION CARDS ==========================*/
 /*=============================================================================*/
 /*========================== DEBUT DE LA SECTION MODAL ==========================*/
+/*
 #contact_modal {
     display: none;
     position: fixed;
@@ -233,7 +234,7 @@
     width: 100%;
     height: auto;
 }
-/* ===== CLOSE ======*/
+
 .wrapper-btn-modal {
     display: flex;
     justify-content: end;
@@ -258,7 +259,7 @@
     font-weight: bold;
     font-size: 2.5em;
 }
-/*====================*/
+
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
@@ -305,4 +306,66 @@ form input {
 }
 form textarea {
     width: 100%;
+}
+*/
+
+/*Section Filter card */
+#section-filter-card {
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin: 10px 100px;
+
+}
+#filter-dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+}
+#dropDown-selectValue {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+}
+#dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--color-primary);
+    width: 150px;
+    -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+.dropdown-content-input {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 150px;
+    border: none;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: 16px;
+}
+.dropdown-content-input:hover {
+    background-color: var(--color-secondary);
+}
+#filter-dropdown:hover #dropdown-content {
+    display: block;
+}
+#filter-dropdown:focus #dropdown-content {
+    display: block;
+}
+#filter-dropdown:hover #dropDown-selectValue {
+    background-color: var(--color-secondary);
 }
