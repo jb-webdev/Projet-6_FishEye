@@ -1,0 +1,413 @@
+/*BUTTON*/
+body {
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
+  padding-bottom: 90px;
+}
+
+#header-homePage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 90px;
+}
+
+#header-homePage-h1 {
+  color: #913621;
+  margin-right: 100px;
+}
+
+.logo {
+  height: 50px;
+  margin-left: 100px;
+}
+
+/* wrapper main photographer*/
+.photographer_section {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 70px 1fr 70px 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin-top: 100px;
+}
+
+.photographer_section article {
+  -ms-grid-column-align: center;
+  justify-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+/* link photographer page-index*/
+.wrapper-link-photographer {
+  text-decoration: none;
+  text-align: center;
+}
+
+/*Focus cards photographer*/
+.wrapper-link-photographer:focus-visible {
+  outline: 4px solid #913621;
+}
+
+.name-photographer {
+  color: #D3573C;
+  font-size: 36px;
+  margin-bottom: 5px;
+}
+
+.photographer_section article img {
+  height: 200px;
+  width: 200px;
+  -webkit-clip-path: ellipse(50% 50%);
+  clip-path: ellipse(50% 50%);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.wrapper-info-photographer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.photographer_section article p {
+  margin-top: 0;
+  margin-bottom: 2px;
+}
+
+.photographer-location {
+  color: #913621;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.photographer-profil {
+  color: black;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.photographer-price {
+  color: #525252;
+  text-align: center;
+}
+
+/*RESPONSIVE HOME PAGE*/
+@media only screen and (max-width: 1200px) {
+  .photographer_section {
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .photographer_section {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+  }
+  .logo {
+    margin-left: 20px;
+  }
+  #header-homePage-h1 {
+    margin-right: 20px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  #header-homePage-h1 {
+    font-size: 5.6vw;
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  .logo {
+    height: 30px;
+  }
+}
+
+/* HEADER */
+/*.photograph-header {}*/
+.section-wrapper-header {
+  background-color: #FAFAFA;
+  height: 300px;
+  margin: 0 100px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* BOX HEADER ONE */
+#one {
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-left: 10%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+#photographe-page-header_h2 {
+  margin-top: 0;
+  color: #D3573C;
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+#photographe-page-header_location {
+  margin: 0;
+  margin-bottom: 10px;
+  color: #913621;
+  font-weight: bolder;
+}
+
+#photographe-page-header_tagline {
+  margin: 0;
+}
+
+/* BOX HEADER TWO */
+#two {
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+}
+
+.contact_button {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #913621;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* BOX HEADER THREE */
+#three {
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+}
+
+#header-page-photographer_image {
+  height: 200px;
+  width: 200px;
+  -webkit-clip-path: ellipse(50% 50%);
+  clip-path: ellipse(50% 50%);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/*========================== SECTION CARDS ==========================*/
+/*===================================================================*/
+#section-cards {
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 50px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+/* cartes page photographe*/
+.card {
+  margin: 10px;
+  background-color: transparent;
+  /*box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);*/
+  overflow: hidden;
+  width: 450px;
+  max-width: 500px;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.card-img > img {
+  width: 100%;
+  height: 300px;
+  border-radius: 5px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.card-video {
+  width: 100%;
+  height: 300px;
+}
+
+.card-description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 30px;
+}
+
+.card-descripiton_title {
+  color: #913621;
+  font-size: 0.9em;
+}
+
+.card-description_like {
+  color: #913621;
+}
+
+.fa-heart {
+  color: #913621;
+  margin-left: 5px;
+}
+
+@media only screen and (max-width: 1160px) {
+  #wrapper-cards {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .card {
+    max-width: 400px;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  #wrapper-cards {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/*Section Filter card */
+#section-filter-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin: 10px 100px;
+}
+
+#filter-dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+#dropDown-selectValue {
+  background-color: #913621;
+  color: #FAFAFA;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+}
+
+#dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #913621;
+  width: 150px;
+  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content-input {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  width: 150px;
+  border: none;
+  background-color: #913621;
+  color: #FAFAFA;
+  font-size: 16px;
+}
+
+.dropdown-content-input:hover {
+  background-color: #D3573C;
+}
+
+#filter-dropdown:hover #dropdown-content {
+  display: block;
+}
+
+#filter-dropdown:focus #dropdown-content {
+  display: block;
+}
+
+#filter-dropdown:hover #dropDown-selectValue {
+  background-color: #D3573C;
+}
+/*# sourceMappingURL=main.css.map */

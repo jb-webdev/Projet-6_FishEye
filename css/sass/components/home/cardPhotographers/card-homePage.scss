@@ -1,0 +1,69 @@
+.photographer_section article {
+    -ms-grid-column-align: center;
+        justify-self: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+/* link photographer page-index*/
+.wrapper-link-photographer {
+    text-decoration: none;
+    text-align: center;
+}
+/*Focus cards photographer*/
+.wrapper-link-photographer:focus-visible{
+    outline: 4px solid #913621;
+}
+.name-photographer {
+    color: $color-secondary;
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+.photographer_section article img {
+    height: 200px;
+    width: 200px;
+    -webkit-clip-path:ellipse(50% 50%);
+            clip-path:ellipse(50% 50%);
+    object-fit: cover;
+}
+.wrapper-info-photographer{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+.photographer_section article p {
+    margin-top: 0;
+    margin-bottom: 2px;
+}
+.photographer-location {
+    color: #913621;
+    font-weight: bolder;
+    text-align: center;
+}
+.photographer-profil {
+    color: black;
+    font-weight: bolder;
+    text-align: center;
+}
+.photographer-price {
+    color: $black-primary;
+    text-align: center;
+}

@@ -13,9 +13,9 @@ export class PhotographerCardPage {
         
         const headerPhotographerTemplate = `
             <div id="one">
-                <h2 id="photographe-page-header_h2">
+                <h1 id="photographe-page-header_h2">
                     ${this._photographer[0].name}
-                </h2>
+                </h1>
                 <p id="photographe-page-header_location">
                     ${this._photographer[0].city}, ${this._photographer[0].country}
                 </p>
@@ -33,7 +33,7 @@ export class PhotographerCardPage {
             <div id="three">
                 <img id="header-page-photographer_image" 
                     alt="photo de profil de  ${this._photographer[0].name}" 
-                    title="photo de profil de  ${this._photographer[0].name}" 
+                    title="image de profil de  ${this._photographer[0].name}" 
                     src="/assets/Photographers-ID-Photos/${this._photographer[0].portrait}"
                 >
             </div>

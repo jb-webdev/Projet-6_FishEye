@@ -7,7 +7,7 @@
 
     <!-- STYLE CSS-->
     <link rel="stylesheet" href="./css/variableSite.css">
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="./css/main.css" rel="stylesheet" type="text/css" />
     <!-- ICON ONGLET -->
     <link rel="icon" type="image/png" href="assets/images/icon.png">
     <!-- FONTS-->
@@ -16,14 +16,13 @@
   </head>
 
   <body>
-    <header role="banner"> <!-- accessibilité - role -->
+    <header id="header-homePage" role="banner"> <!-- accessibilité - role -->
         <img src="assets/images/logo.png" class="logo" alt="Logo de Fisheye Home page"/>
-        <h1 aria-lable="titre de la page d'accueil de fisheye">Nos photographes</h1> <!-- accessibilité - aria-label -->
+        <h1 id="header-homePage-h1" aria-lable="titre de la page d'accueil de fisheye">Nos photographes</h1> <!-- accessibilité - aria-label -->
     </header>
     
     <main id="main">
-        <div class="photographer_section" aria-label="section regroupant tous les photographes du site web"></div><!-- accessibilité - aria-label -->
-        
+        <div class="photographer_section" aria-label="section regroupant tous les photographes inscrit sur le site"></div><!-- accessibilité - aria-label -->
     </main>
     
     <!-- Entry point -->

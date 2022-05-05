@@ -20,9 +20,11 @@ export class PhotographerCard {
                     alt="photo de profil de ${this._photographer.name}">
                 <h2 class="name-photographer">${this._photographer.name}</h2>
             </a>
-            <p class="photographer-location">${this._photographer.city}, ${this._photographer.country}</p>
-            <p class="photographer-profil">${this._photographer.tagline}</p>
-            <p class="photographer-price">${this._photographer.price}€/jour</p>
+            <p class="wrapper-info-photographer">
+            <span class="photographer-location"> ${this._photographer.city}, ${this._photographer.country}</span>
+            <span class="photographer-profil"> ${this._photographer.tagline}</span>
+            <span class="photographer-price"> ${this._photographer.price}€/jour</span>
+            </p>
         `;
         
         article.innerHTML = HomeTemplate;

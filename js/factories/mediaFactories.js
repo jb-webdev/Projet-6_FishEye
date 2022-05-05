@@ -39,7 +39,7 @@ export class MediaCardPage {
             <div class="card-img">
                 <img
                     src="${this._media.image}"
-                    alt="${this._media.title}"
+                    alt="photo portant le nom de ${this._media.title}"
                     title="${this._media.title}"
                 >
             </div>

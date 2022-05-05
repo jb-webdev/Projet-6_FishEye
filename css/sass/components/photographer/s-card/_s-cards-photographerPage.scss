@@ -1,0 +1,69 @@
+/*========================== SECTION CARDS ==========================*/
+/*===================================================================*/
+#section-cards{
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 50px;margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+/* cartes page photographe*/
+.card {
+    margin: 10px;
+    background-color: transparent;
+    /*box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);*/
+    overflow: hidden;
+    width: 450px;
+    max-width: 500px;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+
+.card-img>img {
+    width: 100%;
+    height: 300px;
+    border-radius: 5px;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+.card-video {
+    width: 100%;
+    height: 300px;
+}
+
+.card-description {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 30px;
+}
+
+.card-descripiton_title {
+    color: $color-primary;
+    font-size: 0.9em;
+}
+
+.card-description_like {
+    color: $color-primary;
+}
+
+.fa-heart {
+    color: $color-primary;
+    margin-left: 5px;
+}
