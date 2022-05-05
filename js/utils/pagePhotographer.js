@@ -1,10 +1,15 @@
-// Fonction pour recuperer l'id du photographe dans notre url
-function getPhotographerId() {
+/**
+ * Function pour recuperer l'id du Photographe selection
+ * @returns id photographer
+ */
+const getPhotographerId = () =>{
     return new URL(location.href).searchParams.get("id");
 }
-
-// Fonction qui controle si l'id existe dans la BDD
-function iDifExist(obj, id) {
+/**
+ * Function qui controle si l'identifiant selectionner existe dans la BDD
+ * @returns boolean
+ */
+const iDifExist = (obj, id) => {
     let compteur = false;
     for (let i = 0; i < obj.length; i++) {
         if (obj[i].id == id) {
@@ -13,9 +18,11 @@ function iDifExist(obj, id) {
     }
     return compteur
 }
-
- // ICI CREER UNE FONCTION QUI VERIFI SI LA VIDEO EXISTE
- function ifVideoExist(el) {
+/**
+ * Function qui controle la video existe dans la BDD
+ * @returns boolean
+ */
+ const ifVideoExist = (el) => {
     let stateVideo = false;
     if (el != "null") {
         stateVideo = true;
@@ -26,4 +33,8 @@ function iDifExist(obj, id) {
 
 
 
-export {getPhotographerId, iDifExist, ifVideoExist};
+export {
+    getPhotographerId, 
+    iDifExist,
+    ifVideoExist
+};

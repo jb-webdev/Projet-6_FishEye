@@ -4,11 +4,13 @@ export class PhotographerCardPage {
     }
 
     createPhotographerCardPage(){
-        // je creer ma section wrapper dans le DOM
+        /**
+         * je creer ma section wrapper dans le DOM
+         */
         const wrapperSection = document.createElement("section");
         wrapperSection.setAttribute("class", "section-wrapper-header");
 
-
+        
         const headerPhotographerTemplate = `
             <div id="one">
                 <h2 id="photographe-page-header_h2">
@@ -22,12 +24,11 @@ export class PhotographerCardPage {
                 </p>
             </div>
             <div id="two">
-                <button 
-                    class="contact_button" 
-                    onclick="displayModal()"
+                <button id="btn-header-displayModal"
+                    class="contact_button"
                 >
-                Contactez-moi
-            </button>
+                    Contactez-moi
+                </button>
             </div>
             <div id="three">
                 <img id="header-page-photographer_image" 

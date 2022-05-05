@@ -115,11 +115,7 @@
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
-
-
 /* cartes page photographe*/
-
-
 .card {
     margin: 10px;
     background-color: transparent;
@@ -192,52 +188,83 @@
     color: var(--color-primary);
     margin-left: 5px;
 }
-
 /*========================== FIN DE LA SECTION CARDS ==========================*/
 /*=============================================================================*/
-/* CSS MODAL */
+/*========================== DEBUT DE LA SECTION MODAL ==========================*/
 #contact_modal {
     display: none;
+    position: fixed;
+    z-index: 99;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: #ffffff;
+    padding-top: 3%
 }
-
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
+    display: flex;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    align-items: center;
+        align-items: center;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
-    justify-content: space-between;
+        justify-content: space-between;
     padding: 35px;
+    padding-top: 0;
     margin: auto;
 }
-
 .modal header {
+    display: flex;
+    flex-direction: column;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
     width: 100%;
+    height: auto;
+}
+/* ===== CLOSE ======*/
+.wrapper-btn-modal {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 80px;
+    width: 100%;
+    margin-top: 0;
 }
 
-.modal header img {
+#closeModal{
+    background-color: transparent;
+    border: none;
+    height: auto;
+    width: auto;
     cursor: pointer;
 }
-
+#closeModal:focus{
+    border: 3px solid black;
+}
+#closeModal i{
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 2.5em;
+}
+/*====================*/
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
     text-align: center;
+    margin-top: 0;
 }
-
 form {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -251,12 +278,10 @@ form {
     -ms-flex-align: start;
     align-items: flex-start;
 }
-
 form label {
     color: #312E2E;
     font-size: 36px;
 }
-
 form div {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -271,10 +296,13 @@ form div {
     align-items: self-start;
     margin-bottom: 26px;
 }
-
 form input {
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size: 1.3em;
+}
+form textarea {
+    width: 100%;
 }

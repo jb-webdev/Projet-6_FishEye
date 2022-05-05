@@ -1,10 +1,10 @@
 // import de tous les modules utile
-import {getPhotographerId, iDifExist} from '../utils/pagePhotographer.js';
-import {PhotographerProvider, MediaProvider} from '../provider/Provider.js';
-import {Media} from '../models/media.js';
-import {ErrorPage} from '../factories/errorPage/errorFactorie.js';
-import {PhotographerCardPage} from '../factories/pagePhotographer.js';
-import {MediaCardPage} from '../factories/mediaFactories.js';
+import {getPhotographerId, iDifExist} from '../utils/pagePhotographer.js'
+import {PhotographerProvider, MediaProvider} from '../provider/Provider.js'
+import {Media} from '../models/media.js'
+import {ErrorPage} from '../factories/errorPage/errorFactorie.js'
+import {PhotographerCardPage} from '../factories/pagePhotographer.js'
+import {MediaCardPage} from '../factories/mediaFactories.js'
 
 class PhotographerPage {
     constructor() {
@@ -12,43 +12,45 @@ class PhotographerPage {
         this.wrapperCardsContainer = document.querySelector('#section-cards')
         this.photographerProvider = new PhotographerProvider('../../data/photographers.json')
         this.mediaProvider = new MediaProvider('../../data/photographers.json')
+        this.idPhotographer = getPhotographerId()
     }
 
     async main() {
-        const photographerData = await this.photographerProvider.getDataPhotographer();
-        const mediaData = await this.mediaProvider.getDataMedia();
-        // Je recupere l'id du photographe dans mon url
-        let idRecup = getPhotographerId();
+        /**
+         * On recuperer les DATA a trier dans la page
+         */
+        const photographerData = await this.photographerProvider.getDataPhotographer()
+        const mediaData = await this.mediaProvider.getDataMedia()
+        /**
+         * je creer mes filtres pour ne recuperer que les infos du photographe et sont travail
+         */
+        const photographerSelect = photographerData.filter(obj => obj.id == this.idPhotographer)
+        const mediaPhotographer = mediaData.filter(obj => obj.photographerId == this.idPhotographer)
+        /**
+         * je creer mes Factories pour ma page
+         */
+        const FactoriesPhotographer = new PhotographerCardPage(photographerSelect)
+        const FactoriesError = new ErrorPage()
+        /**
+         * ICI JE PASSE UNE CONDITION POUR TRAITER L'ERREUR ID DE L'URL
+         */
 
-        // ICIC JE PASSE UNE CONDITION POUR EVITER DE PASSER UN MAUVAIS IDENTIFIER DANS L'URL
-        if (!iDifExist(photographerData, idRecup)) {
-            const FactoriesError = new ErrorPage();
+        if (!iDifExist(photographerData, this.idPhotographer)) {
             this.wrapperCardsContainer.appendChild(
                 FactoriesError.createErrorPage()
             );
         } else {
-            // je creer mes filtres pour ne recuperer que les infos du photographe et sont travail
-            const photographerSelect = photographerData.filter(obj => obj.id == idRecup);
-
-            const mediaPhotographer = mediaData.filter(obj => obj.photographerId == idRecup);
-
-            const FactoriesPhotographer = new PhotographerCardPage(photographerSelect);
-
             this.sectionHeader.appendChild(
                 FactoriesPhotographer.createPhotographerCardPage()
             )
-            
-            // TODO REGLER LE PROBLEME Du filtre des cartes
-
             mediaPhotographer
                 .map(mediaData => new Media(mediaData, photographerSelect))
-
                 .forEach(mediaData => {
                     const FactoriesMedia = new MediaCardPage(mediaData)
                     this.wrapperCardsContainer.appendChild(
                         FactoriesMedia.createMediaCardPage()
                     )
-                });
+                })
         }
     }
 

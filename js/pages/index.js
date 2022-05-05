@@ -14,7 +14,9 @@ class Index {
         photographerData
             .map(photographe => new Photographer(photographe))
             .forEach(photographe => {
-                // avec forEach je crée une carte par photographe dans mon DOM
+                /**
+                 * avec forEach je crée une carte par photographe dans mon DOM
+                 */
                 const Factories = new PhotographerCard(photographe)
                 this.containerPhotographerCards.appendChild(
                     Factories.createPhotographerCard()

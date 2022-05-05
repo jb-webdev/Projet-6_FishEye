@@ -21,7 +21,7 @@ class Provider {
 }
 class PhotographerProvider extends Provider {
     /**
-     * 
+     * Avec cette class on retourne touttes les datas des photographes
      * @param {string} url 
      */
     constructor(url) {
@@ -33,6 +33,11 @@ class PhotographerProvider extends Provider {
     }
 }
 class MediaProvider extends Provider {
+    /**
+     * 
+     * avec cette class on retourne toutes les informations concerantn les media présent dans la BDD
+     * @param {String} url 
+     */
     constructor(url) {
         super(url)
     }

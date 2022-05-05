@@ -4,7 +4,9 @@ export class PhotographerCard {
     }
 
     createPhotographerCard(){
-        // je crée une balise html "article"
+        /**
+         * je crée une balise html "article"
+         */
         const article = document.createElement('article');
         article.setAttribute("role", `${"information du photographe " + this._photographer.name} }`)
 
