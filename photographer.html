@@ -7,8 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="assets/images/icon.png">
   <!-- STYLE CSS-->
-  <link rel="stylesheet" href="./css/variableSite.css">
-  <link href="./css/main.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="./css/index.css" type="text/css" />
+  <link rel="stylesheet" href="./css/PhotographerCss/s-cards.css">
+  <link rel="stylesheet" href="./css/PhotographerCss/s-filter.css">
+  <link rel="stylesheet" href="./css/PhotographerCss/s-modal.css">
+  <!-- 
+  -->
+  <link rel="stylesheet" href="./css/PhotographerCss/s-lightbox.css">
+  
   <!-- FONTS-->
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
 
@@ -29,80 +35,18 @@
     <!-- SECTION HEADER -->
     <section class="photograph-header"></section>
     <!-- SECTION FILTER -->
-    <section id="section-filter-card" role="filter">
-      <p>Filtrer par : </p>
-      <form id="filter-dropdown" action="#index.html" method="get">
-        <input id="dropDown-selectValue" type="text"  value="value select" disabled="disabled">
-        <div id="dropdown-content">
-          <label for="popularite"></label>
-          <input class="dropdown-content-input" 
-            type="text" 
-            id="popularite" 
-            name="user_name" 
-            value="Popularité" 
-            disabled="disabled"
-          >
-          <label for="date"></label>
-          <input class="dropdown-content-input" 
-            type="text" 
-            id="date" 
-            name="user_name" 
-            value="Date" 
-            disabled="disabled"
-          >
-          <label for="title"></label>
-          <input class="dropdown-content-input" 
-            type="text" 
-            id="title" 
-            name="user_name" 
-            value="Title" 
-            disabled="disabled"
-          >
-        </div>
-      </form>
-    </section>
+    <section id="s-filter"></section>
     <!-- SECTION CARD -->
-    <section id="section-cards" aria-label="section regroupant les medias du photographe metre le nom du photographe"></section>
-    <!-- SECTION MODAL -->
-    <section id="contact_modal">
-    <!-- 
-      <div class="modal">
-        <header>
-          <img src="assets/icons/close.svg" id="closeModal" />
-    
-          <div class="wrapper-btn-modal">
-            <button id="closeModal"><i class="fa-solid fa-xmark"></i></button>
-          </div>
-          <h2>Contactez-moi</h2>
-        </header>
-        <form method="post">
-          <div>
-            <label for="prenom">Prénom</label>
-            <input type="text" name="prenom" size="20" maxlength="40" value="prenom" id="prenom" />
-            <label for="nom">Nom</label>
-            <input type="text" name="nom" size="20" maxlength="40" value="nom" id="nom" />
-    
-            <label for="email">Email</label>
-            <input type="email" name="email" size="20" maxlength="40" value="email" id="email" />
-            <label for="confirmEmail">Email</label>
-            <input type="email" name="confirmEmail" size="20" maxlength="40" value="confirmEmail" id="confirmEmail" />
-    
-            <label for="message">Vos commentaires :</label>
-            <textarea name="message" id="message" cols="20" rows="4"></textarea>
-          </div>
-          <button class="contact_button">Envoyer</button>
-        </form>
-      </div>
-    -->
-    </section>
+    <section id="s-cards" aria-label="section regroupant les medias du photographe metre le nom du photographe"></section>
+    <!-- SECTION MODAL MESSAGE -->
+    <section id="s-modal"></section>
+    <!-- SECTION LIGHTBOX -->
+    <section id="s-lightbox"></section>
   </main>
 
   
   <!-- Entry point -->
   <script type="module" src="./js/pages/photographer.js"></script>
-  <!-- 
-    <script src="/scripts/utils/contactForm.js"></script>
-    -->
 </body>
 
 </html>

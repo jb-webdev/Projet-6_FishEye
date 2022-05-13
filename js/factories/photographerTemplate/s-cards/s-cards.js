@@ -1,21 +1,19 @@
-import {ifVideoExist} from '../utils/pagePhotographer.js';
+import {ifVideoExist} from '../../../utils/functionsUtil.js'; /* import de la function pour trier les images des video */
 
-export class MediaCardPage {
+export class SectionCards {
     constructor(mediaData) {
         this._media = mediaData
     }
-    createMediaCardPage() {
+    createCards() {
         /**
          * Ensuite ICI JE CREER LA CARTE DU MEDIA
          */
         const card = document.createElement('div');
         card.setAttribute("class", "card");
         const essaiVideo = ifVideoExist(this._media.video);
-        /**
-         * ICI JE CREER UNE CONDITION POUR AFFICHER SOIT UNE IMAGE SOIT UNE VIDEO
-         */
+        
          const videoHtml = `
-            <div class="card-img">
+            <a href="#" title=${this._media.title} class="card-img">
                 <video 
                     class="card-video" 
                     controls="controls"
@@ -23,7 +21,7 @@ export class MediaCardPage {
                     src="${this._media.video}" 
                     type="video/mp4">
                 </video>
-            </div>
+            </a>
             <div class="card-description">
                 <h2 class="card-descripiton_title">
                     ${this._media.title}
@@ -36,13 +34,13 @@ export class MediaCardPage {
             </div>
         `
         const imageHtml = `
-            <div class="card-img">
+            <a href="#" title=${this._media.title} class="card-img">
                 <img
                     src="${this._media.image}"
                     alt="photo portant le nom de ${this._media.title}"
                     title="${this._media.title}"
                 >
-            </div>
+            </a>
             <div class="card-description">
                 <h2 class="card-descripiton_title">
                     ${this._media.title}
@@ -50,12 +48,14 @@ export class MediaCardPage {
                 <span class="span" 
                     class="card-description_like">
                     ${this._media._likes}
-                    <i class="fa-solid fa-heart"></i>
+                    
+                    <i class="fa-regular fa-heart"></i>
                 </span>
             </div>
         `
+        // pour passer le coeur rempli mettre l'icon en fa-solid au lieu de fa-regular au click !
         /**
-         * On verifie si essaiVideo et vrai ou faux / soit une video soit une image
+         * On verifie si essaiVideo et vrai ou faux / et on monte  une video ||  une image
          */
 
         essaiVideo ? card.innerHTML = videoHtml : card.innerHTML = imageHtml

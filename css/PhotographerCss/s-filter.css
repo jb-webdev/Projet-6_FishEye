@@ -1,0 +1,111 @@
+/* Section Filter card */
+
+/*  ESSAI  5 */
+
+#s-filter{
+    padding-left: 100px;
+    padding-right: 100px;
+}
+.wrapper-Filter {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    font-size: 1.15rem;
+    position: relative;
+
+}
+.filters-title {
+    font-weight: bold;
+    font-size: 1.15rem;
+    padding-right: 2rem;
+    color: black;
+}
+.select-filters {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    position: relative;
+}
+.select-filters-button {
+    font-family: "DM Sans", "Trebuchet MS", Arial, Helvetica, sans-serif;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border: none;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: 1.15rem;
+    padding: 0.9rem 0.5rem;
+    border-radius: 0.3rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+/*.option1 {}*/
+.arrows {
+    cursor: pointer;
+    padding: .5rem;
+}
+/*.fas {}*/
+.fa-chevron-down {
+    color: var(--color-white);
+    padding: 0 .9rem 0 1.7rem;
+}
+.dropdown {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    background-color: var(--color-primary);
+    border-radius: 0.3rem;
+    padding: 0 0.4rem;
+    cursor: pointer;
+    position: absolute;
+    z-index: 3;
+}
+.dropdown-option {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 9.5rem;
+    height: 3.2rem;
+    color: var(--color-white);
+}
+.fa-chevron-up {
+    color: var(--color-white);
+    padding: 0 .6rem 0 1rem;
+}
+#container {
+    position: absolute;
+    display: none;
+}
+#btn-up {
+    position: absolute;
+    left: 6.7rem;
+    z-index: 3;
+}
+

@@ -1,10 +1,16 @@
 
-displayModal = () => {
-    const modal = document.getElementById("contact_modal");
+const displayModal = () => {
+    const modal = document.getElementById("s-modal");
 	modal.style.display = "block";
 }
 
-closeModal = () => {
-    const modal = document.getElementById("contact_modal");
+const closeModal = () => {
+    const modal = document.getElementById("s-modal");
     modal.style.display = "none";
 }
+
+
+
+
+export {displayModal, closeModal}
+

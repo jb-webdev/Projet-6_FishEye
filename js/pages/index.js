@@ -1,5 +1,5 @@
 import {PhotographerProvider} from '../provider/Provider.js';
-import {PhotographerCard} from '../factories/photographer.js';
+import { HomePhotographerCard } from '../factories/homeTemplateCard/homePhotographerCard.js';
 import {Photographer} from '../models/photographer.js';
 
 class Index {
@@ -17,9 +17,9 @@ class Index {
                 /**
                  * avec forEach je crée une carte par photographe dans mon DOM
                  */
-                const Factories = new PhotographerCard(photographe)
+                const Factories = new HomePhotographerCard(photographe)
                 this.containerPhotographerCards.appendChild(
-                    Factories.createPhotographerCard()
+                    Factories.createHomePhotographerCard()
                     )
             });
             

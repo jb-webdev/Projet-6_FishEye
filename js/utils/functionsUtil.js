@@ -32,7 +32,7 @@ const iDifExist = (obj, id) => {
 }
 
 
-
+/** On exporte les fonctions */
 export {
     getPhotographerId, 
     iDifExist,

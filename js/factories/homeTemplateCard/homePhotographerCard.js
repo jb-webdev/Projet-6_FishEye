@@ -1,16 +1,16 @@
-export class PhotographerCard {
+export class HomePhotographerCard {
     constructor (photographe) {
         this._photographer = photographe
     }
 
-    createPhotographerCard(){
+    createHomePhotographerCard(){
         /**
          * je crée une balise html "article"
          */
         const article = document.createElement('article');
         article.setAttribute("role", `${"information du photographe " + this._photographer.name} }`)
 
-        const HomeTemplate = `
+        const HomeTemplateCard = `
             <a class="wrapper-link-photographer" 
                 href="photographer.html?id=${this._photographer.id}" 
                 title="${"liens vers la page de " + this._photographer.name}"
@@ -27,7 +27,7 @@ export class PhotographerCard {
             </p>
         `;
         
-        article.innerHTML = HomeTemplate;
+        article.innerHTML = HomeTemplateCard;
 
         return article;
     }
