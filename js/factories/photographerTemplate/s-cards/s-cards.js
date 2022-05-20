@@ -1,18 +1,18 @@
-import {ifVideoExist} from '../../../utils/functionsUtil.js'; /* import de la function pour trier les images des video */
+import {ifVideoExist} from '../../../utils/functionsUtil.js' /* import de la function pour trier les images des video */
 
 export class SectionCards {
-    constructor(mediaData) {
-        this._media = mediaData
-    }
-    createCards() {
-        /**
+	constructor(mediaData) {
+		this._media = mediaData
+	}
+	createCards() {
+		/**
          * Ensuite ICI JE CREER LA CARTE DU MEDIA
          */
-        const card = document.createElement('div');
-        card.setAttribute("class", "card");
-        const essaiVideo = ifVideoExist(this._media.video);
+		const card = document.createElement('div')
+		card.setAttribute('class', 'card')
+		const essaiVideo = ifVideoExist(this._media.video)
         
-         const videoHtml = `
+		const videoHtml = `
             <figure title=${this._media.title} class="card-img" id=${this._media.idMedia}>
                 <video 
                     class="card-video itemSelectUser" 
@@ -33,7 +33,7 @@ export class SectionCards {
                 </span>
             </div>
         `
-        const imageHtml = `
+		const imageHtml = `
             <figure title=${this._media.title} class="card-img" id=${this._media.idMedia}>
                 <img
                     class="itemSelectUser"
@@ -55,8 +55,8 @@ export class SectionCards {
             </div>
         `
 
-        essaiVideo ? card.innerHTML = videoHtml : card.innerHTML = imageHtml
+		essaiVideo ? card.innerHTML = videoHtml : card.innerHTML = imageHtml
         
-        return card
-    }
+		return card
+	}
 }

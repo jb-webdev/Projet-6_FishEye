@@ -1,18 +1,18 @@
 
 export class SectionModal {
-    constructor (photographe) {
-        this._photographer = photographe
-    }
-    createSectionModal(){
-        const wrapperSection = document.createElement("div")
-        wrapperSection.setAttribute("class", "modal")
-        wrapperSection.setAttribute("role", "dialog")
-        wrapperSection.setAttribute("aria-modal", "true")
-        wrapperSection.setAttribute("tabindex", "-1")
-        wrapperSection.setAttribute("aria-labelledby", "form")
+	constructor (photographe) {
+		this._photographer = photographe
+	}
+	createSectionModal(){
+		const wrapperSection = document.createElement('div')
+		wrapperSection.setAttribute('class', 'modal')
+		wrapperSection.setAttribute('role', 'dialog')
+		wrapperSection.setAttribute('aria-modal', 'true')
+		wrapperSection.setAttribute('tabindex', '-1')
+		wrapperSection.setAttribute('aria-labelledby', 'form')
         
 
-        const modalTemplate = `
+		const modalTemplate = `
             <span class="close closeModal" id="closeModal" aria-labelledby="close" tabindex="0"></span>
             <h2 class="modal-title">Contactez-moi<br>${this._photographer[0].name}</h2>
             <form id="form" class="modal-form" name="contact" method="POST" action="#" aria-label="formulaire de contact">
@@ -47,11 +47,11 @@ export class SectionModal {
         `
 
 
-        wrapperSection.innerHTML = modalTemplate
+		wrapperSection.innerHTML = modalTemplate
 
         
 
 
-        return wrapperSection
-    }
+		return wrapperSection
+	}
 }

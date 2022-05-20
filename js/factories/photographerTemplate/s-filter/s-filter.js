@@ -1,14 +1,14 @@
 export class SectionFilter {
-    constructor () {}
+	constructor () {}
 
-    createSectionFilter(){
-        /**
+	createSectionFilter(){
+		/**
          * je creer ma div Filtre
          */
-        const wrapperFilter = document.createElement("fielset");
-        wrapperFilter.setAttribute("class", "wrapper-Filter");
+		const wrapperFilter = document.createElement('fielset')
+		wrapperFilter.setAttribute('class', 'wrapper-Filter')
 
-        const filterTemplate = `
+		const filterTemplate = `
         
           <h2>
             <label id="filters-label" class="filters-title" >Trier par : </label>
@@ -34,8 +34,8 @@ export class SectionFilter {
 
           </div>
         `
-        wrapperFilter.innerHTML = filterTemplate;
+		wrapperFilter.innerHTML = filterTemplate
 
-        return wrapperFilter;
-    }
+		return wrapperFilter
+	}
 }

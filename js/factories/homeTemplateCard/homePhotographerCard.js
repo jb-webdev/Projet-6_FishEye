@@ -1,19 +1,19 @@
 export class HomePhotographerCard {
-    constructor (photographe) {
-        this._photographer = photographe
-    }
+	constructor (photographe) {
+		this._photographer = photographe
+	}
 
-    createHomePhotographerCard(){
-        /**
+	createHomePhotographerCard(){
+		/**
          * je crée une balise html "article"
          */
-        const article = document.createElement('article');
-        article.setAttribute("role", `${"information du photographe " + this._photographer.name} }`)
+		const article = document.createElement('article')
+		article.setAttribute('role', `${'information du photographe ' + this._photographer.name} }`)
 
-        const HomeTemplateCard = `
+		const HomeTemplateCard = `
             <a class="wrapper-link-photographer" 
                 href="photographer.html?id=${this._photographer.id}" 
-                title="${"liens vers la page de " + this._photographer.name}"
+                title="${'liens vers la page de ' + this._photographer.name}"
             >
                 <img 
                     src="${this._photographer.portrait}" 
@@ -25,10 +25,10 @@ export class HomePhotographerCard {
             <span class="photographer-profil"> ${this._photographer.tagline}</span>
             <span class="photographer-price"> ${this._photographer.price}€/jour</span>
             </p>
-        `;
+        `
         
-        article.innerHTML = HomeTemplateCard;
+		article.innerHTML = HomeTemplateCard
 
-        return article;
-    }
+		return article
+	}
 }
