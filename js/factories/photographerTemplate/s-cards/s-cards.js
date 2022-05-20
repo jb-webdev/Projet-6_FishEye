@@ -13,50 +13,47 @@ export class SectionCards {
         const essaiVideo = ifVideoExist(this._media.video);
         
          const videoHtml = `
-            <a href="#" title=${this._media.title} class="card-img">
+            <figure title=${this._media.title} class="card-img" id=${this._media.idMedia}>
                 <video 
-                    class="card-video" 
+                    class="card-video itemSelectUser" 
+                    id=${this._media.idMedia}
                     controls="controls"
                     alt="${this._media.title}"
                     src="${this._media.video}" 
                     type="video/mp4">
                 </video>
-            </a>
+            </figure>
             <div class="card-description">
                 <h2 class="card-descripiton_title">
                     ${this._media.title}
                 </h2>
-                <span class="span" 
-                    class="card-description_like">
+                <span class="span card-description_like">
                     ${this._media._likes}
-                    <i class="fa-solid fa-heart"></i>
+                    <i class="fa-regular fa-heart"></i>
                 </span>
             </div>
         `
         const imageHtml = `
-            <a href="#" title=${this._media.title} class="card-img">
+            <figure title=${this._media.title} class="card-img" id=${this._media.idMedia}>
                 <img
+                    class="itemSelectUser"
+                    id=${this._media.idMedia}
                     src="${this._media.image}"
                     alt="photo portant le nom de ${this._media.title}"
                     title="${this._media.title}"
                 >
-            </a>
+            </figure>
             <div class="card-description">
                 <h2 class="card-descripiton_title">
                     ${this._media.title}
                 </h2>
-                <span class="span" 
-                    class="card-description_like">
+                <span class="span card-description_like">
                     ${this._media._likes}
                     
                     <i class="fa-regular fa-heart"></i>
                 </span>
             </div>
         `
-        // pour passer le coeur rempli mettre l'icon en fa-solid au lieu de fa-regular au click !
-        /**
-         * On verifie si essaiVideo et vrai ou faux / et on monte  une video ||  une image
-         */
 
         essaiVideo ? card.innerHTML = videoHtml : card.innerHTML = imageHtml
         

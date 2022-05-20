@@ -40,6 +40,18 @@ export const closeFilter = () => {
   document.querySelector('#btn-dropdown').focus()
 }
 
+export const essaiFilterSelect = () => {
+  
+  document.querySelectorAll(".dropdown-option").forEach(item => {
+    item.addEventListener('click', () => {
+
+    item.id
+   })
+ })
+
+}
+ 
+
 
 
 

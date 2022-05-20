@@ -9,3 +9,9 @@ export const sumLikes = (a) => {
     }
     return sum
 }
+
+export const addLikes = () => {
+    /*creer une fonction pour ajouter un likes si on click sur le coeur */
+    
+
+}

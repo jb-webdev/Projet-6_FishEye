@@ -1,7 +1,9 @@
 /*** import des fonctions util par la vue */
-import {getPhotographerId, iDifExist} from '../utils/functionsUtil.js'
-import { displayModal, closeModal } from '../utils/contactForm.js'
+import { getPhotographerId, iDifExist } from '../utils/functionsUtil.js' 
+import { displayModal, closeModal } from '../utils/contactForm.js' /** Fonction pour l'ouverture et la fermeture de la modal message */
 import { sortMedias, openFilter, closeFilter } from '../utils/filterFonction.js' /** Fonction pour le filtre */
+import { recupName } from '../utils/lightBoxFunction.js'
+
 /*** import des datas */
 import {PhotographerProvider, MediaProvider} from '../provider/Provider.js'
 /*** Import des Factories Utils pour la page */
@@ -11,7 +13,7 @@ import { SectionHeader } from '../factories/photographerTemplate/s-header/s-head
 import { SectionFilter } from '../factories/photographerTemplate/s-filter/s-filter.js'
 import { SectionCards } from '../factories/photographerTemplate/s-cards/s-cards.js'
 import { SectionModal } from '../factories/photographerTemplate/s-modal/s-modal.js'
-//import { SectionLightbox } from '../factories/photographerTemplate/s-lightBox/s-lightbox.js'
+import { SectionLightbox } from '../factories/photographerTemplate/s-lightBox/s-lightbox.js'
 
 
 class PhotographerPage {
@@ -24,9 +26,8 @@ class PhotographerPage {
         this.wrapperCardsContainer = document.getElementById('s-cards') /* On recupere le conteneur wrapper */
         this.wrapperFilterContainer = document.getElementById('s-filter') /* On recupere le container pour inserer le template du filtre */ 
         this.wrapperModalContainer = document.getElementById('s-modal') /* On recupere le container pour inserer le template de la modal message */
-        this.wrapperLightboxContainer = document.getElementById('s-lightbox') /** On recuperer le constenaire section lightbox par son id */
         this.openFilterBtn = document.querySelector('#btn-dropdown')
-        this.result = "popularite"
+        this.wrapperLightboxContainer = document.querySelector('.box-image-slider') /** On recuperer le constenaire section lightbox par son id */
     }
     
     async main() {
@@ -41,6 +42,7 @@ class PhotographerPage {
         const FactoriesHeader = new SectionHeader(photographerSelect)
         const FactoriesFilter = new SectionFilter()
         const FactoriesModal = new SectionModal(photographerSelect)
+        
         //const FactorieLightboox = new SectionLightbox()
         
         if(iDifExist(photographerData, this.idPhotographer)){
@@ -56,7 +58,6 @@ class PhotographerPage {
             document.querySelector('#btn-dropdown').addEventListener('click', () => openFilter())
             document.querySelector('#btn-up').addEventListener('click', () => closeFilter())
             
-
            /** On construit notre modal message à afficher sur la page */
             this.wrapperModalContainer.appendChild(
                 FactoriesModal.createSectionModal()
@@ -65,9 +66,8 @@ class PhotographerPage {
             document.getElementById('btn-header-displayModal').addEventListener('click', () => displayModal())
             /** On ecoute l'evenement click sur le boutton pour fermer notre modal message */
             document.getElementById('closeModal').addEventListener('click', () => closeModal())
-
             
-            sortMedias(mediaPhotographer, this.result) // retourne le resultat selectionner par l'utilisateur soit "date" || "titre" || "popularité"
+            sortMedias(mediaPhotographer, "popularite") // retourne le resultat selectionner par l'utilisateur soit "date" || "titre" || "popularité"
             /* On construit notre section cards du photographe selection à la page accueil */
             mediaPhotographer
             .map(mediaData => new Media(mediaData, photographerSelect))
@@ -76,6 +76,16 @@ class PhotographerPage {
                 this.wrapperCardsContainer.appendChild(
                     FactoriesCards.createCards()
                 )
+            })
+            /**On ecoute l'evenement sur le media et on creer notre lightbox */
+            document.querySelectorAll('.itemSelectUser').forEach(
+                item => { item.addEventListener('click', () =>{
+                    document.getElementById('s-lightbox').style.display = "block"
+                    const FactoriesLigthbox = new SectionLightbox(mediaPhotographer, item.id, recupName(photographerSelect))
+                    this.wrapperLightboxContainer.appendChild(
+                        FactoriesLigthbox.createSectionLightbox()
+                    )
+                })
             })
             
         } else {
