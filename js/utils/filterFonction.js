@@ -2,15 +2,15 @@
  * Filtre qui retourne un tableau trier par ordre DECROISSANT les LIKES
  * @returns array
  */
- export const sortMedias = (medias, sortBy) => {
+ const sortMedias = (medias, sortBy) => {
     switch (sortBy) {
-      case "popularite":
+      case "option1":
         medias = medias.sort((a, b) => b.likes - a.likes);
         break;
-      case "date":
+      case "option2":
         medias = medias.sort((a, b) => new Date(b.date) - new Date(a.date));
         break;
-      case "titre":
+      case "option3":
         medias = medias.sort((a, b) => a.title.localeCompare(b.title));
         break;
       default:
@@ -24,7 +24,7 @@
  * Fonction pour 
  * Ouverture du filtre
  */
-export const openFilter = () => {
+const openFilter = () => {
   document.getElementById('container').style.display = 'flex'
   document.querySelector('#btn-dropdown').setAttribute('aria-expanded', 'true')
   document.getElementById('option1').focus()
@@ -34,22 +34,21 @@ export const openFilter = () => {
  * Fonction pour la
  * Fermeture du filtre
  */
-export const closeFilter = () => {
+const closeFilter = () => {
   document.getElementById('container').style.display = 'none'
   document.querySelector('#btn-dropdown').setAttribute('aria-expanded', 'false')
   document.querySelector('#btn-dropdown').focus()
 }
 
-export const essaiFilterSelect = () => {
-  
+const essaiFilterSelect = () => {
   document.querySelectorAll(".dropdown-option").forEach(item => {
     item.addEventListener('click', () => {
-
-    item.id
-   })
- })
-
+      console.log(item.id)
+    })
+  })
 }
+
+export {sortMedias, openFilter, closeFilter, essaiFilterSelect}
  
 
 

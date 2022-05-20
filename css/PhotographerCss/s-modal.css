@@ -126,7 +126,6 @@
     font-size: 1.2rem;
     margin: 0.3rem 0 0 0;
     background-color: var(--color-primary);
-    padding: .2rem;
     border: .2rem;
 }
 @media all and (max-width: 719px) {
