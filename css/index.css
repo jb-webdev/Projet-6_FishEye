@@ -9,7 +9,6 @@ body {
     margin: 0;
     padding-bottom: 90px;
 }
-
 #header-homePage {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -26,17 +25,14 @@ body {
     align-items: center;
     height: 90px;
 }
-
 #header-homePage-h1 {
     color: var(--color-primary);
     margin-right: 100px;
 }
-
 .logo {
     height: 50px;
     margin-left: 100px;
 }
-
 /* wrapper main photographer*/
 .photographer_section {
     display: -ms-grid;
@@ -46,7 +42,6 @@ body {
     gap: 70px;
     margin-top: 100px;
 }
-
 .photographer_section article {
     -ms-grid-column-align: center;
     justify-self: center;
@@ -64,24 +59,20 @@ body {
     -ms-flex-direction: column;
     flex-direction: column;
 }
-
 /* link photographer page-index*/
 .wrapper-link-photographer {
     text-decoration: none;
     text-align: center;
 }
-
 /*Focus cards photographer*/
 .wrapper-link-photographer:focus-visible {
     outline: 4px solid var(--color-primary);
 }
-
 .name-photographer {
     color: var(--color-secondary);
     font-size: 36px;
     margin-bottom: 5px;
 }
-
 .photographer_section article img {
     height: 200px;
     width: 200px;
@@ -90,7 +81,6 @@ body {
     -o-object-fit: cover;
     object-fit: cover;
 }
-
 .wrapper-info-photographer {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -103,29 +93,24 @@ body {
     -ms-flex-pack: center;
     justify-content: center;
 }
-
 .photographer_section article p {
     margin-top: 0;
     margin-bottom: 2px;
 }
-
 .photographer-location {
     color: var(--color-primary);
     font-weight: bolder;
     text-align: center;
 }
-
 .photographer-profil {
     color: black;
     font-weight: bolder;
     text-align: center;
 }
-
 .photographer-price {
     color: var(--color-grey);
     text-align: center;
 }
-
 /*RESPONSIVE HOME PAGE*/
 @media only screen and (max-width: 1200px) {
     .photographer_section {
@@ -133,7 +118,6 @@ body {
         grid-template-columns: 1fr 1fr;
     }
 }
-
 @media only screen and (max-width: 800px) {
     .photographer_section {
         -ms-grid-columns: 1fr;
@@ -148,20 +132,17 @@ body {
         margin-right: 20px;
     }
 }
-
 @media only screen and (max-width: 700px) {
     #header-homePage-h1 {
         font-size: 5.6vw;
         margin-right: 10px;
     }
 }
-
 @media only screen and (max-width: 560px) {
     .logo {
         height: 30px;
     }
 }
-
 /* HEADER */
 /*.photograph-header {}*/
 .section-wrapper-header {
@@ -173,7 +154,6 @@ body {
     -ms-grid-columns: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
 }
-
 /* BOX HEADER ONE */
 #one {
     height: 300px;
@@ -189,25 +169,24 @@ body {
     -ms-flex-direction: column;
     flex-direction: column;
 }
-
+#one :focus {
+    outline: 4px solid var(--color-primary);
+}
 #photographe-page-header_h2 {
     margin-top: 0;
     color: var(--color-secondary);
     font-size: 60px;
     margin-bottom: 20px;
 }
-
 #photographe-page-header_location {
     margin: 0;
     margin-bottom: 10px;
     color: var(--color-primary);
     font-weight: bolder;
 }
-
 #photographe-page-header_tagline {
     margin: 0;
 }
-
 /* BOX HEADER TWO */
 #two {
     height: 300px;
@@ -222,7 +201,6 @@ body {
     justify-content: center;
     -webkit-align-items: center;
 }
-
 .contact_button {
     font-size: 20px;
     font-weight: bold;
@@ -235,7 +213,14 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
-
+.contact_button:focus,
+.contact_button:hover{
+    color: var(--color-grey);
+    background-color: var(--color-secondary);
+}
+.contact_button:focus{
+    outline: 3px solid var(--color-primary);
+}
 /* BOX HEADER THREE */
 #three {
     height: 300px;
@@ -250,7 +235,6 @@ body {
     justify-content: center;
     -webkit-align-items: center;
 }
-
 #header-page-photographer_image {
     height: 200px;
     width: 200px;

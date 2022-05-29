@@ -4,13 +4,13 @@
  */
 const sortMedias = (medias, sortBy) => {
 	switch (sortBy) {
-	case 'option1':
+	case 'popularite':
 		medias = medias.sort((a, b) => b.likes - a.likes)
 		break
-	case 'option2':
+	case 'date':
 		medias = medias.sort((a, b) => new Date(b.date) - new Date(a.date))
 		break
-	case 'option3':
+	case 'titre':
 		medias = medias.sort((a, b) => a.title.localeCompare(b.title))
 		break
 	default:
@@ -21,18 +21,16 @@ const sortMedias = (medias, sortBy) => {
 }
 
 /**
- * Fonction pour 
- * Ouverture du filtre
+ * Fonction pour l'ouverture du filtre
  */
 const openFilter = () => {
 	document.getElementById('container').style.display = 'flex'
 	document.querySelector('#btn-dropdown').setAttribute('aria-expanded', 'true')
-	document.getElementById('option1').focus()
+	document.getElementById('popularite').focus()
 }
 
 /**
- * Fonction pour la
- * Fermeture du filtre
+ * Fonction pour la Fermeture du filtre
  */
 const closeFilter = () => {
 	document.getElementById('container').style.display = 'none'
@@ -40,15 +38,25 @@ const closeFilter = () => {
 	document.querySelector('#btn-dropdown').focus()
 }
 
-const essaiFilterSelect = () => {
-	document.querySelectorAll('.dropdown-option').forEach(item => {
-		item.addEventListener('click', () => {
-			console.log(item.id)
-		})
-	})
+
+/**
+ * Fonction pour le traitement du filtre
+ */
+const changeFilter = (value) => {
+	let tagFilter = document.getElementById('valueFilter')
+	let text = 'Popularité'
+	if  (value != 'popularite') {
+		text = value
+	}
+	tagFilter.textContent = text
+	tagFilter.setAttribute('value', value)
+	closeFilter()
 }
 
-export {sortMedias, openFilter, closeFilter, essaiFilterSelect}
+
+
+
+export {sortMedias, openFilter, closeFilter, changeFilter}
  
 
 

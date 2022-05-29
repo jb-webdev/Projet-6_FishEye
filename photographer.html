@@ -33,30 +33,27 @@
 
   <main id="main">
     <!-- SECTION HEADER -->
-    <section class="photograph-header"></section>
+    <section class="photograph-header" aria-label="section regroupant les informations du photographe" aria-hidden="true"></section>
     <!-- SECTION FILTER -->
-    <section id="s-filter"></section>
+    <section id="s-filter" aria-hidden="true"></section>
     <!-- SECTION CARD -->
-    <section id="s-cards" aria-label="section regroupant les medias du photographe metre le nom du photographe"></section>
+    <section id="s-cards" aria-label="section regroupant les medias du photographe mettre le nom du photographe" aria-hidden="true"></section>
     <!-- SECTION MODAL MESSAGE -->
     <section id="s-modal"></section>
     <!-- SECTION LIGHTBOX -->
-    <section id="s-lightbox">
+    <section id="s-lightbox"  aria-hidden="false" role="dialog" aria-describedby="carrousel image du photographe">
       <div class="lightbox-close">
-        <span ><i class="fa-solid fa-xmark"></i></span>
+        <span role="button"><i aria-hidden="true" class="fa-solid fa-xmark closeSlider"></i></span>
       </div>
       
       <div class="container-slider">
-        <span class="lightbox-left"><i class="fa-solid fa-chevron-left"></i></span>
+        <span role="button" class="lightbox-left" aria-hidden="true"><i class="fa-solid fa-chevron-left"></i></span>
 
-        <div class="box-image-slider">
-          
-        </div>
+        <div class="box-image-slider"></div>
 
-        <span class="lightbox-right"><i class="fa-solid fa-chevron-right"></i></span>
+        <span role="button" class="lightbox-right" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
       </div>
     </section>
-  </main>
 
   
   <!-- Entry point -->

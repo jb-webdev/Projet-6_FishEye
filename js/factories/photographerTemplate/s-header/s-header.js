@@ -12,7 +12,7 @@ export class SectionHeader{
 
 		const headerTemplate = `
             <div id="one">
-                <h1 id="photographe-page-header_h2">
+                <h1 id="photographe-page-header_h2" aria-label="nom du photographe">
                     ${this._photographer[0].name}
                 </h1>
                 <p id="photographe-page-header_location">

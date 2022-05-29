@@ -25,17 +25,19 @@ const firstName = () => {
   
 	if (!elt) {
 		msgError.innerText = 'Le champ ne doit pas être vide !'
-		errorInputBorder.style.border = '2px solid red'
-		errorInputBorder.style.background = '#fb04047c'
+		msgError.style.backgroundColor = 'red'
+		errorInputBorder.style.border = '3px solid red'
 		errorFirstName = false
 	} else if (!regex.test(elt)) {
 		msgError.innerText = 'Veuillez entrer 2 caractères ou plus'
-		errorInputBorder.style.border = 'px solid red'
-		errorInputBorder.style.background = '#fb04047c'
+		msgError.style.backgroundColor = 'red'
+		errorInputBorder.style.border = '3px solid red'
 		errorFirstName = false
 	} else if (regex.test(elt)) {
-		msgError.innerText = ''
-		errorInputBorder.style.border = 'none'
+		msgError.innerText = 'super ! '
+		msgError.style.color = 'green'
+		msgError.style.backgroundColor = 'transparent'
+		errorInputBorder.style.border = '3px solid green'
 		errorInputBorder.style.background = '#ffffff'
 		errorFirstName = true
 	}
@@ -54,17 +56,19 @@ const lastName = () => {
   
 	if (!elt) {
 		msgError.innerText = 'Le champ ne doit pas être vide !'
-		errorInputBorder.style.border = '2px solid red'
-		errorInputBorder.style.background = '#fb04047c'
+		msgError.style.backgroundColor = 'red'
+		errorInputBorder.style.border = '3px solid red'
 		errorLastName = false
 	} else if (!regex.test(elt)) {
 		msgError.innerText = 'Veuillez entrer 2 caractères ou plus'
-		errorInputBorder.style.border = '2px solid red'
-		errorInputBorder.style.background = '#fb04047c'
+		msgError.style.backgroundColor = 'red'
+		errorInputBorder.style.border = '3px solid red'
 		errorLastName = false
 	} else if (regex.test(elt)) {
-		msgError.innerText = ''
-		errorInputBorder.style.border = 'none'
+		msgError.innerText = 'super ! '
+		msgError.style.color = 'green'
+		msgError.style.backgroundColor = 'transparent'
+		errorInputBorder.style.border = '3px solid green'
 		errorInputBorder.style.background = '#ffffff'
 		errorLastName = true
 	}
@@ -83,17 +87,19 @@ const validEmail = () => {
 
 	if (!elt) {
 		msgError.innerHTML = 'Le champ ne doit pas être vide !'
-		errorInputBorder.style.border = '2px solid red'
-		errorInputBorder.style.background = '#fb04047c'
+		msgError.style.backgroundColor = 'red'
+		errorInputBorder.style.border = '3px solid red'
 		errorEmail = false
 	} else if (!regexEmail.test(elt)) {
 		msgError.innerHTML = 'Votre email est invalide'
-		errorInputBorder.style.border = '2px solid red'
-		errorInputBorder.style.background = '#fb04047c'
+		msgError.style.backgroundColor = 'red'
+		errorInputBorder.style.border = '3px solid red'
 		errorEmail = false
 	} else if (regexEmail.test(elt)) {
-		msgError.innerHTML = ''
-		errorInputBorder.style.border = 'none'
+		msgError.innerText = 'super ! '
+		msgError.style.color = 'green'
+		msgError.style.backgroundColor = 'transparent'
+		errorInputBorder.style.border = '3px solid green'
 		errorInputBorder.style.background = '#ffffff'
 		errorEmail = true
 	}
@@ -102,7 +108,7 @@ const validEmail = () => {
 }
 const validMessage = () => {
 	let elt = document.forms['contact']['message'].value
-	let regexMessage = /^[a-zA-Z-\s]{2,250}$/
+	let regexMessage = /^[a-zA-Z-\!\?\.\,\;\s]{2,250}$/
 	let errormessage = false
 	let errorInputBorder = document.getElementById('message')
 
@@ -110,24 +116,25 @@ const validMessage = () => {
 
 	if (!elt) {
 		msgError.innerHTML = 'Le champ ne doit pas être vide !'
-		errorInputBorder.style.border = '2px solid red'
-		errorInputBorder.style.background = '#fb04047c'
+		msgError.style.backgroundColor = 'red'
+		errorInputBorder.style.border = '3px solid red'
 		errormessage = false
 	} else if (!regexMessage.test(elt)) {
-		msgError.innerHTML = 'Votre email est invalide'
-		errorInputBorder.style.border = '2px solid red'
-		errorInputBorder.style.background = '#fb04047c'
+		msgError.innerHTML = 'Votre message est invalide'
+		msgError.style.backgroundColor = 'red'
+		errorInputBorder.style.border = '3px solid red'
 		errormessage = false
 	} else if (regexMessage.test(elt)) {
-		msgError.innerHTML = ''
-		errorInputBorder.style.border = 'none'
+		msgError.innerText = 'super ! '
+		msgError.style.color = 'green'
+		msgError.style.backgroundColor = 'transparent'
+		errorInputBorder.style.border = '3px solid green'
 		errorInputBorder.style.background = '#ffffff'
 		errormessage = true
 	}
 	return errormessage
 
 }
-
 export {
 	displayModal, 
 	closeModal, 

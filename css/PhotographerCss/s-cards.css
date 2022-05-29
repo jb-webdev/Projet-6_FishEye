@@ -26,6 +26,9 @@
     flex-grow: 1;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
 }
+.card:focus{
+    outline: 3px solid var(--color-primary);
+}
 .card-img{
     margin: 0;
     border-radius: 5px 5px 0 0;
@@ -65,6 +68,10 @@
     font-size: 0.9em;
 }
 .card-description_like {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 60px;
     color: var(--color-primary);
 }
 .fa-heart {

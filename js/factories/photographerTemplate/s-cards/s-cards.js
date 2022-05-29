@@ -10,10 +10,13 @@ export class SectionCards {
          */
 		const card = document.createElement('div')
 		card.setAttribute('class', 'card')
+		card.setAttribute('tabindex', '0')
+		card.setAttribute('role', 'groupe')
+		card.setAttribute('name', 'card')
 		const essaiVideo = ifVideoExist(this._media.video)
-        
+
 		const videoHtml = `
-            <figure title=${this._media.title} class="card-img" id=${this._media.idMedia}>
+            <figure title=${this._media.title} class="card-img" id=${this._media.idMedia} tabindex="0" aria-label ="video qui a pour titre ${this._media.title}">
                 <video 
                     class="card-video itemSelectUser" 
                     id=${this._media.idMedia}
@@ -23,13 +26,13 @@ export class SectionCards {
                     type="video/mp4">
                 </video>
             </figure>
-            <div class="card-description">
+            <div class="card-description" tabindex="0">
                 <h2 class="card-descripiton_title">
                     ${this._media.title}
                 </h2>
-                <span class="span card-description_like">
-                    ${this._media._likes}
-                    <i class="fa-regular fa-heart"></i>
+                <span class="span card-description_like" aria-label ="cette video détient ${this._media._likes} j'aime">
+                    <p id="spanLikes-${this._media.idMedia}" class="nbr-likes">${this._media._likes}</p>
+                    <i class="fa-regular fa-heart" id="heart-${this._media.idMedia}"></i>
                 </span>
             </div>
         `
@@ -47,16 +50,13 @@ export class SectionCards {
                 <h2 class="card-descripiton_title">
                     ${this._media.title}
                 </h2>
-                <span class="span card-description_like">
-                    ${this._media._likes}
-                    
-                    <i class="fa-regular fa-heart"></i>
+                <span class="span card-description_like" aria-label ="cette video détient ${this._media._likes} j'aime">
+                    <p id="spanLikes-${this._media.idMedia}" class="nbr-likes">${this._media._likes}</p>
+                    <i class="fa-regular fa-heart" id="heart-${this._media.idMedia}"></i>
                 </span>
             </div>
         `
-
 		essaiVideo ? card.innerHTML = videoHtml : card.innerHTML = imageHtml
-        
 		return card
 	}
 }
