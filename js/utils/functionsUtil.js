@@ -30,11 +30,18 @@ const ifVideoExist = (el) => {
 	}
 	return stateVideo
 }
+const modifyId  = (id, text) => {
+	let idToModify = id
+	let idModify = idToModify.replace(text, '')
+	return idModify
+}
+
 
 
 /** On exporte les fonctions */
 export {
 	getPhotographerId, 
 	iDifExist,
-	ifVideoExist
+	ifVideoExist,
+	modifyId
 }

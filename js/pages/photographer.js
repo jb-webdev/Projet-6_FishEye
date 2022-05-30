@@ -1,5 +1,5 @@
 /*** import des fonctions util par la vue */
-import { getPhotographerId, iDifExist } from '../utils/functionsUtil.js'
+import { getPhotographerId, iDifExist, modifyId } from '../utils/functionsUtil.js'
 import { displayModal, closeModal } from '../utils/contactForm.js' /** Fonction pour l'ouverture et la fermeture de la modal message */
 import { sortMedias, openFilter, closeFilter, changeFilter } from '../utils/filterFonction.js' /** Fonction pour le filtre */
 import { recupName, activeElement, removeElement, indexFigure } from '../utils/lightBoxFunction.js'
@@ -15,6 +15,7 @@ import { SectionFilter } from '../factories/photographerTemplate/s-filter/s-filt
 import { SectionCards } from '../factories/photographerTemplate/s-cards/s-cards.js'
 import { SectionModal } from '../factories/photographerTemplate/s-modal/s-modal.js'
 import { SectionLightbox } from '../factories/photographerTemplate/s-lightBox/s-lightbox.js'
+import { HeartLikes } from '../factories/photographerTemplate/Likes/HeartLikes.js'
 
 
 class PhotographerPage {
@@ -29,8 +30,9 @@ class PhotographerPage {
 		this.wrapperSectionLightbox = document.getElementById('s-lightbox')
 		this.openFilterBtn = document.querySelector('#btn-dropdown')
 		this.wrapperLightboxContainer = document.querySelector('.box-image-slider') /** On recuperer le constenaire section lightbox par son id */
-
-
+		this.heartLikes = new HeartLikes()
+		this.infoPrice = document.getElementById('s-info-price')
+		this.infoLikes = document.getElementById('s-info-totalLikes')
 	}
 
 	dislayPhotographer(listdatas, photographerSelect) {
@@ -38,12 +40,42 @@ class PhotographerPage {
 		listdatas
 			.map(mediaData => new Media(mediaData, photographerSelect))
 			.forEach(mediaData => {
-				const FactoriesCards = new SectionCards(mediaData)
+				const FactoriesCards = new SectionCards(mediaData, this.heartLikes.heart)
 				this.wrapperCardsContainer.appendChild(
 					FactoriesCards.createCards()
 				)
 			})
+		this.infoPrice.innerHTML = `${photographerSelect[0].price} €/jour`
+		this.infoLikes.innerHTML = this.heartLikes.totalLikesPhotographer
 
+		const likesTag = document.querySelectorAll('.fa-heart')
+		likesTag.forEach(el => el.addEventListener('click', event => {
+			let idMediaWindow = event.target.getAttribute('id')
+			let idMedia = modifyId(idMediaWindow, 'heart-')
+			let position = this.heartLikes.heart.indexOf(idMedia)
+			if(position < 0) {
+				this.heartLikes.addLikes(idMedia)
+				let tagHeart = document.getElementById('heart-'+ idMedia).classList
+				tagHeart.remove('fa-regular')
+				tagHeart.remove('fa-heart')
+				tagHeart.add('fa-solid')
+				tagHeart.add('fa-heart')
+				let spanLike = document.getElementById('spanLikes-' + idMedia)
+				spanLike.innerHTML = parseInt(spanLike.innerHTML) +1
+				this.infoLikes.innerHTML = parseInt(this.infoLikes.innerHTML)  +1
+
+			} else {
+				this.heartLikes.supLikes(idMedia)
+				let tagHeart = document.getElementById('heart-'+ idMedia).classList
+				tagHeart.remove('fa-solid')
+				tagHeart.remove('fa-heart')
+				tagHeart.add('fa-regular')
+				tagHeart.add('fa-heart')
+				let spanLike = document.getElementById('spanLikes-' + idMedia)
+				spanLike.innerHTML = parseInt(spanLike.innerHTML) -1
+				this.infoLikes.innerHTML = parseInt(this.infoLikes.innerHTML) -1
+			}
+		}))
 		/** On ecoute l'evenement pour afficher notre lightBox */
 		document.querySelectorAll('.itemSelectUser').forEach(
 			item => {
@@ -112,24 +144,21 @@ class PhotographerPage {
 	}
 
 	async main() {
-
 		/*** On recuperer les DATA à trier dans la page */
 		const photographerData = await this.photographerProvider.getDataPhotographer()
 		const mediaData = await this.mediaProvider.getDataMedia()
 		/*** je creer mes filtres pour ne recuperer que les infos du photographe et sont travail*/
 		const photographerSelect = photographerData.filter(obj => obj.id == this.idPhotographer)
 		const mediaPhotographer = mediaData.filter(obj => obj.photographerId == this.idPhotographer)
-
+		this.heartLikes.LikesPhotographer(mediaPhotographer)
+		
 		const FactoriesError = new ErrorPage()
 		const FactoriesHeader = new SectionHeader(photographerSelect)
 		const FactoriesFilter = new SectionFilter()
 		const FactoriesModal = new SectionModal(photographerSelect)
-
-
-
+		
 		if (iDifExist(photographerData, this.idPhotographer)) {
-			const options = document.querySelectorAll('.dropdown-option')
-
+			
 			/** On construit notre header a afficher sur la page */
 			this.sectionHeader.appendChild(
 				FactoriesHeader.createSectionHeader()
@@ -150,29 +179,24 @@ class PhotographerPage {
 			/** On ecoute l'evenement click et keydown sur le boutton pour fermer notre modal message */
 			document.getElementById('closeModal').addEventListener('click', () => closeModal())
 			document.getElementById('closeModal').addEventListener('keydown', (e) => { if (e.key === 'Enter') { closeModal() } })
-
+			const options = document.querySelectorAll('.dropdown-option')
 			/** On ecoute l'evenement sur le Filtre */
 			options.forEach(el => {
 				el.addEventListener('click', event => {
 					const optionId = event.target.getAttribute('id')
 					changeFilter(optionId)
 					this.dislayPhotographer(sortMedias(mediaPhotographer, optionId), photographerSelect)
-
-
 				})
-
 				el.addEventListener('keypress', event => {
 					if (event.key === 'Enter') {
 						const optionId = event.target.getAttribute('id')
 						changeFilter(optionId)
 						this.dislayPhotographer(sortMedias(mediaPhotographer, optionId), photographerSelect)
 					}
-
 				})
 			})
-
+			
 			this.dislayPhotographer(sortMedias(mediaPhotographer, 'popularite'), photographerSelect)
-
 
 			/**création de la lightbox */
 			const FactoriesLigthbox = new SectionLightbox(mediaPhotographer, recupName(photographerSelect))
@@ -180,7 +204,7 @@ class PhotographerPage {
 				FactoriesLigthbox.createSectionLightbox()
 			)
 
-			/** ici on valide les entrees dans notre formulaire */
+			/** On valide les entrees dans notre formulaire */
 			document.getElementById('firstname').addEventListener('input', () => {
 				firstName()
 			})

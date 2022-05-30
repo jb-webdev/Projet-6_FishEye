@@ -1,13 +1,27 @@
 import {ifVideoExist} from '../../../utils/functionsUtil.js' /* import de la function pour trier les images des video */
 
 export class SectionCards {
-	constructor(mediaData) {
+	constructor(mediaData, heartLikes) {
 		this._media = mediaData
+		this._heartLikes = heartLikes
+		this._stateLIkes = false
+		this._nbrLikesMedia = this._media._likes
+		
 	}
 	createCards() {
 		/**
          * Ensuite ICI JE CREER LA CARTE DU MEDIA
          */
+		let stateHeart = this._heartLikes
+		const resultFind = stateHeart.find(element => element == this._media.idMedia)
+
+		if (resultFind ){
+			this._stateLIkes = true
+		}
+		if (this._stateLIkes){
+			this._nbrLikesMedia = this._media._likes +1
+		}
+
 		const card = document.createElement('div')
 		card.setAttribute('class', 'card')
 		card.setAttribute('tabindex', '0')
@@ -30,9 +44,9 @@ export class SectionCards {
                 <h2 class="card-descripiton_title">
                     ${this._media.title}
                 </h2>
-                <span class="span card-description_like" aria-label ="cette video détient ${this._media._likes} j'aime">
-                    <p id="spanLikes-${this._media.idMedia}" class="nbr-likes">${this._media._likes}</p>
-                    <i class="fa-regular fa-heart" id="heart-${this._media.idMedia}"></i>
+                <span class="span card-description_like" aria-label ="cette video détient ${this._nbrLikesMedia} j'aime">
+                    <p id="spanLikes-${this._media.idMedia}" class="nbr-likes">${this._nbrLikesMedia}</p>
+                    <i class="${this._stateLIkes ? 'fa-solid' : 'fa-regular'} fa-heart" id="heart-${this._media.idMedia}"></i>
                 </span>
             </div>
         `
@@ -50,12 +64,14 @@ export class SectionCards {
                 <h2 class="card-descripiton_title">
                     ${this._media.title}
                 </h2>
-                <span class="span card-description_like" aria-label ="cette video détient ${this._media._likes} j'aime">
-                    <p id="spanLikes-${this._media.idMedia}" class="nbr-likes">${this._media._likes}</p>
-                    <i class="fa-regular fa-heart" id="heart-${this._media.idMedia}"></i>
+                <span class="span card-description_like" aria-label ="cette Photographie détient ${this._nbrLikesMedia} j'aime">
+                    <p id="spanLikes-${this._media.idMedia}" class="nbr-likes">${this._nbrLikesMedia}</p>
+                    <i class="${this._stateLIkes ? 'fa-solid' : 'fa-regular'} fa-heart" id="heart-${this._media.idMedia}"></i>
                 </span>
             </div>
         `
+
+		
 		essaiVideo ? card.innerHTML = videoHtml : card.innerHTML = imageHtml
 		return card
 	}

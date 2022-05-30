@@ -57,13 +57,9 @@
             box-sizing: border-box;
 }
 .select-filters-button:focus{
-     outline: 3px solid var(--color-primary);
+     outline: 3px solid var(--color-secondary);
 }
-.select-filters-button:hover,
-.select-filters-button:focus{
-    color: var(--color-grey);
-    background-color: var(--color-secondary);
-}
+
 
 /*.option1 {}*/
 .arrows {
