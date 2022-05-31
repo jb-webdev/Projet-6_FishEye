@@ -1,4 +1,4 @@
-import {ifVideoExist} from '../../../utils/functionsUtil.js' /* import de la function pour trier les images des video */
+import {ifVideoExist} from '../functionsUtil.js' /* import de la function pour trier les images des video */
 
 export class SectionCards {
 	constructor(mediaData, heartLikes) {
@@ -9,9 +9,6 @@ export class SectionCards {
 		
 	}
 	createCards() {
-		/**
-         * Ensuite ICI JE CREER LA CARTE DU MEDIA
-         */
 		let stateHeart = this._heartLikes
 		const resultFind = stateHeart.find(element => element == this._media.idMedia)
 
@@ -21,16 +18,24 @@ export class SectionCards {
 		if (this._stateLIkes){
 			this._nbrLikesMedia = this._media._likes +1
 		}
-
+		/**
+         * Création de la carte Media
+         */
 		const card = document.createElement('div')
 		card.setAttribute('class', 'card')
 		card.setAttribute('tabindex', '0')
 		card.setAttribute('role', 'groupe')
 		card.setAttribute('name', 'card')
+
 		const essaiVideo = ifVideoExist(this._media.video)
 
 		const videoHtml = `
-            <figure title=${this._media.title} class="card-img" id=${this._media.idMedia} tabindex="0" aria-label ="video qui a pour titre ${this._media.title}">
+            <figure title=${this._media.title} 
+                class="card-img" 
+                id=${this._media.idMedia} 
+                tabindex="0" 
+                aria-label ="video qui a pour titre ${this._media.title}"
+            >
                 <video 
                     class="card-video itemSelectUser" 
                     id=${this._media.idMedia}
@@ -51,7 +56,12 @@ export class SectionCards {
             </div>
         `
 		const imageHtml = `
-            <figure title=${this._media.title} class="card-img" id=${this._media.idMedia}>
+            <figure title=${this._media.title} 
+                class="card-img" 
+                id=${this._media.idMedia}
+                tabindex="0" 
+                aria-label ="photo qui a pour titre ${this._media.title}"
+                >
                 <img
                     class="itemSelectUser"
                     id=${this._media.idMedia}

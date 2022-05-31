@@ -1,19 +1,26 @@
 /* eslint-disable no-useless-escape */
 
+
+/**
+ * Fonction affichage de la modal message
+ * 
+ */
 const displayModal = () => {
 	const modal = document.getElementById('s-modal')
 	modal.style.display = 'block'
 }
-
+/**
+ * Fonction fermeture de la modal message
+ * 
+ */
 const closeModal = () => {
 	const modal = document.getElementById('s-modal')
 	modal.style.display = 'none'
 }
-
-//=============================================
-// ======== Control du formulaire =============
-//=============================================
-// On ecoute les entrees dans l'input FIRST
+/**
+ * Fonction validation formulaire prenom / firstname
+ * @returns bollean
+ */
 
 const firstName = () => {
 	const elt = document.forms['contact']['firstname'].value
@@ -46,6 +53,10 @@ const firstName = () => {
 	}
 	return errorFirstName
 }
+/**
+ * Fonction validation formulaire nom / name
+ * @returns bollean
+ */
 const lastName = () => {
 	const elt = document.forms['contact']['lastname'].value
 	let regex = /^[a-zA-Z-\s]{2,}$/
@@ -77,6 +88,10 @@ const lastName = () => {
 	}
 	return errorLastName
 }
+/**
+ * Fonction validation formulaire email
+ * @returns bollean
+ */
 const validEmail = () => {
 	let elt = document.forms['contact']['email'].value
 	let regexEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -106,6 +121,10 @@ const validEmail = () => {
 	return errorEmail
 
 }
+/**
+ * Fonction validation formulaire message
+ * @returns bollean
+ */
 const validMessage = () => {
 	let elt = document.forms['contact']['message'].value
 	let regexMessage = /^[a-zA-Z-\!\?\.\,\;\s]{2,250}$/

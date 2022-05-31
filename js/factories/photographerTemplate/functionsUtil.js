@@ -1,5 +1,5 @@
 /**
- * Function pour recuperer l'id du Photographe selection
+ * Function pour recuperer l'id du Photographe selectiondans l'url
  * @returns id photographer
  */
 const getPhotographerId = () =>{
@@ -30,15 +30,18 @@ const ifVideoExist = (el) => {
 	}
 	return stateVideo
 }
+/** 
+ * Fonction pour modifier l'id recuperer on ne recupere que l'id
+ * exemple on recupere 'img-123456789" on retourne => "123456789"
+ * @param {id} => pour l'id recuperer dans le dom
+ * @param {text} => pour la partie à suprimer
+ */
 const modifyId  = (id, text) => {
 	let idToModify = id
 	let idModify = idToModify.replace(text, '')
 	return idModify
 }
-
-
-
-/** On exporte les fonctions */
+/** Export des fonctions */
 export {
 	getPhotographerId, 
 	iDifExist,

@@ -3,7 +3,7 @@ export class SectionFilter {
 
 	createSectionFilter(){
 		/**
-         * je creer ma div Filtre
+         * création de la div filter
          */
 		const wrapperFilter = document.createElement('fielset')
 		wrapperFilter.setAttribute('class', 'wrapper-Filter')
@@ -23,9 +23,9 @@ export class SectionFilter {
           
               <div class="container" id="container">
                   <ul role="listbox" aria-expanded="true" class="dropdown" id="dropdown" aria-activedescendant="option1" tabindex="0">
-                  <li class="dropdown-option" id="popularite" role="option" aria-label="trier par popularité" tabindex="0">Popularité</li>
-                  <li class="dropdown-option" id="date" role="option" aria-label="trier par date" tabindex="0">Date</li>
-                  <li class="dropdown-option" id="titre" role="option" aria-label="trier par titre" tabindex="0">Titre</li> 
+                    <li class="dropdown-option" id="popularite" role="option" aria-label="trier par popularité" tabindex="0">Popularité</li>
+                    <li class="dropdown-option" id="date" role="option" aria-label="trier par date" tabindex="0">Date</li>
+                    <li class="dropdown-option" id="titre" role="option" aria-label="trier par titre" tabindex="0">Titre</li> 
                   </ul> 
                   <button class="select-filters-button" id="btn-up" type="button" role="button" aria-haspopup="true" aria-expanded="true" tabindex="0" aria-label="fermer le choix de filtres">
                   <span class="arrows fas fa-chevron-up"></span>   

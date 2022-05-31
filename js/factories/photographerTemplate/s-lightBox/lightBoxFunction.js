@@ -7,13 +7,15 @@ const recupName = (photographer) => {
 	let pathImage = recupPrenom.replace('-', ' ')
 	return `/assets/photographer-img/${pathImage}/`
 }
-/** === FONCTION POUR LA LIGHTBOX  === */
-/**Function qui retourne la position dans le tableau */
+
+/**
+ * Function qui retourne la position dans le tableau 
+ * @param {arrayItem} = tableau de media
+ * @param {idFigureSelectionner} = id du media
+ * */
 const indexFigure = (arrayItem, idFigureSelectionner) => {
 	for (let i = 0; i < arrayItem.length; i++) {
-		//console.log(arrayItem[i].id)
 		if (arrayItem[i].id == idFigureSelectionner) {
-			//return console.log("Position item => " + i)
 			return i
 		}
 	}

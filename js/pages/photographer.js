@@ -1,10 +1,10 @@
 /*** import des fonctions util par la vue */
-import { getPhotographerId, iDifExist, modifyId } from '../utils/functionsUtil.js'
-import { displayModal, closeModal } from '../utils/contactForm.js' /** Fonction pour l'ouverture et la fermeture de la modal message */
-import { sortMedias, openFilter, closeFilter, changeFilter } from '../utils/filterFonction.js' /** Fonction pour le filtre */
-import { recupName, activeElement, removeElement, indexFigure } from '../utils/lightBoxFunction.js'
-import { firstName, lastName, validEmail, validMessage } from '../utils/contactForm.js'
-//import { addNumberLikes } from '../utils/likesSum.js'
+import { getPhotographerId, iDifExist, modifyId } from '../factories/photographerTemplate/functionsUtil.js'
+import { displayModal, closeModal } from '../factories/photographerTemplate/s-modal/function-modal.js' /** Fonction pour l'ouverture et la fermeture de la modal message */
+import { sortMedias, openFilter, closeFilter, changeFilter } from '../factories/photographerTemplate/s-filter/filterFonction.js' /** Fonction pour le filtre */
+import { recupName, activeElement, removeElement, indexFigure } from '../factories/photographerTemplate/s-lightBox/lightBoxFunction.js' /**Fonction pour la lightbox */
+import { firstName, lastName, validEmail, validMessage } from '../factories/photographerTemplate/s-modal/function-modal.js' /** Function pour la validation du formulaire */
+
 /*** import des datas */
 import { PhotographerProvider, MediaProvider } from '../provider/Provider.js'
 /*** Import des Factories Utils pour la page */
@@ -27,14 +27,15 @@ class PhotographerPage {
 		this.wrapperCardsContainer = document.getElementById('s-cards') /* On recupere le conteneur wrapper */
 		this.wrapperFilterContainer = document.getElementById('s-filter') /* On recupere le container pour inserer le template du filtre */
 		this.wrapperModalContainer = document.getElementById('s-modal') /* On recupere le container pour inserer le template de la modal message */
-		this.wrapperSectionLightbox = document.getElementById('s-lightbox')
-		this.openFilterBtn = document.querySelector('#btn-dropdown')
+		this.wrapperSectionLightbox = document.getElementById('s-lightbox') /**On recupere le container pour notre lightBox */
+		this.openFilterBtn = document.querySelector('#btn-dropdown') /** On recupere notre container filter */
 		this.wrapperLightboxContainer = document.querySelector('.box-image-slider') /** On recuperer le constenaire section lightbox par son id */
 		this.heartLikes = new HeartLikes()
-		this.infoPrice = document.getElementById('s-info-price')
-		this.infoLikes = document.getElementById('s-info-totalLikes')
+		this.infoPrice = document.getElementById('s-info-price') /** On recupere notre container info-price pour afficher le tarif du photographe*/
+		this.infoLikes = document.getElementById('s-info-totalLikes') /** On recupere notre container totalLikes pour l'affichage du nombre de likes total du photographe */
 	}
 
+	/** On creer une function global pour modifier notre affichage dynamiquement selon les choix de notre utilisateur  */
 	dislayPhotographer(listdatas, photographerSelect) {
 		this.wrapperCardsContainer.innerHTML = ''
 		listdatas
@@ -144,21 +145,24 @@ class PhotographerPage {
 	}
 
 	async main() {
-		/*** On recuperer les DATA à trier dans la page */
+		/*** On recuperer les DATAS à trier dans la page */
 		const photographerData = await this.photographerProvider.getDataPhotographer()
 		const mediaData = await this.mediaProvider.getDataMedia()
 		/*** je creer mes filtres pour ne recuperer que les infos du photographe et sont travail*/
 		const photographerSelect = photographerData.filter(obj => obj.id == this.idPhotographer)
 		const mediaPhotographer = mediaData.filter(obj => obj.photographerId == this.idPhotographer)
+
+		/** On calcul le nombre de likes du photographe */
 		this.heartLikes.LikesPhotographer(mediaPhotographer)
 		
+		/**On creer nos factories */
 		const FactoriesError = new ErrorPage()
 		const FactoriesHeader = new SectionHeader(photographerSelect)
 		const FactoriesFilter = new SectionFilter()
 		const FactoriesModal = new SectionModal(photographerSelect)
-		
+
+		/**On utilise une condition pour l'affichage ou pas de la page error */
 		if (iDifExist(photographerData, this.idPhotographer)) {
-			
 			/** On construit notre header a afficher sur la page */
 			this.sectionHeader.appendChild(
 				FactoriesHeader.createSectionHeader()
@@ -242,7 +246,7 @@ class PhotographerPage {
 			
 
 		} else {
-			/** si l'id n'existe pas dans les datas alors on affiche la page erreur et on redirige usr la page accueil */
+			/** si l'id n'existe pas dans les datas alors on affiche la page erreur et on redirige vers la page accueil */
 			this.wrapperCardsContainer.appendChild(
 				FactoriesError.createErrorPage()
 			)

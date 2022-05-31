@@ -8,11 +8,11 @@ export class SectionModal {
 		wrapperSection.setAttribute('class', 'modal')
 		wrapperSection.setAttribute('role', 'dialog')
 		wrapperSection.setAttribute('aria-modal', 'true')
-		wrapperSection.setAttribute('tabindex', '-1')
+		wrapperSection.setAttribute('tabindex', '0')
 		wrapperSection.setAttribute('aria-labelledby', 'form')
         
 		const modalTemplate = `
-            <span class="close closeModal" id="closeModal" aria-labelledby="close" tabindex="0">
+            <span class="close closeModal" id="closeModal" aria-labelledby="close" tabindex="1">
                 <i class="fa-solid fa-xmark"></i>
             </span>
             <h2 class="modal-title">Contactez-moi<br>${this._photographer[0].name}</h2>
@@ -82,7 +82,7 @@ export class SectionModal {
                     <span class="pError" id="message-message"></span>
                 </div>
                 <div class="divBtn">
-                    <input id="btnSubmitMessage" class="btn-submit" type="submit" value="Envoyer" aria-label="soumettre" />
+                    <input id="btnSubmitMessage" class="btn-submit" type="submit" value="Envoyer" aria-label="Envoyer le message" />
                 </div>
             </form>
         `

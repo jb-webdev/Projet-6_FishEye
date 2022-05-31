@@ -1,5 +1,7 @@
 /**
  * Filtre qui retourne un tableau trier par ordre DECROISSANT les LIKES
+ * @param {medias} = array datamedia du photographe
+ * @param {sortBy} = string popularite // date // titre en retour de la selection du filtre
  * @returns array
  */
 const sortMedias = (medias, sortBy) => {
@@ -19,7 +21,6 @@ const sortMedias = (medias, sortBy) => {
   
 	return medias
 }
-
 /**
  * Fonction pour l'ouverture du filtre
  */
@@ -28,7 +29,6 @@ const openFilter = () => {
 	document.querySelector('#btn-dropdown').setAttribute('aria-expanded', 'true')
 	document.getElementById('popularite').focus()
 }
-
 /**
  * Fonction pour la Fermeture du filtre
  */
@@ -37,10 +37,9 @@ const closeFilter = () => {
 	document.querySelector('#btn-dropdown').setAttribute('aria-expanded', 'false')
 	document.querySelector('#btn-dropdown').focus()
 }
-
-
 /**
  * Fonction pour le traitement du filtre
+ * @param {value} = string selectionner popularite // date // titre  
  */
 const changeFilter = (value) => {
 	let tagFilter = document.getElementById('valueFilter')
@@ -53,18 +52,4 @@ const changeFilter = (value) => {
 	closeFilter()
 }
 
-
-
-
 export {sortMedias, openFilter, closeFilter, changeFilter}
- 
-
-
-
-
-
-
-  
-
-
-
