@@ -23,60 +23,60 @@ export class SectionCards {
          */
 		const card = document.createElement('div')
 		card.setAttribute('class', 'card')
-		card.setAttribute('tabindex', '0')
-		card.setAttribute('role', 'groupe')
 		card.setAttribute('name', 'card')
 
 		const essaiVideo = ifVideoExist(this._media.video)
 
 		const videoHtml = `
-            <figure title=${this._media.title} 
+            <figure
                 class="card-img" 
-                id=${this._media.idMedia} 
-                tabindex="0" 
-                aria-label ="video qui a pour titre ${this._media.title}"
+                id=${this._media.idMedia}   
             >
                 <video 
                     class="card-video itemSelectUser" 
+                    tabindex="0"
                     id=${this._media.idMedia}
-                    controls="controls"
-                    alt="${this._media.title}"
                     src="${this._media.video}" 
+                    alt="cette video a pour titre ${this._media.title}" 
                     type="video/mp4">
                 </video>
             </figure>
             <div class="card-description" tabindex="0">
-                <h2 class="card-descripiton_title">
+                <h2 class="card-descripiton_title" aria-hidden='true'>
                     ${this._media.title}
                 </h2>
-                <span class="span card-description_like" aria-label ="cette video détient ${this._nbrLikesMedia} j'aime">
+                <span class="span card-description_like" aria-label ="cette video détient ${this._nbrLikesMedia} j'aime, ${this._stateLIkes ? 'cette video vous plaît déjà.' : ''}">
                     <p id="spanLikes-${this._media.idMedia}" class="nbr-likes">${this._nbrLikesMedia}</p>
-                    <i class="${this._stateLIkes ? 'fa-solid' : 'fa-regular'} fa-heart" id="heart-${this._media.idMedia}"></i>
+                    <i tabindex="0" 
+                        aria-label="taper entrer pour ${this._stateLIkes ? 'supprimer' : 'ajouter'} un like" 
+                        class="${this._stateLIkes ? 'fa-solid' : 'fa-regular'} fa-heart" id="heart-${this._media.idMedia}"
+                    ></i>
                 </span>
             </div>
         `
 		const imageHtml = `
-            <figure title=${this._media.title} 
+            <figure 
                 class="card-img" 
                 id=${this._media.idMedia}
-                tabindex="0" 
-                aria-label ="photo qui a pour titre ${this._media.title}"
                 >
                 <img
                     class="itemSelectUser"
+                    tabindex="0"
                     id=${this._media.idMedia}
                     src="${this._media.image}"
-                    alt="photo portant le nom de ${this._media.title}"
-                    title="${this._media.title}"
+                    alt="cette image a pour titre ${this._media.title}"  
                 >
             </figure>
-            <div class="card-description">
-                <h2 class="card-descripiton_title">
+            <div class="card-description" tabindex="0">
+                <h2 class="card-descripiton_title" aria-hidden='true'>
                     ${this._media.title}
                 </h2>
-                <span class="span card-description_like" aria-label ="cette Photographie détient ${this._nbrLikesMedia} j'aime">
+                <span class="span card-description_like" 
+                        aria-label ="cette image a pour titre ${this._media.title}, est elle détient ${this._nbrLikesMedia} j'aime, ${this._stateLIkes ? 'cette photo vous plaît déjà.' : ''}">
                     <p id="spanLikes-${this._media.idMedia}" class="nbr-likes">${this._nbrLikesMedia}</p>
-                    <i class="${this._stateLIkes ? 'fa-solid' : 'fa-regular'} fa-heart" id="heart-${this._media.idMedia}"></i>
+                    <i tabindex="0"
+                        aria-label="taper entrer pour ${this._stateLIkes ? 'supprimer' : 'ajouter'} un like"
+                        class="${this._stateLIkes ? 'fa-solid' : 'fa-regular'} fa-heart" id="heart-${this._media.idMedia}"></i>
                 </span>
             </div>
         `

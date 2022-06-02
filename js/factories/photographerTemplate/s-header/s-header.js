@@ -10,9 +10,18 @@ export class SectionHeader{
 		const wrapperSection = document.createElement('section')
 		wrapperSection.setAttribute('class', 'section-wrapper-header')
 
+		wrapperSection.setAttribute('role', 'information du photographe')
+
 		const headerTemplate = `
-            <div id="one">
-                <h1 id="photographe-page-header_h2" aria-label="nom du photographe">
+            <div id="one"
+                role='information sur le photographe' 
+                tabindex='0' 
+                aria-label="Le photographe s'appelle 
+                            ${this._photographer[0].name}, 
+                            est habite ${this._photographer[0].city}, ${this._photographer[0].country},
+                            il affiche comme message ${this._photographer[0].tagline} "
+            >
+                <h1 id="photographe-page-header_h2">
                     ${this._photographer[0].name}
                 </h1>
                 <p id="photographe-page-header_location">

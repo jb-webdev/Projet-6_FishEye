@@ -2,7 +2,7 @@
 import { getPhotographerId, iDifExist, modifyId } from '../factories/photographerTemplate/functionsUtil.js'
 import { displayModal, closeModal } from '../factories/photographerTemplate/s-modal/function-modal.js' /** Fonction pour l'ouverture et la fermeture de la modal message */
 import { sortMedias, openFilter, closeFilter, changeFilter } from '../factories/photographerTemplate/s-filter/filterFonction.js' /** Fonction pour le filtre */
-import { recupName, activeElement, removeElement, indexFigure } from '../factories/photographerTemplate/s-lightBox/lightBoxFunction.js' /**Fonction pour la lightbox */
+import { recupName, activeElement, removeElement, indexFigure, changeTabIndex} from '../factories/photographerTemplate/s-lightBox/lightBoxFunction.js' /**Fonction pour la lightbox */
 import { firstName, lastName, validEmail, validMessage } from '../factories/photographerTemplate/s-modal/function-modal.js' /** Function pour la validation du formulaire */
 
 /*** import des datas */
@@ -50,37 +50,136 @@ class PhotographerPage {
 		this.infoLikes.innerHTML = this.heartLikes.totalLikesPhotographer
 
 		const likesTag = document.querySelectorAll('.fa-heart')
-		likesTag.forEach(el => el.addEventListener('click', event => {
-			let idMediaWindow = event.target.getAttribute('id')
-			let idMedia = modifyId(idMediaWindow, 'heart-')
-			let position = this.heartLikes.heart.indexOf(idMedia)
-			if(position < 0) {
-				this.heartLikes.addLikes(idMedia)
-				let tagHeart = document.getElementById('heart-'+ idMedia).classList
-				tagHeart.remove('fa-regular')
-				tagHeart.remove('fa-heart')
-				tagHeart.add('fa-solid')
-				tagHeart.add('fa-heart')
-				let spanLike = document.getElementById('spanLikes-' + idMedia)
-				spanLike.innerHTML = parseInt(spanLike.innerHTML) +1
-				this.infoLikes.innerHTML = parseInt(this.infoLikes.innerHTML)  +1
+		likesTag.forEach(el => {
+			el.addEventListener('click', event => {
+				let idMediaWindow = event.target.getAttribute('id')
+				let idMedia = modifyId(idMediaWindow, 'heart-')
+				let position = this.heartLikes.heart.indexOf(idMedia)
+				if(position < 0) {
+					this.heartLikes.addLikes(idMedia)
+					let tagHeart = document.getElementById('heart-'+ idMedia).classList
+					tagHeart.remove('fa-regular')
+					tagHeart.remove('fa-heart')
+					tagHeart.add('fa-solid')
+					tagHeart.add('fa-heart')
+					let spanLike = document.getElementById('spanLikes-' + idMedia)
+					spanLike.innerHTML = parseInt(spanLike.innerHTML) +1
+					this.infoLikes.innerHTML = parseInt(this.infoLikes.innerHTML)  +1
+	
+				} else {
+					this.heartLikes.supLikes(idMedia)
+					let tagHeart = document.getElementById('heart-'+ idMedia).classList
+					tagHeart.remove('fa-solid')
+					tagHeart.remove('fa-heart')
+					tagHeart.add('fa-regular')
+					tagHeart.add('fa-heart')
+					let spanLike = document.getElementById('spanLikes-' + idMedia)
+					spanLike.innerHTML = parseInt(spanLike.innerHTML) -1
+					this.infoLikes.innerHTML = parseInt(this.infoLikes.innerHTML) -1
+				}
+			})
+			el.addEventListener('keypress', (e) => {
+				if (e.key === 'Enter') {
+					let idMediaWindow = e.target.getAttribute('id')
+					let idMedia = modifyId(idMediaWindow, 'heart-')
+					let position = this.heartLikes.heart.indexOf(idMedia)
+					if(position < 0) {
+						this.heartLikes.addLikes(idMedia)
+						let tagHeart = document.getElementById('heart-'+ idMedia).classList
+						tagHeart.remove('fa-regular')
+						tagHeart.remove('fa-heart')
+						tagHeart.add('fa-solid')
+						tagHeart.add('fa-heart')
+						let spanLike = document.getElementById('spanLikes-' + idMedia)
+						spanLike.innerHTML = parseInt(spanLike.innerHTML) +1
+						this.infoLikes.innerHTML = parseInt(this.infoLikes.innerHTML)  +1
+		
+					} else {
+						this.heartLikes.supLikes(idMedia)
+						let tagHeart = document.getElementById('heart-'+ idMedia).classList
+						tagHeart.remove('fa-solid')
+						tagHeart.remove('fa-heart')
+						tagHeart.add('fa-regular')
+						tagHeart.add('fa-heart')
+						let spanLike = document.getElementById('spanLikes-' + idMedia)
+						spanLike.innerHTML = parseInt(spanLike.innerHTML) -1
+						this.infoLikes.innerHTML = parseInt(this.infoLikes.innerHTML) -1
+					}
+				}
+			})
+		})
 
-			} else {
-				this.heartLikes.supLikes(idMedia)
-				let tagHeart = document.getElementById('heart-'+ idMedia).classList
-				tagHeart.remove('fa-solid')
-				tagHeart.remove('fa-heart')
-				tagHeart.add('fa-regular')
-				tagHeart.add('fa-heart')
-				let spanLike = document.getElementById('spanLikes-' + idMedia)
-				spanLike.innerHTML = parseInt(spanLike.innerHTML) -1
-				this.infoLikes.innerHTML = parseInt(this.infoLikes.innerHTML) -1
-			}
-		}))
-		/** On ecoute l'evenement pour afficher notre lightBox */
-		document.querySelectorAll('.itemSelectUser').forEach(
-			item => {
-				item.addEventListener('click', () => {
+		/**OPenCaroussel */
+		document.querySelectorAll('.itemSelectUser').forEach(item => {
+			item.addEventListener('click', () => {
+				const idMediaSelect = item.id
+				const nbrSlide = listdatas.length
+				const sliderLeft = document.querySelector('.lightbox-left')
+				const sliderRight = document.querySelector('.lightbox-right')
+				const closeSlider = document.querySelector('.closeSlider')
+				var index = indexFigure(listdatas, idMediaSelect)
+				this.wrapperSectionLightbox.style.display = 'block'
+				this.wrapperSectionLightbox.setAttribute('aria-hidden', 'false')
+				this.wrapperFilterContainer.setAttribute('aria-hidden', 'true')
+				this.sectionHeader.setAttribute('aria-hidden', 'true')
+				this.wrapperCardsContainer.setAttribute('aria-hidden', 'true')
+				changeTabIndex('off')
+				closeSlider.focus()
+				activeElement(idMediaSelect)
+				var indexToSuprim = listdatas[index].id
+
+				const next = (direction) => {
+					var indexActive = index
+					if (direction == 'next') {
+						index++
+						if (index == nbrSlide) {
+							index = 0
+						}
+					} else {
+						if (index == 0) {
+							index = nbrSlide - 1
+						} else {
+							index--
+						}
+					}
+					/** On cache le media et on aficche le suivant ou le precedent */
+					removeElement(listdatas[indexActive].id)
+					activeElement(listdatas[index].id)
+					indexToSuprim = listdatas[index].id
+				}
+				sliderLeft.onclick = () => { next('prev') }
+				sliderLeft.addEventListener('keypress', (e) => {
+					if (e.key === 'Enter') {
+						next('prev')
+					}
+				})
+				sliderRight.onclick = () => { next('next') }
+				sliderRight.addEventListener('keypress', (e) => {
+					if (e.key === 'Enter') {
+						next('next')
+					}
+				})
+
+				/* On ecoute l'evenement pour fermer notre LIGHTBOX et revenir sur la page photographe */
+				closeSlider.onclick = () => {
+					removeElement(indexToSuprim)
+					document.getElementById('s-lightbox').style.display = 'none'
+					this.wrapperSectionLightbox.setAttribute('aria-hidden', 'true')
+					this.wrapperFilterContainer.setAttribute('aria-hidden', 'false')
+					this.sectionHeader.setAttribute('aria-hidden', 'false')
+					this.wrapperCardsContainer.setAttribute('aria-hidden', 'false')
+					changeTabIndex('on')
+				}
+				closeSlider.addEventListener('keypress', (e) => {
+					if (e.key === 'Enter') {
+						removeElement(indexToSuprim)
+						document.getElementById('s-lightbox').style.display = 'none'
+					}
+				})
+
+			})
+			item.addEventListener('keypress', event => {
+				if (event.key === 'Enter') {
 					const idMediaSelect = item.id
 					const nbrSlide = listdatas.length
 					const sliderLeft = document.querySelector('.lightbox-left')
@@ -88,10 +187,11 @@ class PhotographerPage {
 					const closeSlider = document.querySelector('.closeSlider')
 					var index = indexFigure(listdatas, idMediaSelect)
 					this.wrapperSectionLightbox.style.display = 'block'
-					this.wrapperSectionLightbox.setAttribute('aria-hidden', 'true')
-					this.wrapperFilterContainer.setAttribute('aria-hidden', 'false')
-					this.sectionHeader.setAttribute('aria-hidden', 'false')
-					this.wrapperCardsContainer.setAttribute('aria-hidden', 'false')
+					this.wrapperSectionLightbox.setAttribute('aria-hidden', 'false')
+					this.wrapperFilterContainer.setAttribute('aria-hidden', 'true')
+					this.sectionHeader.setAttribute('aria-hidden', 'true')
+					this.wrapperCardsContainer.setAttribute('aria-hidden', 'true')
+					changeTabIndex('off')
 					closeSlider.focus()
 					activeElement(idMediaSelect)
 					var indexToSuprim = listdatas[index].id
@@ -132,6 +232,11 @@ class PhotographerPage {
 					closeSlider.onclick = () => {
 						removeElement(indexToSuprim)
 						document.getElementById('s-lightbox').style.display = 'none'
+						this.wrapperSectionLightbox.setAttribute('aria-hidden', 'true')
+						this.wrapperFilterContainer.setAttribute('aria-hidden', 'false')
+						this.sectionHeader.setAttribute('aria-hidden', 'false')
+						this.wrapperCardsContainer.setAttribute('aria-hidden', 'false')
+						changeTabIndex('on')
 					}
 					closeSlider.addEventListener('keypress', (e) => {
 						if (e.key === 'Enter') {
@@ -139,9 +244,11 @@ class PhotographerPage {
 							document.getElementById('s-lightbox').style.display = 'none'
 						}
 					})
-
-				})
+					
+				}
 			})
+		})
+		
 	}
 
 	async main() {
@@ -199,15 +306,12 @@ class PhotographerPage {
 					}
 				})
 			})
-			
 			this.dislayPhotographer(sortMedias(mediaPhotographer, 'popularite'), photographerSelect)
-
 			/**création de la lightbox */
 			const FactoriesLigthbox = new SectionLightbox(mediaPhotographer, recupName(photographerSelect))
 			this.wrapperLightboxContainer.appendChild(
 				FactoriesLigthbox.createSectionLightbox()
 			)
-
 			/** On valide les entrees dans notre formulaire */
 			document.getElementById('firstname').addEventListener('input', () => {
 				firstName()
@@ -243,8 +347,6 @@ class PhotographerPage {
 					return true
 				}
 			})
-			
-
 		} else {
 			/** si l'id n'existe pas dans les datas alors on affiche la page erreur et on redirige vers la page accueil */
 			this.wrapperCardsContainer.appendChild(

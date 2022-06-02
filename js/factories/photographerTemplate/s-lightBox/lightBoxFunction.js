@@ -20,20 +20,54 @@ const indexFigure = (arrayItem, idFigureSelectionner) => {
 		}
 	}
 }
-/** On recupere l'element du dome à afficher et on l'active pour l'afficher*/
+/** On recupere l'element du DOM à afficher et on l'active pour l'afficher*/
 const activeElement = (a) => {
 	var elt = `media-${a}`
 	const element = document.getElementById(elt).classList
 	element.add('active')
 }
-/** On recupere l'element du dome à cacher et on le desactive*/
+/** On recupere l'element du DOM à cacher et on le desactive*/
 const removeElement = (a) => {
 	var elt = `media-${a}`
 	const element = document.getElementById(elt).classList
 	element.remove('active')
 }
 
-export { indexFigure, activeElement, removeElement, recupName}
+
+
+const changeTabIndex = (stateItem) =>{
+	var indexIdItemOf = ['one', 'dropdown', 'popularite', 'date', 'titre', ]
+	var indexClassItemOf = ['card-description']
+
+	if(stateItem === 'off'){
+		// on passe tabindex="-1"
+		for(let i = 0; i<indexIdItemOf; i++){
+			let itemTag = document.getElementById(indexIdItemOf[i])
+			itemTag.setAttribute('tabIndex', '-1')
+			return itemTag
+		}
+		for(let i = 0; i<indexClassItemOf; i++){
+			let itemTag = document.querySelector(indexClassItemOf[i])
+			itemTag.setAttribute('tabIndex', '-1')
+			return itemTag
+		}
+	} else if(stateItem === 'on'){
+		// on passe tabIndex="0"
+		for(let i = 0; i<indexIdItemOf; i++){
+			let itemTag = document.getElementById(indexIdItemOf[i])
+			itemTag.setAttribute('tabIndex', '0')
+			return itemTag
+		}
+		for(let i = 0; i<indexClassItemOf; i++){
+			let itemTag = document.querySelector(indexClassItemOf[i])
+			itemTag.setAttribute('tabIndex', '0')
+			return itemTag
+		}
+	}
+
+}
+
+export { indexFigure, activeElement, removeElement, recupName, changeTabIndex}
 
 
 
