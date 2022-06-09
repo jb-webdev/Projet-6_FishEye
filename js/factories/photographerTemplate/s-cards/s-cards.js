@@ -37,7 +37,7 @@ export class SectionCards {
                     tabindex="0"
                     id=${this._media.idMedia}
                     src="${this._media.video}" 
-                    alt="cette video a pour titre ${this._media.title}" 
+                    title="cette video a pour titre ${this._media.title}; Taper entrer pour afficher en gros plan" 
                     type="video/mp4">
                 </video>
             </figure>
@@ -47,10 +47,9 @@ export class SectionCards {
                 </h2>
                 <span class="span card-description_like" aria-label ="cette video détient ${this._nbrLikesMedia} j'aime, ${this._stateLIkes ? 'cette video vous plaît déjà.' : ''}">
                     <p id="spanLikes-${this._media.idMedia}" class="nbr-likes">${this._nbrLikesMedia}</p>
-                    <i tabindex="0" 
-                        aria-label="taper entrer pour ${this._stateLIkes ? 'supprimer' : 'ajouter'} un like" 
-                        class="${this._stateLIkes ? 'fa-solid' : 'fa-regular'} fa-heart" id="heart-${this._media.idMedia}"
-                    ></i>
+                    
+                    <span class="${this._stateLIkes ? 'fa-solid' : 'fa-regular'} fa-heart" id="heart-${this._media.idMedia}"></span>
+                    
                 </span>
             </div>
         `
@@ -64,7 +63,8 @@ export class SectionCards {
                     tabindex="0"
                     id=${this._media.idMedia}
                     src="${this._media.image}"
-                    alt="cette image a pour titre ${this._media.title}"  
+                    alt="cette image a pour titre ${this._media.title}; Taper entrer pour afficher en gros plan"
+                    title=""  
                 >
             </figure>
             <div class="card-description" tabindex="0">
@@ -74,9 +74,9 @@ export class SectionCards {
                 <span class="span card-description_like" 
                         aria-label ="cette image a pour titre ${this._media.title}, est elle détient ${this._nbrLikesMedia} j'aime, ${this._stateLIkes ? 'cette photo vous plaît déjà.' : ''}">
                     <p id="spanLikes-${this._media.idMedia}" class="nbr-likes">${this._nbrLikesMedia}</p>
-                    <i tabindex="0"
-                        aria-label="taper entrer pour ${this._stateLIkes ? 'supprimer' : 'ajouter'} un like"
-                        class="${this._stateLIkes ? 'fa-solid' : 'fa-regular'} fa-heart" id="heart-${this._media.idMedia}"></i>
+                    
+                    <span class="${this._stateLIkes ? 'fa-solid' : 'fa-regular'} fa-heart" id="heart-${this._media.idMedia}"></span>
+                    
                 </span>
             </div>
         `

@@ -34,7 +34,7 @@ class PhotographerPage {
 		this.infoPrice = document.getElementById('s-info-price') /** On recupere notre container info-price pour afficher le tarif du photographe*/
 		this.infoLikes = document.getElementById('s-info-totalLikes') /** On recupere notre container totalLikes pour l'affichage du nombre de likes total du photographe */
 	}
-
+	
 	/** On creer une function global pour modifier notre affichage dynamiquement selon les choix de notre utilisateur  */
 	dislayPhotographer(listdatas, photographerSelect) {
 		this.wrapperCardsContainer.innerHTML = ''
@@ -78,38 +78,9 @@ class PhotographerPage {
 					this.infoLikes.innerHTML = parseInt(this.infoLikes.innerHTML) -1
 				}
 			})
-			el.addEventListener('keypress', (e) => {
-				if (e.key === 'Enter') {
-					let idMediaWindow = e.target.getAttribute('id')
-					let idMedia = modifyId(idMediaWindow, 'heart-')
-					let position = this.heartLikes.heart.indexOf(idMedia)
-					if(position < 0) {
-						this.heartLikes.addLikes(idMedia)
-						let tagHeart = document.getElementById('heart-'+ idMedia).classList
-						tagHeart.remove('fa-regular')
-						tagHeart.remove('fa-heart')
-						tagHeart.add('fa-solid')
-						tagHeart.add('fa-heart')
-						let spanLike = document.getElementById('spanLikes-' + idMedia)
-						spanLike.innerHTML = parseInt(spanLike.innerHTML) +1
-						this.infoLikes.innerHTML = parseInt(this.infoLikes.innerHTML)  +1
-		
-					} else {
-						this.heartLikes.supLikes(idMedia)
-						let tagHeart = document.getElementById('heart-'+ idMedia).classList
-						tagHeart.remove('fa-solid')
-						tagHeart.remove('fa-heart')
-						tagHeart.add('fa-regular')
-						tagHeart.add('fa-heart')
-						let spanLike = document.getElementById('spanLikes-' + idMedia)
-						spanLike.innerHTML = parseInt(spanLike.innerHTML) -1
-						this.infoLikes.innerHTML = parseInt(this.infoLikes.innerHTML) -1
-					}
-				}
-			})
 		})
 
-		/**OPenCaroussel */
+		/**OpenCaroussel */
 		document.querySelectorAll('.itemSelectUser').forEach(item => {
 			item.addEventListener('click', () => {
 				const idMediaSelect = item.id
@@ -123,8 +94,9 @@ class PhotographerPage {
 				this.wrapperFilterContainer.setAttribute('aria-hidden', 'true')
 				this.sectionHeader.setAttribute('aria-hidden', 'true')
 				this.wrapperCardsContainer.setAttribute('aria-hidden', 'true')
+				
 				changeTabIndex('off')
-				closeSlider.focus()
+
 				activeElement(idMediaSelect)
 				var indexToSuprim = listdatas[index].id
 
@@ -147,6 +119,7 @@ class PhotographerPage {
 					activeElement(listdatas[index].id)
 					indexToSuprim = listdatas[index].id
 				}
+
 				sliderLeft.onclick = () => { next('prev') }
 				sliderLeft.addEventListener('keypress', (e) => {
 					if (e.key === 'Enter') {
@@ -176,7 +149,22 @@ class PhotographerPage {
 						document.getElementById('s-lightbox').style.display = 'none'
 					}
 				})
-
+				window.addEventListener('keyup', event =>{
+					var nomTouche = event.key
+					if(nomTouche === 'ArrowLeft'){
+						next('prev')
+					} if (nomTouche === 'ArrowRight') {
+						next('next')
+					} if (nomTouche === 'Escape') {
+						removeElement(indexToSuprim)
+						document.getElementById('s-lightbox').style.display = 'none'
+						this.wrapperSectionLightbox.setAttribute('aria-hidden', 'true')
+						this.wrapperFilterContainer.setAttribute('aria-hidden', 'false')
+						this.sectionHeader.setAttribute('aria-hidden', 'false')
+						this.wrapperCardsContainer.setAttribute('aria-hidden', 'false')
+						changeTabIndex('on')
+					}
+				})
 			})
 			item.addEventListener('keypress', event => {
 				if (event.key === 'Enter') {
@@ -191,8 +179,9 @@ class PhotographerPage {
 					this.wrapperFilterContainer.setAttribute('aria-hidden', 'true')
 					this.sectionHeader.setAttribute('aria-hidden', 'true')
 					this.wrapperCardsContainer.setAttribute('aria-hidden', 'true')
+					this.wrapperSectionLightbox.focus()
+						
 					changeTabIndex('off')
-					closeSlider.focus()
 					activeElement(idMediaSelect)
 					var indexToSuprim = listdatas[index].id
 
@@ -227,7 +216,6 @@ class PhotographerPage {
 							next('next')
 						}
 					})
-
 					/* On ecoute l'evenement pour fermer notre LIGHTBOX et revenir sur la page photographe */
 					closeSlider.onclick = () => {
 						removeElement(indexToSuprim)
@@ -244,11 +232,25 @@ class PhotographerPage {
 							document.getElementById('s-lightbox').style.display = 'none'
 						}
 					})
-					
+					window.addEventListener('keyup', event =>{
+						var nomTouche = event.key
+						if(nomTouche === 'ArrowLeft'){
+							next('prev')
+						} if (nomTouche === 'ArrowRight') {
+							next('next')
+						} if (nomTouche === 'Escape') {
+							removeElement(indexToSuprim)
+							document.getElementById('s-lightbox').style.display = 'none'
+							this.wrapperSectionLightbox.setAttribute('aria-hidden', 'true')
+							this.wrapperFilterContainer.setAttribute('aria-hidden', 'false')
+							this.sectionHeader.setAttribute('aria-hidden', 'false')
+							this.wrapperCardsContainer.setAttribute('aria-hidden', 'false')
+							changeTabIndex('on')
+						}
+					})
 				}
 			})
 		})
-		
 	}
 
 	async main() {
@@ -290,6 +292,12 @@ class PhotographerPage {
 			/** On ecoute l'evenement click et keydown sur le boutton pour fermer notre modal message */
 			document.getElementById('closeModal').addEventListener('click', () => closeModal())
 			document.getElementById('closeModal').addEventListener('keydown', (e) => { if (e.key === 'Enter') { closeModal() } })
+			window.addEventListener('keyup', event =>{
+				var nomTouche = event.key
+				if (nomTouche === 'Escape') {
+					closeModal()
+				}
+			})
 			const options = document.querySelectorAll('.dropdown-option')
 			/** On ecoute l'evenement sur le Filtre */
 			options.forEach(el => {

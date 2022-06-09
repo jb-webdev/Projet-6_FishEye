@@ -34,14 +34,14 @@ export class SectionHeader{
             <div id="two">
                 <button id="btn-header-displayModal"
                     class="contact_button"
+                    aria-label="Envoyer un message a ${this._photographer[0].name}"
                 >
                     Contactez-moi
                 </button>
             </div>
             <div id="three">
                 <img id="header-page-photographer_image" 
-                    alt="photo de profil de  ${this._photographer[0].name}" 
-                    title="image de profil de  ${this._photographer[0].name}" 
+                    alt="photo de profil de  ${this._photographer[0].name}"
                     src="/assets/Photographers-ID-Photos/${this._photographer[0].portrait}"
                 >
             </div>

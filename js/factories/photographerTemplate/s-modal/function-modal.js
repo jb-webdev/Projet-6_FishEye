@@ -6,7 +6,32 @@
  * 
  */
 const displayModal = () => {
+	const logo = document.getElementById('logo')
+	const infoPhotographer = document.getElementById('one')
+	const headerBtn = document.getElementById('btn-header-displayModal')
+	const filter = document.getElementById('s-filter')
+	const btnDropdown = document.getElementById('btn-dropdown')
+	const cards = document.getElementById('s-cards')
 	const modal = document.getElementById('s-modal')
+	const divModal = document.querySelector('.modal')
+
+	document.querySelectorAll('.itemSelectUser').forEach(item => {
+		item.setAttribute('tabindex', -1)
+	})
+	document.querySelectorAll('.card-description').forEach(item =>{
+		item.setAttribute('tabindex', -1)
+	})
+	logo.setAttribute('tabindex', -1)
+
+	infoPhotographer.setAttribute('tabindex', -1)
+	headerBtn.setAttribute('tabindex', -1)
+
+
+	filter.setAttribute('tabindex', -1)
+	btnDropdown.setAttribute('tabindex', -1)
+	cards.setAttribute('tabindex', -1)
+	divModal.setAttribute('tabindex', 0)
+	modal.setAttribute('aria-hiden', 'false')
 	modal.style.display = 'block'
 }
 /**
@@ -14,7 +39,27 @@ const displayModal = () => {
  * 
  */
 const closeModal = () => {
+	const logo = document.getElementById('logo')
+	const infoPhotographer = document.getElementById('one')
+	const headerBtn = document.getElementById('btn-header-displayModal')
+	const filter = document.getElementById('s-filter')
+	const btnDropdown = document.getElementById('btn-dropdown')
+	const cards = document.getElementById('s-cards')
 	const modal = document.getElementById('s-modal')
+
+	document.querySelectorAll('.itemSelectUser').forEach(item => {
+		item.setAttribute('tabindex', 0)
+	})
+	document.querySelectorAll('.card-description').forEach(item =>{
+		item.setAttribute('tabindex', 0)
+	})
+	logo.setAttribute('tabindex', 0)
+	infoPhotographer.setAttribute('tabindex', 0)
+	headerBtn.setAttribute('tabindex', 0)
+	filter.setAttribute('tabindex', 0)
+	btnDropdown.setAttribute('tabindex', 0)
+	cards.setAttribute('tabindex', 0)
+	modal.setAttribute('aria-hiden', 'true')
 	modal.style.display = 'none'
 }
 /**

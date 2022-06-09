@@ -12,8 +12,8 @@ export class SectionModal {
 		wrapperSection.setAttribute('aria-labelledby', 'form')
         
 		const modalTemplate = `
-            <span class="close closeModal" id="closeModal" aria-labelledby="close" tabindex="1">
-                <i class="fa-solid fa-xmark"></i>
+            <span class="close closeModal" id="closeModal" aria-labelledby="close" tabindex="0">
+                <span class="fa-solid fa-xmark"></span>
             </span>
             <h2 class="modal-title">Contactez-moi<br>${this._photographer[0].name}</h2>
             <form 

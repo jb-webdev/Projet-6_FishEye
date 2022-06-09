@@ -4,10 +4,9 @@ const videoMediaCreate = (media, pathImg) => {
 	eltFigure.setAttribute('class', 'item')
 	eltFigure.setAttribute('id', `media-${media.id}`)
 	const eltVideo = document.createElement('video')
-	eltVideo.setAttribute('tabindex', '0')
 	eltVideo.setAttribute('class', 'item-media')
 	eltVideo.setAttribute('controls', 'controls')
-	eltVideo.setAttribute('alt', `video qui a pour titre ${media.title}`)
+	eltVideo.setAttribute('title', `video qui a pour titre ${media.title}`)
 	eltVideo.setAttribute('src', `${pathImg}${media.video}`)
 	eltVideo.setAttribute('type', 'video/mp4')
 	eltFigure.appendChild(eltVideo)
@@ -19,7 +18,6 @@ const imageMediaCreate = (media, pathImg) => {
 	eltFigure.setAttribute('class', 'item')
 	eltFigure.setAttribute('id', `media-${media.id}`)
 	const eltImage = document.createElement('img')
-	eltImage.setAttribute('tabindex', '0')
 	eltImage.setAttribute('class', 'item-media')
 	eltImage.setAttribute('alt', `Image qui a pour titre ${media.title}`)
 	eltImage.setAttribute('src', `${pathImg}${media.image}`)
@@ -30,9 +28,8 @@ const imageMediaCreate = (media, pathImg) => {
 const arrowLeftCreate = () => {
 	const arrowLeft = document.createElement('span')
 	arrowLeft.setAttribute('class', 'lightbox-left')
-	arrowLeft.setAttribute('tabindex', '0')
 	arrowLeft.setAttribute('valider pour voir l\'image précédente')
-	let iconLeft = document.createElement('i')
+	let iconLeft = document.createElement('span')
 	iconLeft.setAttribute('class', 'fa-solid fa-chevron-left')
 	arrowLeft.appendChild(iconLeft)
 	return arrowLeft
@@ -41,9 +38,8 @@ const arrowLeftCreate = () => {
 const arrowRightCreate = () => {
 	const arrowRight = document.createElement('span')
 	arrowRight.setAttribute('class', 'lightbox-right')
-	arrowRight.setAttribute('tabindex', '0')
 	arrowRight.setAttribute('valider pour voir l\'image précédente')
-	let iconRight = document.createElement('i')
+	let iconRight = document.createElement('span')
 	iconRight.setAttribute('class', 'fa-solid fa-chevron-right')
 	arrowRight.appendChild(iconRight)
 	return arrowRight

@@ -17,7 +17,7 @@ export class HomePhotographerCard {
             >
                 <img 
                     src="${this._photographer.portrait}" 
-                    alt="photo de profil de "
+                    alt="photo de profil de ${this._photographer.name}"
                 >
                 <h2 class="name-photographer">${this._photographer.name}</h2>
                 <p class="wrapper-info-photographer">

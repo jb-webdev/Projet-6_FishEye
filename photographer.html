@@ -1,76 +1,70 @@
 <!DOCTYPE html>
-<html lang="fr-FR">
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="assets/images/icon.png">
-  <!-- STYLE CSS-->
-  <link rel="stylesheet" href="./css/index.css" type="text/css" />
-  <link rel="stylesheet" href="./css/PhotographerCss/s-cards.css">
-  <link rel="stylesheet" href="./css/PhotographerCss/s-filter.css">
-  <link rel="stylesheet" href="./css/PhotographerCss/s-modal.css">
-  <link rel="stylesheet" href="./css/PhotographerCss/s-info.css">
-  <!-- 
-  -->
-  <link rel="stylesheet" href="./css/PhotographerCss/s-lightbox.css">
+<html xml:lang="fr" lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/images/icon.png">
+    <!-- STYLE CSS-->
+    <link rel="stylesheet" href="./css/index.css" type="text/css" />
+    <link rel="stylesheet" href="./css/PhotographerCss/s-cards.css">
+    <link rel="stylesheet" href="./css/PhotographerCss/s-filter.css">
+    <link rel="stylesheet" href="./css/PhotographerCss/s-modal.css">
+    <link rel="stylesheet" href="./css/PhotographerCss/s-info.css">
+    <!-- 
+    -->
+    <link rel="stylesheet" href="./css/PhotographerCss/s-lightbox.css">
+    
+    <!-- FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   
-  <!-- FONTS-->
-  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-
-  <!-- fontsawesome -->
-  <script src="https://kit.fontawesome.com/2b86093a15.js" crossorigin="anonymous"></script>
-
-  <title>Fisheye</title>
-</head>
-
-<body>
-  <header id="header-homePage" role="banner">
-    <a href="index.html" id="logo" aria-label="Redirection vers la page d'acceuil"> <!-- accessibilite  - aria-label-->
-      <img role="link" src="assets/images/logo.png" class="logo" alt="Logo de Fisheye" /><!-- accessibilite  - role-->
-    </a>
-  </header>
-
-  <main id="main">
-    <!-- SECTION HEADER -->
-    <section id="s-header" aria-hidden="false" class="photograph-header"></section>
-    <!-- SECTION FILTER -->
-    <section id="s-filter" aria-hidden="false"></section>
-    <!-- SECTION CARD -->
-    <section id="s-cards" aria-hidden="false" aria-label="section regroupant les medias du photographe" ></section>
-    <!-- SECTION MODAL MESSAGE -->
-    <section id="s-modal"></section>
-    <!-- SECTION LIGHTBOX -->
-    <section id="s-lightbox"  aria-hidden="false" aria-label="carrousel présentation des images du photographe">
-      <div class="lightbox-close">
-        <span >
-          <i role="button"
-            tabindex="0" 
-            aria-label="Fermer la lightbox et revennir sur la page du photographe"  
-            class="fa-solid fa-xmark closeSlider"></i>
-        </span>
-      </div>
-      
-      <div class="container-slider">
-        <span role="button" tabindex="0" aria-label="valider pour voir l\'image précédente" class="lightbox-left" ><i class="fa-solid fa-chevron-left"></i></span>
-
-        <div class="box-image-slider"></div>
-
-        <span role="button" tabindex="0" aria-label="valider pour voir l\'image suivante" class="lightbox-right"><i class="fa-solid fa-chevron-right"></i></span>
-      </div>
-    </section>
-    <section id="s-info">
-      <div id="s-info-likes">
-        <p id="s-info-totalLikes"></p>
-        <span class="s-info-"><i class="fa-solid fa-heart" id="heart-info"></i></span>
-      </div>
-      <p id="s-info-price"></p>
-    </section>
-
+    <!-- fontsawesome -->
+    <script src="https://kit.fontawesome.com/2b86093a15.js" crossorigin="anonymous"></script>
   
-  <!-- Entry point -->
-  <script type="module" src="./js/pages/photographer.js"></script>
-</body>
-
-</html>
+    <title>Fisheye</title>
+  </head>
+  
+  <body>
+    <header id="header-homePage" role="banner">
+      <a href="index.html" id="header-logo" aria-label="Redirection vers la page d'acceuil">
+        <img role="link" src="assets/images/logo.png" class="logo" alt="Logo de Fisheye" />
+      </a>
+    </header>
+  
+    <main id="main">
+      <!-- SECTION HEADER -->
+      <section id="s-header" aria-hidden="false" class="photograph-header"></section>
+      <!-- SECTION FILTER -->
+      <section id="s-filter" aria-hidden="false"></section>
+      <!-- SECTION CARD -->
+      <section id="s-cards" aria-hidden="false" aria-label="section regroupant les medias du photographe" ></section>
+      <!-- SECTION MODAL MESSAGE -->
+      <section id="s-modal"></section>
+      <!-- SECTION LIGHTBOX -->
+      <section id="s-lightbox"  aria-hidden="true" aria-label="carrousel présentation des images du photographe">
+        <div class="lightbox-close">
+          <span role="button"class="fa-solid fa-xmark closeSlider"></span>
+        </div>
+        
+        <div class="container-slider">
+          <span role="button" class="lightbox-left" ><span class="fa-solid fa-chevron-left"></span></span>
+  
+          <div class="box-image-slider"></div>
+  
+          <span role="button"  class="lightbox-right"><span class="fa-solid fa-chevron-right"></span></span>
+        </div>
+      </section>
+      <section id="s-info">
+        <div id="s-info-likes">
+          <p id="s-info-totalLikes"></p>
+          <span class="s-info-"><span class="fa-solid fa-heart"></span></span>
+        </div>
+        <p id="s-info-price"></p>
+      </section>
+    </main>
+    
+    <!-- Entry point -->
+    <script type="module" src="./js/pages/photographer.js"></script>
+  </body>
+  
+  </html>
