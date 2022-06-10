@@ -1,4 +1,4 @@
-import {ifVideoExist} from '../functionsUtil.js' /* import de la function pour trier les images des video */
+import {ifVideoExist} from './functionsUtil.js' /* import de la function pour trier les images des video */
 
 export class SectionCards {
 	constructor(mediaData, heartLikes) {
@@ -6,6 +6,8 @@ export class SectionCards {
 		this._heartLikes = heartLikes
 		this._stateLIkes = false
 		this._nbrLikesMedia = this._media._likes
+		this.wrapperCardsContainer = document.getElementById('s-cards') /* On recupere le conteneur wrapper */
+
 		
 	}
 	createCards() {
@@ -27,7 +29,7 @@ export class SectionCards {
 
 		const essaiVideo = ifVideoExist(this._media.video)
 
-		const videoHtml = `
+		const videoHtml =  `
             <figure
                 class="card-img" 
                 id=${this._media.idMedia}   
@@ -47,42 +49,41 @@ export class SectionCards {
                 </h2>
                 <span class="span card-description_like" aria-label ="cette video détient ${this._nbrLikesMedia} j'aime, ${this._stateLIkes ? 'cette video vous plaît déjà.' : ''}">
                     <p id="spanLikes-${this._media.idMedia}" class="nbr-likes">${this._nbrLikesMedia}</p>
-                    
                     <span class="${this._stateLIkes ? 'fa-solid' : 'fa-regular'} fa-heart" id="heart-${this._media.idMedia}"></span>
-                    
                 </span>
             </div>
         `
 		const imageHtml = `
-            <figure 
-                class="card-img" 
+        <figure 
+            class="card-img" 
+            id=${this._media.idMedia}
+        >
+            <img
+                class="itemSelectUser"
+                tabindex="0"
                 id=${this._media.idMedia}
-                >
-                <img
-                    class="itemSelectUser"
-                    tabindex="0"
-                    id=${this._media.idMedia}
-                    src="${this._media.image}"
-                    alt="cette image a pour titre ${this._media.title}; Taper entrer pour afficher en gros plan"
-                    title=""  
-                >
-            </figure>
-            <div class="card-description" tabindex="0">
-                <h2 class="card-descripiton_title" aria-hidden='true'>
-                    ${this._media.title}
-                </h2>
-                <span class="span card-description_like" 
-                        aria-label ="cette image a pour titre ${this._media.title}, est elle détient ${this._nbrLikesMedia} j'aime, ${this._stateLIkes ? 'cette photo vous plaît déjà.' : ''}">
-                    <p id="spanLikes-${this._media.idMedia}" class="nbr-likes">${this._nbrLikesMedia}</p>
-                    
-                    <span class="${this._stateLIkes ? 'fa-solid' : 'fa-regular'} fa-heart" id="heart-${this._media.idMedia}"></span>
-                    
-                </span>
-            </div>
+                src="${this._media.image}"
+                alt="cette image a pour titre ${this._media.title}; Taper entrer pour afficher en gros plan"
+                title=""  
+            >
+        </figure>
+        <div class="card-description" tabindex="0">
+            <h2 class="card-descripiton_title" aria-hidden='true'>
+                ${this._media.title}
+            </h2>
+            <span class="span card-description_like" 
+                    aria-label ="cette image a pour titre ${this._media.title}, est elle détient ${this._nbrLikesMedia} j'aime, ${this._stateLIkes ? 'cette photo vous plaît déjà.' : ''}">
+                <p id="spanLikes-${this._media.idMedia}" class="nbr-likes">${this._nbrLikesMedia}</p>
+                <span class="${this._stateLIkes ? 'fa-solid' : 'fa-regular'} fa-heart" id="heart-${this._media.idMedia}"></span>
+            </span>
+        </div>
         `
 
 		
 		essaiVideo ? card.innerHTML = videoHtml : card.innerHTML = imageHtml
-		return card
+		this.wrapperCardsContainer.appendChild(card)
+		return this.wrapperCardsContainer
 	}
+
+
 }

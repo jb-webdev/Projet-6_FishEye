@@ -33,8 +33,6 @@ const removeElement = (a) => {
 	element.remove('active')
 }
 
-
-
 const changeTabIndex = (stateItem) =>{
 	var indexIdItemOf = ['one', 'dropdown', 'popularite', 'date', 'titre', ]
 	var indexClassItemOf = ['card-description']

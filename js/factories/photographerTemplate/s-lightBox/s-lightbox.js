@@ -4,6 +4,7 @@ export class SectionLightbox {
 	constructor(mediaPhotographer, pathImg) {
 		this._mediaPhotographer = mediaPhotographer
 		this._pathImg = pathImg
+		this.wrapperLightboxContainer = document.querySelector('.box-image-slider') 
 	}
 	createSectionLightbox() {
 		/* On recupere la longueur de notre array mediaPhotographer */
@@ -23,6 +24,7 @@ export class SectionLightbox {
 			}
 		}
 		/** On retour notre composant monté */
-		return wrapperItem
+		this.wrapperLightboxContainer.appendChild(wrapperItem)
+		return this.wrapperLightboxContainer
 	}
 }

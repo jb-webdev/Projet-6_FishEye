@@ -1,6 +1,7 @@
 export class SectionHeader{
 	constructor (photographe) {
 		this._photographer = photographe
+		this.sectionHeader = document.querySelector('.photograph-header') /* On recupere le conteneur de la section Header */
 	}
 
 	createSectionHeader(){
@@ -41,13 +42,16 @@ export class SectionHeader{
             </div>
             <div id="three">
                 <img id="header-page-photographer_image" 
-                    alt="photo de profil de  ${this._photographer[0].name}"
+                    alt="photo de profil de  ${this._photographer[0].name}" 
+                    title="image de profil de  ${this._photographer[0].name}" 
                     src="/assets/Photographers-ID-Photos/${this._photographer[0].portrait}"
                 >
             </div>
         `
+
 		wrapperSection.innerHTML = headerTemplate
-		/** On retourne la section Header avec les infos concernant le photographe selectionner */
-		return wrapperSection
+		this.sectionHeader.appendChild(wrapperSection)
+		
+		return this.sectionHeader
 	}
 }

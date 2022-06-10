@@ -26,8 +26,7 @@ export class HeartLikes{
 		this.heart.splice(indexMedia, 1)
 		this.totalLikesPhotographer --
 	}
-	/**
-	 * Fonction qui additionne le nombres de likes recu par le photographe
+	/** Fonction qui additionne le nombres de likes recu par le photographe
 	*/
 	sumLikes = (a) => {
 		let sum = 0

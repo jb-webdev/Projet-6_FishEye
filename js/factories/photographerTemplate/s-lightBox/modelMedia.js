@@ -29,7 +29,7 @@ const arrowLeftCreate = () => {
 	const arrowLeft = document.createElement('span')
 	arrowLeft.setAttribute('class', 'lightbox-left')
 	arrowLeft.setAttribute('valider pour voir l\'image précédente')
-	let iconLeft = document.createElement('span')
+	let iconLeft = document.createElement('i')
 	iconLeft.setAttribute('class', 'fa-solid fa-chevron-left')
 	arrowLeft.appendChild(iconLeft)
 	return arrowLeft
@@ -39,7 +39,7 @@ const arrowRightCreate = () => {
 	const arrowRight = document.createElement('span')
 	arrowRight.setAttribute('class', 'lightbox-right')
 	arrowRight.setAttribute('valider pour voir l\'image précédente')
-	let iconRight = document.createElement('span')
+	let iconRight = document.createElement('i')
 	iconRight.setAttribute('class', 'fa-solid fa-chevron-right')
 	arrowRight.appendChild(iconRight)
 	return arrowRight
