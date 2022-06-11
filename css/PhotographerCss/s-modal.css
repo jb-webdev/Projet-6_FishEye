@@ -29,9 +29,7 @@
     cursor: pointer;
     z-index: 3;
 }
-.modal:focus-visible{
-    outline: 5px solid red;
-}
+
 .closeModal:focus {
    outline: 3px solid var(--color-primary);
  }

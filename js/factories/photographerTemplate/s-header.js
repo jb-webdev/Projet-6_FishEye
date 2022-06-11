@@ -14,21 +14,14 @@ export class SectionHeader{
 		wrapperSection.setAttribute('role', 'information du photographe')
 
 		const headerTemplate = `
-            <div id="one"
-                role='information sur le photographe' 
-                tabindex='0' 
-                aria-label="Le photographe s'appelle 
-                            ${this._photographer[0].name}, 
-                            est habite ${this._photographer[0].city}, ${this._photographer[0].country},
-                            il affiche comme message ${this._photographer[0].tagline} "
-            >
-                <h1 id="photographe-page-header_h2">
+            <div id="one" >
+                <h1 id="photographe-page-header-h2">
                     ${this._photographer[0].name}
                 </h1>
-                <p id="photographe-page-header_location">
+                <p id="photographe-page-header-location">
                     ${this._photographer[0].city}, ${this._photographer[0].country}
                 </p>
-                <p id="photographe-page-header_tagline">
+                <p id="photographe-page-header-tagline">
                     ${this._photographer[0].tagline}
                 </p>
             </div>

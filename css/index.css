@@ -179,19 +179,19 @@ body {
 #one :focus {
     outline: 4px solid var(--color-primary);
 }
-#photographe-page-header_h2 {
+#photographe-page-header-h2 {
     margin-top: 0;
     color: var(--color-secondary);
     font-size: 60px;
     margin-bottom: 20px;
 }
-#photographe-page-header_location {
+#photographe-page-header-location {
     margin: 0;
     margin-bottom: 10px;
     color: var(--color-primary);
     font-weight: bolder;
 }
-#photographe-page-header_tagline {
+#photographe-page-header-tagline {
     margin: 0;
 }
 /* BOX HEADER TWO */

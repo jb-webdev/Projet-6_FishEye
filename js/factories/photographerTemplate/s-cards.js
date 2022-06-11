@@ -43,11 +43,11 @@ export class SectionCards {
                     type="video/mp4">
                 </video>
             </figure>
-            <div class="card-description" tabindex="0">
-                <h2 class="card-descripiton_title" aria-hidden='true'>
+            <div class="card-description">
+                <h2 class="card-descripiton_title">
                     ${this._media.title}
                 </h2>
-                <span class="span card-description_like" aria-label ="cette video détient ${this._nbrLikesMedia} j'aime, ${this._stateLIkes ? 'cette video vous plaît déjà.' : ''}">
+                <span class="span card-description_like"    >
                     <p id="spanLikes-${this._media.idMedia}" class="nbr-likes">${this._nbrLikesMedia}</p>
                     <span class="${this._stateLIkes ? 'fa-solid' : 'fa-regular'} fa-heart" id="heart-${this._media.idMedia}"></span>
                 </span>
@@ -67,12 +67,11 @@ export class SectionCards {
                 title=""  
             >
         </figure>
-        <div class="card-description" tabindex="0">
-            <h2 class="card-descripiton_title" aria-hidden='true'>
+        <div class="card-description">
+            <h2 class="card-descripiton_title">
                 ${this._media.title}
             </h2>
-            <span class="span card-description_like" 
-                    aria-label ="cette image a pour titre ${this._media.title}, est elle détient ${this._nbrLikesMedia} j'aime, ${this._stateLIkes ? 'cette photo vous plaît déjà.' : ''}">
+            <span class="span card-description_like"    >
                 <p id="spanLikes-${this._media.idMedia}" class="nbr-likes">${this._nbrLikesMedia}</p>
                 <span class="${this._stateLIkes ? 'fa-solid' : 'fa-regular'} fa-heart" id="heart-${this._media.idMedia}"></span>
             </span>

@@ -12,6 +12,7 @@ export class SectionModal {
 		wrapperSection.setAttribute('role', 'dialog')
 		wrapperSection.setAttribute('aria-modal', 'true')
 		wrapperSection.setAttribute('aria-labelledby', 'form')
+		
         
 		const modalTemplate = `
             <span class="close closeModal" id="closeModal" aria-labelledby="close">
@@ -99,6 +100,7 @@ export class SectionModal {
      */
 	displayModal(action){
 		if (action === 'open'){
+			const btnContact = document.getElementById('btn-header-displayModal')
 			const filter = document.getElementById('s-filter')
 			const btnDropdown = document.getElementById('btn-dropdown')
 			const cards = document.getElementById('s-cards')
@@ -111,14 +113,17 @@ export class SectionModal {
 			document.querySelectorAll('.card-description').forEach(item => {
 				item.setAttribute('tabindex', -1)
 			})
-
+			btnContact.setAttribute('tabindex', -1)
 			filter.setAttribute('tabindex', -1)
 			btnDropdown.setAttribute('tabindex', -1)
 			cards.setAttribute('tabindex', -1)
 			divModal.setAttribute('tabindex', 0)
 			modal.setAttribute('aria-hiden', 'false')
-			modal.style.display = 'block'
+			modal.style.display = 'block'	
+			divModal.focus()
 		} else if (action === 'close'){
+
+			const btnContact = document.getElementById('btn-header-displayModal')
 			const filter = document.getElementById('s-filter')
 			const btnDropdown = document.getElementById('btn-dropdown')
 			const cards = document.getElementById('s-cards')
@@ -130,7 +135,7 @@ export class SectionModal {
 			document.querySelectorAll('.card-description').forEach(item => {
 				item.setAttribute('tabindex', 0)
 			})
-
+			btnContact.setAttribute('tabindex', 0)
 			filter.setAttribute('tabindex', 0)
 			btnDropdown.setAttribute('tabindex', 0)
 			cards.setAttribute('tabindex', 0)

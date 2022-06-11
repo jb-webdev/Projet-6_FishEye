@@ -94,6 +94,6 @@ export class SectionFilter {
 		}
 		tagFilter.textContent = text
 		tagFilter.setAttribute('value', value)
-		this.eventFilter('close')
+		document.getElementById('container').style.display = 'none'
 	}
 }
