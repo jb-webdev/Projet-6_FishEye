@@ -12,9 +12,10 @@
     background-color: rgba(196, 196, 196, 0.4);
     overflow: auto;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
 }
+
 .closeModal {
     display: flex;
     justify-content: center;
@@ -31,11 +32,13 @@
 }
 
 .closeModal:focus {
-   outline: 3px solid var(--color-primary);
- }
- .closeModal .fa-xmark{
-     font-size: 39px;
- }
+    outline: 3px solid var(--color-primary);
+}
+
+.closeModal .fa-xmark {
+    font-size: 39px;
+}
+
 .modal {
     margin: 4% auto;
     width: 45%;
@@ -49,6 +52,7 @@
     box-sizing: border-box;
     height: auto;
 }
+
 .modal-title {
     color: black;
     font-size: 3rem;
@@ -56,9 +60,11 @@
     padding-bottom: 1.5rem;
     text-align: center;
 }
+
 .modal-form {
     color: #312e2e;
 }
+
 .modal-form-formData {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -68,14 +74,17 @@
     -ms-flex-direction: column;
     flex-direction: column;
 }
+
 .modal-form-formData-label {
     font-size: 2rem;
     padding: 0.4rem 0;
 }
+
 .modal-form-formData-labelArea {
     font-size: 2rem;
     padding: 0.8rem 0 0.7rem;
 }
+
 .modal-form-formData-input {
     outline-style: none;
     border: none;
@@ -84,10 +93,12 @@
     font-size: 1.5rem;
     padding: 0 0.5rem;
 }
+
 .modal-form-formData-textarea:focus,
-.modal-form-formData-input:focus{
-    background:#fffdfdcb;
+.modal-form-formData-input:focus {
+    background: #fffdfdcb;
 }
+
 .modal-form-formData-textarea {
     font-family: "DM Sans", "Trebuchet MS", Arial, Helvetica, sans-serif;
     text-align: left;
@@ -107,6 +118,7 @@
     display: -ms-flexbox;
     display: flex;
 }
+
 .btn-submit {
     background-color: var(--color-primary);
     color: var(--color-white);
@@ -115,18 +127,22 @@
     border: none;
     border-radius: 0.2rem;
 }
-.btn-submit:focus-visible{
+
+.btn-submit:focus-visible {
     outline: 5px solid white;
 }
+
 .inputError {
     border: var(--color-primary) solid 0.15rem;
 }
+
 .pError {
     color: var(--color-white);
     font-size: 1.2rem;
     margin: 0.3rem 0 0 0;
     border: .2rem;
 }
+
 @media all and (max-width: 719px) {
     .closeModal {
         -webkit-transform: scale(0.7);
@@ -135,11 +151,13 @@
         top: 1.5rem;
     }
 }
+
 @media all and (max-width: 1024px) {
     .modal {
         width: 75%;
     }
 }
+
 @media all and (max-width: 719px) {
     .modal {
         display: -webkit-box;
@@ -155,35 +173,41 @@
         padding: 1.5rem 1.5rem 3rem;
     }
 }
+
 @media all and (max-width: 719px) {
     .modal-title {
         line-height: 2.7rem;
         font-size: 2.1rem;
     }
 }
+
 @media all and (max-width: 719px) {
     .modal-form-formData-label {
         padding: 0.3rem 0;
         font-size: 1.5rem;
     }
 }
+
 @media all and (max-width: 719px) {
     .modal-form-formData-labelArea {
         font-size: 1.5rem;
     }
 }
+
 @media all and (max-width: 719px) {
     .modal-form-formData-input {
         font-size: 1.2rem;
         height: 3.5rem;
     }
 }
+
 @media all and (max-width: 719px) {
     .modal-form-formData-textarea {
         font-size: 1.2rem;
         height: 11.5rem;
     }
 }
+
 @media all and (max-width: 719px) {
     .divBtn {
         -webkit-box-pack: center;
@@ -191,15 +215,16 @@
         justify-content: center;
     }
 }
+
 @media all and (max-width: 719px) {
     .btn-submit {
         padding: 0.65rem 3.8rem;
     }
 }
+
 @media all and (max-width: 719px) {
     .pError {
         font-size: 1rem;
         margin-bottom: 0.2rem;
     }
 }
-

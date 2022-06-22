@@ -1,5 +1,4 @@
-#s-info{
-  
+#s-info {
   position: fixed;
   bottom: 0;
   right: 2rem;
@@ -11,15 +10,9 @@
   width: 280px;
   border-radius: 0.5rem 0.5rem 0 0;
   box-sizing: border-box;
-  
 }
-
-
 #s-info-likes {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-
-
-

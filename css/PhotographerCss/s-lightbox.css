@@ -1,15 +1,17 @@
 /* SECTION LIGHTBOX */
 @keyframes zoom {
-    0%
-    {
-        transform: scale(1.1);opacity: 0;
+    0% {
+        transform: scale(1.1);
+        opacity: 0;
     }
-    100%
-    {
-        transform: scale(1);opacity: 1;
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
     }
 }
-#s-lightbox{
+
+#s-lightbox {
     display: none;
     margin: 0;
     position: fixed;
@@ -18,29 +20,33 @@
     right: 0;
     bottom: 0;
     max-height: 100vh;
-    background-color: #313131;
+    background-color: #ffffff;
     z-index: 99;
 }
-.container-slider{
+
+.container-slider {
     display: flex;
     height: 90%;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
 }
+
 /*  .wrapper-item{}  */
-.item{
+.item {
     display: none;
 }
-.item.active{
+
+.item.active {
     display: flex;
     overflow: hidden;
     align-items: center;
-    
+
     justify-content: center;
     max-height: 60vh;
 }
-.item-media{
+
+.item-media {
     display: flex;
     align-self: center;
     height: 100%;
@@ -48,15 +54,17 @@
     max-height: 60vh;
     animation: zoom 1s ease-in-out;
 }
-.lightbox-close{
+
+.lightbox-close {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     padding-right: 10%;
     height: 10%;
 }
+
 .lightbox-close .fa-xmark {
-    color: var(--color-secondary);
+    color: var(--color-primary);
     height: 40px;
     width: 40px;
     border-radius: 50%;
@@ -65,27 +73,31 @@
     line-height: 40px;
     font-size: 35px;
     transition: all .5s ease;
-    
+
 }
+
 .lightbox-close .fa-xmark:hover,
 .lightbox-close .fa-xmark:focus {
     box-shadow: 0px 0px 10px #000000;
 }
-.lightbox-left, .lightbox-right {
-    color: var(--color-secondary);
-    
+
+.lightbox-left,
+.lightbox-right {
+    color: var(--color-primary);
+
     height: 40px;
     width: 40px;
     border-radius: 50%;
     cursor: pointer;
     text-align: center;
     line-height: 40px;
-    font-size: 25px;
+    font-size: 35px;
     transition: all .5s ease;
 }
-.lightbox-left:hover, 
-.lightbox-right:hover,                                                  
-.lightbox-left:focus, 
-.lightbox-right:focus{
+
+.lightbox-left:hover,
+.lightbox-right:hover,
+.lightbox-left:focus,
+.lightbox-right:focus {
     box-shadow: 0px 0px 10px #000000;
 }
