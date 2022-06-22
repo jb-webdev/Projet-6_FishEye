@@ -27,10 +27,8 @@ class PhotographerPage {
 		this.wrapperCardsContainer = document.getElementById('s-cards') /* On recupere le conteneur wrapper */
 		this.wrapperFilterContainer = document.getElementById('s-filter') /* On recupere le container pour inserer le template du filtre */
 		this.wrapperModalContainer = document.getElementById('s-modal') /* On recupere le container pour inserer le template de la modal message */
-		this.wrapperSectionLightbox = document.getElementById('s-lightbox') /**On recupere le container pour notre lightBox */
 		this.openFilterBtn = document.querySelector('#btn-dropdown') /** On recupere notre container filter */
 		this.wrapperLightboxContainer = document.querySelector('.box-image-slider') /** On recuperer le constenaire section lightbox par son id */
-		this.heartLikes = new HeartLikes()
 		this.infoPrice = document.getElementById('s-info-price') /** On recupere notre container info-price pour afficher le tarif du photographe*/
 		this.infoLikes = document.getElementById('s-info-totalLikes') /** On recupere notre container totalLikes pour l'affichage du nombre de likes total du photographe */
 		
@@ -44,9 +42,11 @@ class PhotographerPage {
 				const FactoriesCards = new SectionCards(mediaData, this.heartLikes.heart)
 				FactoriesCards.createCards()
 			})
+		/** Modal likes et price du photographe */
 		this.infoPrice.innerHTML = `${photographerSelect[0].price} €/jour`
 		this.infoLikes.innerHTML = this.heartLikes.totalLikesPhotographer
 
+		/**Gestion des likes */
 		const likesTag = document.querySelectorAll('.fa-heart')
 		likesTag.forEach(el => {
 			el.addEventListener('click', event => {
@@ -133,7 +133,7 @@ class PhotographerPage {
 				/* On ecoute l'evenement pour fermer notre LIGHTBOX et revenir sur la page photographe */
 				closeSlider.onclick = () => {
 					removeElement(indexToSuprim)
-					document.getElementById('s-lightbox').style.display = 'none'
+					this.wrapperSectionLightbox.style.display = 'none'
 					this.wrapperSectionLightbox.setAttribute('aria-hidden', 'true')
 					this.wrapperFilterContainer.setAttribute('aria-hidden', 'false')
 					this.sectionHeader.setAttribute('aria-hidden', 'false')
@@ -143,7 +143,7 @@ class PhotographerPage {
 				closeSlider.addEventListener('keypress', (e) => {
 					if (e.key === 'Enter') {
 						removeElement(indexToSuprim)
-						document.getElementById('s-lightbox').style.display = 'none'
+						this.wrapperSectionLightbox.style.display = 'none'
 					}
 				})
 				window.addEventListener('keyup', event =>{
@@ -154,7 +154,7 @@ class PhotographerPage {
 						next('next')
 					} if (nomTouche === 'Escape') {
 						removeElement(indexToSuprim)
-						document.getElementById('s-lightbox').style.display = 'none'
+						this.wrapperSectionLightbox.style.display = 'none'
 						this.wrapperSectionLightbox.setAttribute('aria-hidden', 'true')
 						this.wrapperFilterContainer.setAttribute('aria-hidden', 'false')
 						this.sectionHeader.setAttribute('aria-hidden', 'false')
@@ -216,7 +216,7 @@ class PhotographerPage {
 					/* On ecoute l'evenement pour fermer notre LIGHTBOX et revenir sur la page photographe */
 					closeSlider.onclick = () => {
 						removeElement(indexToSuprim)
-						document.getElementById('s-lightbox').style.display = 'none'
+						this.wrapperSectionLightbox.style.display = 'none'
 						this.wrapperSectionLightbox.setAttribute('aria-hidden', 'true')
 						this.wrapperFilterContainer.setAttribute('aria-hidden', 'false')
 						this.sectionHeader.setAttribute('aria-hidden', 'false')
@@ -226,7 +226,7 @@ class PhotographerPage {
 					closeSlider.addEventListener('keypress', (e) => {
 						if (e.key === 'Enter') {
 							removeElement(indexToSuprim)
-							document.getElementById('s-lightbox').style.display = 'none'
+							this.wrapperSectionLightbox.style.display = 'none'
 						}
 					})
 					window.addEventListener('keyup', event =>{
@@ -237,7 +237,7 @@ class PhotographerPage {
 							next('next')
 						} if (nomTouche === 'Escape') {
 							removeElement(indexToSuprim)
-							document.getElementById('s-lightbox').style.display = 'none'
+							this.wrapperSectionLightbox.style.display = 'none'
 							this.wrapperSectionLightbox.setAttribute('aria-hidden', 'true')
 							this.wrapperFilterContainer.setAttribute('aria-hidden', 'false')
 							this.sectionHeader.setAttribute('aria-hidden', 'false')
@@ -276,14 +276,9 @@ class PhotographerPage {
 			/** On construit notre header a afficher sur la page */
 			FactoriesHeader.createSectionHeader()
 			/** On construit notre filtre pour les medias à afficher sur la page */
-			FactoriesFilter.createSectionFilter()
-			/** On ecoute les évenement pour l'ouverture et la fermeture du filtre */
-			FactoriesFilter.eventFilter('open')
-			FactoriesFilter.eventFilter('close')
+			FactoriesFilter.initUtilSectionFilterMethod()
 			/** On construit notre Modal pour le message */
-			FactoriesModal.createSectionModal()
-			FactoriesModal.eventModal()
-			FactoriesModal.validForm()
+			FactoriesModal.initUtilSectionModalMethod()
 			/** On ecoute l'evenement sur le Filtre */
 			const options = document.querySelectorAll('.dropdown-option')
 			options.forEach(el => {
@@ -300,6 +295,7 @@ class PhotographerPage {
 					}
 				})
 			})
+			
 			this.dislayPhotographer(FactoriesFilter.sortMedias(mediaPhotographer, 'popularite'), photographerSelect)
 			/**création de la lightbox */
 			FactoriesLigthbox.createSectionLightbox()

@@ -2,7 +2,7 @@ export class SectionFilter {
 	constructor () {
 		this.wrapperFilterContainer = document.getElementById('s-filter') 
 	}
-
+	/**Methode pour creer notre filtre */
 	createSectionFilter(){
 		/**
          * création de la div filter
@@ -41,7 +41,23 @@ export class SectionFilter {
 		return this.wrapperFilterContainer
 	}
 
-
+	/** on ecoute l'évenement pour l'ouverture du filtre */
+	eventFilter(action){
+		if (action === 'open'){
+			document.querySelector('#btn-dropdown').addEventListener('click', () => {
+				document.getElementById('container').style.display = 'flex'
+				document.querySelector('#btn-dropdown').setAttribute('aria-expanded', 'true')
+				document.getElementById('popularite').focus()
+			})
+		} else if (action === 'close') {
+			document.querySelector('#btn-up').addEventListener('click', () => {
+				document.getElementById('container').style.display = 'none'
+				document.querySelector('#btn-dropdown').setAttribute('aria-expanded', 'false')
+				document.querySelector('#btn-dropdown').focus()
+			})
+		}
+	}
+	
 	/**
  * Filtre qui retourne un tableau trier par ordre DECROISSANT les LIKES
  * @param {medias} = array datamedia du photographe
@@ -66,22 +82,6 @@ export class SectionFilter {
 		return medias
 	}
 
-	eventFilter(action){
-		if (action === 'open'){
-			document.querySelector('#btn-dropdown').addEventListener('click', () => {
-				document.getElementById('container').style.display = 'flex'
-				document.querySelector('#btn-dropdown').setAttribute('aria-expanded', 'true')
-				document.getElementById('popularite').focus()
-			})
-		} else if (action === 'close') {
-			document.querySelector('#btn-up').addEventListener('click', () => {
-				document.getElementById('container').style.display = 'none'
-				document.querySelector('#btn-dropdown').setAttribute('aria-expanded', 'false')
-				document.querySelector('#btn-dropdown').focus()
-			})
-		}
-	}
-	
 	/**
    * Fonction pour le traitement du filtre
    * @param {value} = string selectionner popularite // date // titre  
@@ -95,5 +95,14 @@ export class SectionFilter {
 		tagFilter.textContent = text
 		tagFilter.setAttribute('value', value)
 		document.getElementById('container').style.display = 'none'
+	}
+
+	/** Methode d'initialisation */
+	initUtilSectionFilterMethod(){
+		/** On construit notre filtre pour les medias à afficher sur la page */
+		this.createSectionFilter()
+		/** On ecoute les évenements sur notre filtre */
+		this.eventFilter('open')
+		this.eventFilter('close')
 	}
 }

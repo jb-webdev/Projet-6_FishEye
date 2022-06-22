@@ -7,8 +7,6 @@ export class SectionCards {
 		this._stateLIkes = false
 		this._nbrLikesMedia = this._media._likes
 		this.wrapperCardsContainer = document.getElementById('s-cards') /* On recupere le conteneur wrapper */
-
-		
 	}
 	createCards() {
 		let stateHeart = this._heartLikes
@@ -83,6 +81,4 @@ export class SectionCards {
 		this.wrapperCardsContainer.appendChild(card)
 		return this.wrapperCardsContainer
 	}
-
-
 }

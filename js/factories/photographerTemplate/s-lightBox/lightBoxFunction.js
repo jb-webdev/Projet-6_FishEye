@@ -1,4 +1,4 @@
-/** Fonction qui traite la construiction du chemin pour les media
+/** Fonction qui traite la construction du chemin pour les media
  * @return String
  */
 const recupName = (photographer) => {

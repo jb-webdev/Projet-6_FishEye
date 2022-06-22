@@ -93,7 +93,6 @@ export class SectionModal {
 		this.wrapperModalContainer.appendChild(wrapperSection)
 		return this.wrapperModalContainer
 	}
-
 	/**
      * Ouverture de la modal modal
      * @param {*} action 
@@ -143,8 +142,6 @@ export class SectionModal {
 			modal.style.display = 'none'
 		}
 	}
-
-
 	/**
      * Fonction pour l'ouverture et la fermeture de la modal
      * 
@@ -162,12 +159,10 @@ export class SectionModal {
 			}
 		})
 	}
-	
 	/**
      * Fonction validation formulaire prenom / firstname
      * @returns bollean
      */
-
 	firstName() {
 		const elt = document.forms['contact']['firstname'].value
 		let regex = /^[a-zA-Z-\s]{2,}$/
@@ -300,7 +295,6 @@ export class SectionModal {
 		}
 		return errormessage
 	}
-
 	validForm() {
 		/** On valide les entrees dans notre formulaire */
 		document.getElementById('firstname').addEventListener('input', () => {
@@ -337,5 +331,11 @@ export class SectionModal {
 				return true
 			}
 		})
+	}
+	/** Methode d'initialisation */
+	initUtilSectionModalMethod(){
+		this.createSectionModal()
+		this.eventModal()
+		this.validForm()
 	}
 }
