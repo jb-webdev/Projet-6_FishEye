@@ -13,7 +13,7 @@ export class SectionFilter {
 		const filterTemplate = `
         
           <h2>
-            <label id="filters-label" class="filters-title" >Trier par : </label>
+            <label id="filters-label" class="filters-title" tabindex="-1">Trier par : </label>
           </h2>
       
           <div class="select-filters" id="select-filters">

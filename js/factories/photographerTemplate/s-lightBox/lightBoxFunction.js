@@ -34,11 +34,18 @@ const removeElement = (a) => {
 }
 
 const changeTabIndex = (stateItem) =>{
-	var indexIdItemOf = ['one', 'dropdown', 'popularite', 'date', 'titre', ]
+	var indexIdItemOf = ['one', 'dropdown', 'popularite', 'date', 'titre', 'btn-header-displayModal' ]
 	var indexClassItemOf = ['card-description']
 
 	if(stateItem === 'off'){
 		// on passe tabindex="-1"
+		let headerLogo = document.getElementById('header-logo')
+		headerLogo.setAttribute('tabIndex', '-1')
+		let itemSelectUser = document.querySelectorAll('.itemSelectUser')
+		for (let i = 0; i < itemSelectUser.length; i++){
+			itemSelectUser[i].setAttribute('tabIndex', '-1')
+		}
+
 		for(let i = 0; i<indexIdItemOf; i++){
 			let itemTag = document.getElementById(indexIdItemOf[i])
 			itemTag.setAttribute('tabIndex', '-1')

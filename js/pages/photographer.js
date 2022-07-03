@@ -92,8 +92,10 @@ class PhotographerPage {
 				this.wrapperFilterContainer.setAttribute('aria-hidden', 'true')
 				this.sectionHeader.setAttribute('aria-hidden', 'true')
 				this.wrapperCardsContainer.setAttribute('aria-hidden', 'true')
+					
 				changeTabIndex('off')
-				closeSlider.focus()
+				document.getElementById('s-lightbox').focus()
+				
 				activeElement(idMediaSelect)
 				var indexToSuprim = listdatas[index].id
 
