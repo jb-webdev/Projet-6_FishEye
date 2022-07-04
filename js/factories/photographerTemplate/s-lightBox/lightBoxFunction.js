@@ -30,10 +30,8 @@ const activeElement = (a) => {
 /** On recupere l'element du DOM à cacher et on le desactive*/
 const removeElement = (a) => {
 	var elt = `media-${a}`
-	console.log(elt)
 	const element = document.getElementById(elt).classList
 	element.remove('active')
-	console.log(element)
 }
 
 const changeTabIndex = (stateItem) =>{

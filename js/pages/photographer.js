@@ -80,6 +80,7 @@ class PhotographerPage {
 
 		/**OpenCaroussel */
 		document.querySelectorAll('.itemSelectUser').forEach(element=> {
+			// je creer un methode pour lancer et gerer ma lightBox
 			const openCarousel = (item) =>{
 				const idMediaSelect = item.id
 				const nbrSlide = listdatas.length
@@ -99,7 +100,7 @@ class PhotographerPage {
 				// on recupere l'index de la carte selectionner
 				var index = indexFigure(listdatas, idMediaSelect)
 				// on recupere l'id de la carte a faire dispsaraitre
-				var indexToSuprim = listdatas[index].id
+				
 				const next = (direction) => {
 					var indexActive = index
 					if (direction === 'next') {
@@ -117,7 +118,6 @@ class PhotographerPage {
 					/** On cache le media et on aficche le suivant ou le precedent */
 					removeElement(listdatas[indexActive].id)
 					activeElement(listdatas[index].id)
-					indexToSuprim = listdatas[index].id
 				}
 				// on ecoute les evenements au click
 				sliderLeft.onclick = () => { next('prev') }
@@ -125,7 +125,6 @@ class PhotographerPage {
 				
 				/* On ecoute l'evenement pour fermer notre LIGHTBOX et revenir sur la page photographe */
 				closeSlider.onclick = () => {
-					removeElement(indexToSuprim)
 					document.querySelectorAll('.item').forEach(element => { element.classList.remove('active') })
 					this.wrapperSectionLightbox.style.display = 'none'
 					this.wrapperSectionLightbox.setAttribute('aria-hidden', 'true')
@@ -136,7 +135,6 @@ class PhotographerPage {
 				}
 				closeSlider.addEventListener('keypress', (e) => {
 					if (e.key === 'Enter') {
-						removeElement(indexToSuprim)
 						document.querySelectorAll('.item').forEach(element=> {element.classList.remove('active')})
 						this.wrapperSectionLightbox.style.display = 'none'
 						this.wrapperSectionLightbox.setAttribute('aria-hidden', 'true')
@@ -149,11 +147,12 @@ class PhotographerPage {
 				window.addEventListener('keyup', event =>{
 					var nomTouche = event.key
 					if(nomTouche === 'ArrowLeft'){
+						document.querySelectorAll('.item').forEach(element=> {element.classList.remove('active')})
 						next('prev')
 					} if (nomTouche === 'ArrowRight') {
+						document.querySelectorAll('.item').forEach(element=> {element.classList.remove('active')})
 						next('next')
 					} if (nomTouche === 'Escape') {
-						removeElement(indexToSuprim)
 						document.querySelectorAll('.item').forEach(element=> {element.classList.remove('active')})
 						this.wrapperSectionLightbox.style.display = 'none'
 						this.wrapperSectionLightbox.setAttribute('aria-hidden', 'true')
@@ -164,9 +163,11 @@ class PhotographerPage {
 					}
 				})
 			}
+			// j'ecoute l'evenement au click et je lance ma methode
 			element.addEventListener('click', () => {
 				openCarousel(element)
 			})
+			// j'ecoute l'evenement de la touche Enter et je lance 
 			element.addEventListener('keypress', event =>{
 				if (event.key === 'Enter'){
 					openCarousel(element)
