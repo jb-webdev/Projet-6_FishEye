@@ -79,38 +79,39 @@ class PhotographerPage {
 		})
 
 		/**OpenCaroussel */
-		document.querySelectorAll('.itemSelectUser').forEach(item => {
-			item.addEventListener('click', () => {
+		document.querySelectorAll('.itemSelectUser').forEach(element=> {
+			const openCarousel = (item) =>{
 				const idMediaSelect = item.id
 				const nbrSlide = listdatas.length
 				const sliderLeft = document.querySelector('.lightbox-left')
 				const sliderRight = document.querySelector('.lightbox-right')
 				const closeSlider = document.querySelector('.closeSlider')
-				var index = indexFigure(listdatas, idMediaSelect)
+
 				this.wrapperSectionLightbox.style.display = 'block'
 				this.wrapperSectionLightbox.setAttribute('aria-hidden', 'false')
 				this.wrapperFilterContainer.setAttribute('aria-hidden', 'true')
 				this.sectionHeader.setAttribute('aria-hidden', 'true')
 				this.wrapperCardsContainer.setAttribute('aria-hidden', 'true')
-					
+				
 				changeTabIndex('off')
 				document.getElementById('s-lightbox').focus()
-				
 				activeElement(idMediaSelect)
+				// on recupere l'index de la carte selectionner
+				var index = indexFigure(listdatas, idMediaSelect)
+				// on recupere l'id de la carte a faire dispsaraitre
 				var indexToSuprim = listdatas[index].id
-
 				const next = (direction) => {
 					var indexActive = index
-					if (direction == 'next') {
+					if (direction === 'next') {
 						index++
-						if (index == nbrSlide) {
+						if (index === nbrSlide) {
 							index = 0
 						}
-					} else {
-						if (index == 0) {
-							index = nbrSlide - 1
+					} else if (direction === 'prev'){
+						if (index === 0) {
+							index = nbrSlide-1
 						} else {
-							index--
+							index = index-1
 						}
 					}
 					/** On cache le media et on aficche le suivant ou le precedent */
@@ -118,23 +119,14 @@ class PhotographerPage {
 					activeElement(listdatas[index].id)
 					indexToSuprim = listdatas[index].id
 				}
-
+				// on ecoute les evenements au click
 				sliderLeft.onclick = () => { next('prev') }
-				sliderLeft.addEventListener('keypress', (e) => {
-					if (e.key === 'Enter') {
-						next('prev')
-					}
-				})
 				sliderRight.onclick = () => { next('next') }
-				sliderRight.addEventListener('keypress', (e) => {
-					if (e.key === 'Enter') {
-						next('next')
-					}
-				})
-
+				
 				/* On ecoute l'evenement pour fermer notre LIGHTBOX et revenir sur la page photographe */
 				closeSlider.onclick = () => {
 					removeElement(indexToSuprim)
+					document.querySelectorAll('.item').forEach(element => { element.classList.remove('active') })
 					this.wrapperSectionLightbox.style.display = 'none'
 					this.wrapperSectionLightbox.setAttribute('aria-hidden', 'true')
 					this.wrapperFilterContainer.setAttribute('aria-hidden', 'false')
@@ -145,7 +137,13 @@ class PhotographerPage {
 				closeSlider.addEventListener('keypress', (e) => {
 					if (e.key === 'Enter') {
 						removeElement(indexToSuprim)
+						document.querySelectorAll('.item').forEach(element=> {element.classList.remove('active')})
 						this.wrapperSectionLightbox.style.display = 'none'
+						this.wrapperSectionLightbox.setAttribute('aria-hidden', 'true')
+						this.wrapperFilterContainer.setAttribute('aria-hidden', 'false')
+						this.sectionHeader.setAttribute('aria-hidden', 'false')
+						this.wrapperCardsContainer.setAttribute('aria-hidden', 'false')
+						changeTabIndex('on')
 					}
 				})
 				window.addEventListener('keyup', event =>{
@@ -156,6 +154,7 @@ class PhotographerPage {
 						next('next')
 					} if (nomTouche === 'Escape') {
 						removeElement(indexToSuprim)
+						document.querySelectorAll('.item').forEach(element=> {element.classList.remove('active')})
 						this.wrapperSectionLightbox.style.display = 'none'
 						this.wrapperSectionLightbox.setAttribute('aria-hidden', 'true')
 						this.wrapperFilterContainer.setAttribute('aria-hidden', 'false')
@@ -164,90 +163,13 @@ class PhotographerPage {
 						changeTabIndex('on')
 					}
 				})
+			}
+			element.addEventListener('click', () => {
+				openCarousel(element)
 			})
-			item.addEventListener('keypress', event => {
-				if (event.key === 'Enter') {
-					const idMediaSelect = item.id
-					const nbrSlide = listdatas.length
-					const sliderLeft = document.querySelector('.lightbox-left')
-					const sliderRight = document.querySelector('.lightbox-right')
-					const closeSlider = document.querySelector('.closeSlider')
-					var index = indexFigure(listdatas, idMediaSelect)
-					this.wrapperSectionLightbox.style.display = 'block'
-					this.wrapperSectionLightbox.setAttribute('aria-hidden', 'false')
-					this.wrapperFilterContainer.setAttribute('aria-hidden', 'true')
-					this.sectionHeader.setAttribute('aria-hidden', 'true')
-					this.wrapperCardsContainer.setAttribute('aria-hidden', 'true')
-					changeTabIndex('off')
-					closeSlider.focus()
-					activeElement(idMediaSelect)
-					var indexToSuprim = listdatas[index].id
-
-					const next = (direction) => {
-						var indexActive = index
-						if (direction == 'next') {
-							index++
-							if (index == nbrSlide) {
-								index = 0
-							}
-						} else {
-							if (index == 0) {
-								index = nbrSlide - 1
-							} else {
-								index--
-							}
-						}
-						/** On cache le media et on aficche le suivant ou le precedent */
-						removeElement(listdatas[indexActive].id)
-						activeElement(listdatas[index].id)
-						indexToSuprim = listdatas[index].id
-					}
-					sliderLeft.onclick = () => { next('prev') }
-					sliderLeft.addEventListener('keypress', (e) => {
-						if (e.key === 'Enter') {
-							next('prev')
-						}
-					})
-					sliderRight.onclick = () => { next('next') }
-					sliderRight.addEventListener('keypress', (e) => {
-						if (e.key === 'Enter') {
-							next('next')
-						}
-					})
-
-					/* On ecoute l'evenement pour fermer notre LIGHTBOX et revenir sur la page photographe */
-					closeSlider.onclick = () => {
-						removeElement(indexToSuprim)
-						this.wrapperSectionLightbox.style.display = 'none'
-						this.wrapperSectionLightbox.setAttribute('aria-hidden', 'true')
-						this.wrapperFilterContainer.setAttribute('aria-hidden', 'false')
-						this.sectionHeader.setAttribute('aria-hidden', 'false')
-						this.wrapperCardsContainer.setAttribute('aria-hidden', 'false')
-						changeTabIndex('on')
-					}
-					closeSlider.addEventListener('keypress', (e) => {
-						if (e.key === 'Enter') {
-							removeElement(indexToSuprim)
-							this.wrapperSectionLightbox.style.display = 'none'
-						}
-					})
-					window.addEventListener('keyup', event =>{
-						var nomTouche = event.key
-						if(nomTouche === 'ArrowLeft'){
-							next('prev')
-						} if (nomTouche === 'ArrowRight') {
-							next('next')
-						} if (nomTouche === 'Escape') {
-							removeElement(indexToSuprim)
-							this.wrapperSectionLightbox.style.display = 'none'
-							this.wrapperSectionLightbox.setAttribute('aria-hidden', 'true')
-							this.wrapperFilterContainer.setAttribute('aria-hidden', 'false')
-							this.sectionHeader.setAttribute('aria-hidden', 'false')
-							this.wrapperCardsContainer.setAttribute('aria-hidden', 'false')
-							changeTabIndex('on')
-						}
-					})
-					
+			element.addEventListener('keypress', event =>{
+				if (event.key === 'Enter'){
+					openCarousel(element)
 				}
 			})
 		})

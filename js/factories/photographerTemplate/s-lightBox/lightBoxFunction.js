@@ -24,35 +24,47 @@ const indexFigure = (arrayItem, idFigureSelectionner) => {
 const activeElement = (a) => {
 	var elt = `media-${a}`
 	const element = document.getElementById(elt).classList
+
 	element.add('active')
 }
 /** On recupere l'element du DOM à cacher et on le desactive*/
 const removeElement = (a) => {
 	var elt = `media-${a}`
+	console.log(elt)
 	const element = document.getElementById(elt).classList
 	element.remove('active')
+	console.log(element)
 }
 
 const changeTabIndex = (stateItem) =>{
-	var indexIdItemOf = ['one', 'dropdown', 'popularite', 'date', 'titre', 'btn-header-displayModal']
+	var indexIdItemOf = [
+		'one', 
+		'dropdown', 
+		'popularite', 
+		'date', 
+		'titre', 
+		'btn-header-displayModal', 
+		'header-logo'
+	]
 
 	if(stateItem === 'off'){
-		// on passe tabindex="-1"
-		let headerLogo = document.getElementById('header-logo')
-		headerLogo.setAttribute('tabIndex', '-1')
 		let itemSelectUser = document.querySelectorAll('.itemSelectUser')
 		for (let i = 0; i < itemSelectUser.length; i++){
 			itemSelectUser[i].setAttribute('tabIndex', '-1')
-		}
-
-		for(let i = 0; i<indexIdItemOf; i++){
+		}			
+		for(let i = 0; i < indexIdItemOf; i++){
 			let itemTag = document.getElementById(indexIdItemOf[i])
 			itemTag.setAttribute('tabIndex', '-1')
 			return itemTag
 		}
 	} else if(stateItem === 'on'){
 		// on passe tabIndex="0"
-		for(let i = 0; i<indexIdItemOf; i++){
+		let itemSelectUser = document.querySelectorAll('.itemSelectUser')
+		for (let i = 0; i < itemSelectUser.length; i++){
+			itemSelectUser[i].setAttribute('tabIndex', '0')
+		}	
+		document.getElementById('s-cards').setAttribute('tabIndex', '-1')
+		for(let i = 0; i < indexIdItemOf; i++){
 			let itemTag = document.getElementById(indexIdItemOf[i])
 			itemTag.setAttribute('tabIndex', '0')
 			return itemTag

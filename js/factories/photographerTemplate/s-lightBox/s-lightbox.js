@@ -13,6 +13,7 @@ export class SectionLightbox {
 		const wrapperItem = document.createElement('div')
 		wrapperItem.setAttribute('class', 'wrapper-item')
 		wrapperItem.setAttribute('role', 'group')
+		wrapperItem.innerHTML = ''
 		/** On monte notre LIGHTBOX et on affiche le media selectionner */
 		for (let i = 0; i < nbrSlide; i++) {
 			if (this._mediaPhotographer[i].video) {
