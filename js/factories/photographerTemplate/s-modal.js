@@ -98,14 +98,12 @@ export class SectionModal {
      * @param {*} action 
      */
 	displayModal(action){
+		const btnContact = document.getElementById('btn-header-displayModal')
+		const btnDropdown = document.getElementById('btn-dropdown')
+		const cards = document.getElementById('s-cards')
+		const modal = document.getElementById('s-modal')
+		const divModal = document.querySelector('.modal')
 		if (action === 'open'){
-			const btnContact = document.getElementById('btn-header-displayModal')
-			const filter = document.getElementById('s-filter')
-			const btnDropdown = document.getElementById('btn-dropdown')
-			const cards = document.getElementById('s-cards')
-			const modal = document.getElementById('s-modal')
-			const divModal = document.querySelector('.modal')
-
 			document.querySelectorAll('.itemSelectUser').forEach(item => {
 				item.setAttribute('tabindex', -1)
 			})
@@ -113,7 +111,6 @@ export class SectionModal {
 				item.setAttribute('tabindex', -1)
 			})
 			btnContact.setAttribute('tabindex', -1)
-			filter.setAttribute('tabindex', -1)
 			btnDropdown.setAttribute('tabindex', -1)
 			cards.setAttribute('tabindex', -1)
 			divModal.setAttribute('tabindex', 0)
@@ -121,21 +118,10 @@ export class SectionModal {
 			modal.style.display = 'block'	
 			divModal.focus()
 		} else if (action === 'close'){
-
-			const btnContact = document.getElementById('btn-header-displayModal')
-			const filter = document.getElementById('s-filter')
-			const btnDropdown = document.getElementById('btn-dropdown')
-			const cards = document.getElementById('s-cards')
-			const modal = document.getElementById('s-modal')
-
 			document.querySelectorAll('.itemSelectUser').forEach(item => {
 				item.setAttribute('tabindex', 0)
 			})
-			document.querySelectorAll('.card-description').forEach(item => {
-				item.setAttribute('tabindex', 0)
-			})
 			btnContact.setAttribute('tabindex', 0)
-			filter.setAttribute('tabindex', 0)
 			btnDropdown.setAttribute('tabindex', 0)
 			cards.setAttribute('tabindex', 0)
 			modal.setAttribute('aria-hiden', 'true')

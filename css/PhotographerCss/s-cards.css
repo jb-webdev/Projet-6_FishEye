@@ -120,7 +120,9 @@
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
-
+.itemSelectUser:focus-visible {
+    outline: 4px solid var(--color-primary);
+}
 .sr-only-focusable:active,
 .sr-only-focusable:focus {
     position: static;

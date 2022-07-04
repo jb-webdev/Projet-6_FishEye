@@ -65,11 +65,11 @@ export class SectionCards {
                 title=""  
             >
         </figure>
-        <div class="card-description">
-            <h2 class="card-descripiton_title">
+        <div class="card-description" tabindex="-1">
+            <h2 class="card-descripiton_title" tabindex='-1'>
                 ${this._media.title}
             </h2>
-            <span class="span card-description_like"    >
+            <span class="span card-description_like" tabindex='-1'>
                 <p id="spanLikes-${this._media.idMedia}" class="nbr-likes">${this._nbrLikesMedia}</p>
                 <span class="${this._stateLIkes ? 'fa-solid' : 'fa-regular'} fa-heart" id="heart-${this._media.idMedia}"></span>
             </span>

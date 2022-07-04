@@ -27,16 +27,24 @@ body {
     -ms-flex-align: center;
     align-items: center;
     height: 90px;
+    padding-left: 100px;
 }
 
 #header-homePage-h1 {
     color: var(--color-primary);
     margin-right: 100px;
 }
+#header-logo{
+    margin-left: 100px;
+    padding: 10px 20px 10px 20px;
+}
+#header-logo:focus-visible {
+    outline: 4px solid var(--color-primary);
+}
 
 .logo {
     height: 50px;
-    margin-left: 100px;
+    
 }
 
 /* wrapper main photographer*/
